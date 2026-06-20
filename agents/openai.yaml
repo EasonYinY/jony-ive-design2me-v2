@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jony Ive Design2Me V2"
+  short_description: "显式推导三个本质不同方向，完整交付至提示词并默认不出图"
+  default_prompt: "使用 $jony-ive-design2me-v2 按十五步显式推导三个本质不同的完整方向，分别交付 DesignIR、质量门与提示词；除非我明确要求，否则不要出图。"

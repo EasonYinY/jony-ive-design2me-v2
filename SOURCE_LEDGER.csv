@@ -1,0 +1,27 @@
+claim_id,claim,claim_class,evidence_level,source_pointer,source,confidence,applicability,prohibited_inferences,status,target_reference
+BND-002,以"Jony Ive 风格"、"Apple-like"、白色、圆角、金属或极简作为形态处方,PROHIBITED,G,evidence-policy.md:71,REF-EVIDENCE-001,high,所有设计任务,"不得将禁止规则反向作为形态处方",GOVERNING,REF-EVIDENCE-001
+BND-003,将通用绘画、摄影或渲染知识反向当作产品关系、结构、人体工学、材料或制造决策的依据,PROHIBITED,G,evidence-policy.md:75,REF-EVIDENCE-001,high,所有设计任务,"不得用视觉知识替代产品决策",GOVERNING,REF-EVIDENCE-001
+VIS-001,PromptBundle 编译时只表达 DesignIR 已确认字段，不得新增关系、结构或操作,GOVERNING,G,prompt-contract.md:38,REF-PROMPT-001,high,STEP-15,"不得用摄影语言补全产品定义",GOVERNING,REF-PROMPT-001
+VIS-002,摄影控制仅使用封闭枚举值，不接收自由形态描述,GOVERNING,G,prompt-contract.md:49-59,REF-PROMPT-001,high,STEP-15,"不得将产品创造语言伪装成摄影参数",GOVERNING,REF-PROMPT-001
+VIS-003,production_prompt 必须为 90 至 160 个非空白字符，按固定语义顺序表达,GOVERNING,G,prompt-contract.md:43,REF-PROMPT-001,high,STEP-15,"不得压缩或扩展字符范围",GOVERNING,REF-PROMPT-001
+VIS-004,提示词编译不等于图片生成授权，无用户明确出图指令时停止,GOVERNING,G,prompt-contract.md:31,REF-PROMPT-001,high,STEP-15,"不得默认生成图片",GOVERNING,REF-PROMPT-001
+GOV-001,核心理念维度：当前决策为谁解决什么本质问题，创造什么长期价值,GOVERNING,G,five-dimension-engine.md:41,REF-FIVE-001,high,所有正式步骤,"不得用空值或风格词替代",GOVERNING,REF-FIVE-001
+GOV-002,规则体系维度：什么路径、标准和决策机制能使结论可重复、可调整,GOVERNING,G,five-dimension-engine.md:42,REF-FIVE-001,high,所有正式步骤,"不得省略决策机制",GOVERNING,REF-FIVE-001
+GOV-003,工具基建维度：需要哪些稳定、可扩展、成本合理的技术、数据或工具支撑,GOVERNING,G,five-dimension-engine.md:43,REF-FIVE-001,high,所有正式步骤,"不得假设无限资源",GOVERNING,REF-FIVE-001
+GOV-004,执行技巧维度：如何用小步验证、细节打磨和协作将判断落地,GOVERNING,G,five-dimension-engine.md:44,REF-FIVE-001,high,所有正式步骤,"不得跳过验证步骤",GOVERNING,REF-FIVE-001
+GOV-005,环境时机维度：哪些市场、政策、竞争、资源和投入时点构成客观约束,GOVERNING,G,five-dimension-engine.md:45,REF-FIVE-001,high,所有正式步骤,"不得忽略时间约束",GOVERNING,REF-FIVE-001
+MTH-012,待核验条件性表达规则（具体定义待补充）,HYPOTHESIS,U,prompt-contract.md:80,REF-PROMPT-001,low,STEP-15,"不得进入正向运行知识",PENDING,REF-PROMPT-001
+AUD-009,旧产品案例回查线索（Airbnb 早期设计）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
+AUD-010,旧产品案例回查线索（Moncler 早期合作）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
+AUD-011,旧产品案例回查线索（Balmuda 早期版本）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
+AUD-012,旧产品案例回查线索（Linn 早期规格）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
+AUD-013,旧产品案例回查线索（Terra Carta 早期图形）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
+AUD-014,旧产品案例回查线索（Coronation 早期规范）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
+AUD-015,旧产品案例回查线索（OpenAI 合作早期）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得推断产品外观",PENDING,REF-QUALITY-003
+AUD-016,旧产品案例回查线索（LoveFrom 内部方法）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得写成公开理论",PENDING,REF-QUALITY-003
+AUD-017,旧产品案例回查线索（Apple 时期方法）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得作为当前方法",PENDING,REF-QUALITY-003
+AUD-018,旧产品案例回查线索（媒体误读案例）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得确认事实",PENDING,REF-QUALITY-003
+AUD-019,旧产品案例回查线索（设计教育材料）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得作为方法依据",PENDING,REF-QUALITY-003
+AUD-020,旧产品案例回查线索（行业分析）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得单独支撑推断",PENDING,REF-QUALITY-003
+AUD-021,旧产品案例回查线索（竞争对手分析）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得作为设计依据",PENDING,REF-QUALITY-003
+AUD-022,旧产品案例回查线索（技术趋势）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得预测未证实技术",PENDING,REF-QUALITY-003
