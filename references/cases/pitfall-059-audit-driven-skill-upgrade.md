@@ -9,8 +9,8 @@ called_by:
   - SKILL.md 升级规范
   - file-hygiene.md 铁律 8.6
 depends_on:
-  - PITFALL-046
-  - PITFALL-053
+  - REF-CASE-046
+  - REF-CASE-053
 outputs:
   - 升级决策记录
 ---
