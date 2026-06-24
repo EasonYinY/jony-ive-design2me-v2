@@ -32,4 +32,5 @@
 | pitfall-044 | Eagle 推送不自动 | 出图后未自动 publish | cases/pitfall-044 | 已记录 |
 | pitfall-046 | 无调研就升级 | SKILL.md 改前必须 model-fit | cases/pitfall-046 | 已记录 |
 | pitfall-047 | 提示词方法链内部矛盾 | 改前必须跑方法链审计 | cases/pitfall-047 | 已记录 |
-| **pitfall-048** | **BACKUP 副本里"升级"是错觉** | **2026-06-23 飞行器任务实证** | **REF-CASE-030** | **已记录** |
+| pitfall-048 | BACKUP 副本里"升级"是错觉 | 2026-06-23 飞行器任务实证 | REF-CASE-030 | 已记录 |
+| **pitfall-030-ring** | **环形结构同质化** | **3方向都含环且位置/数量/关系同质化** | **2026-06-24 用户反馈** | **已记录** |

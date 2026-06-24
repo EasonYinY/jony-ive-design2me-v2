@@ -44,6 +44,7 @@ outputs:
 | `background_intrusion` | 背景侵入 | 图片出现背景、环境、辅助物品、场景、人物、手、脸等除产品外的元素 | 提示词或重渲染 |
 | `unwanted_float` | **不期望的悬浮**（当前版本 NEW · 用户显式指示） | 图片出现产品悬浮 / 漂浮，但用户在本次任务中未要求悬浮 | **退回编译：默认改为 `rests on neutral matte surface`** |
 | `flat_no_functional_zoning` | **复杂产品被压扁成 1 块**（当前版本 NEW · 2026-06-23 咖啡机任务） | complex product（功能数 ≥ 5）的 3 方向都只表达 1-2 个整体造型块，缺少功能区视觉信号；vision 评审时被识别为"压扁成 1 块塑料壳" | **退回 STEP-06.0 功能区拆解 + STEP-10.5 区间接缝**（参见 `references/cases/pitfall-026-flat-design-no-functional-zoning.md` + `references/guides/functional-zoning.md`） |
+| `ring_homogenization` | **环形结构同质化**（当前版本 NEW · 2026-06-24 飞行器任务） | 3 方向都含环元素，且环的位置/数量/关系同质化（如都是上下双环/同心环），导致视觉输出千篇一律 | **退回 STEP-06 重新生成 + 强制环位置多样化（顶部/背部/中部/前部/底部/四周）+ 至少一个方向无环**（参见 `references/cases/pitfall-030-ring-homogenization.md`） |
 
 ## 证据边界
 

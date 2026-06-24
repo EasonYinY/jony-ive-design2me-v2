@@ -170,18 +170,28 @@ _test_marker_
 
 详细方法、合同和流程只存在于 `references/` 对应目录；本文件不复制正文。
 
-| **升级顺序铁律（防 Pitfall 025）**：当用户对已有结果提出批评、要求优化时，**先修改技能文件，再重新执行流程**。用户说"先修改技能文件"时，必须：
+> **升级顺序铁律（防 Pitfall 025）**：当用户对已有结果提出批评、要求优化时，**先修改技能文件，再重新执行流程**。用户说"先修改技能文件"时，必须：
 > 1. 分析反馈 → 确定技能文件修改点
 > 2. 修改技能文件（guides/cases/rules/quality）
 > 3. 运行验证脚本确保无错误
 > 4. 重新执行 STEP-01 至 STEP-15
 > 5. 不得跳过步骤 1-3 直接重新生成
 >
+> **用户反馈处理优先级（2026-06-24 明确）**：当用户批评"三个方向太相似/全是同一种元素"时：
+> - **优先**：修改技能文件（如 Pitfall-034 结构家族隔离），确保**下次**不会重复
+> - **次选**：重新生成当前方案（仅在用户明确要求"重做"时）
+> - 用户原话："不需要你修改当前方案，而是彻底优化这个问题，避免下次出现"
+> - 这意味着：技能文件修改是**主要交付物**，当前方案重跑是**副产品**
+>
 > 详见 `references/cases/pitfall-025-upgrade-before-rerun.md`。
 >
 > **升级前必做调研（防 Pitfall 046,2026-06-23 NEW）**：任何对 SKILL.md / prompt-engineering / cmf-system / product-level-prompt-revolution 的实质性改动前,必须先有 `references/research/{model-name}-model-fit.md` 调研文档(≥ 5 节 + 交叉 ≥ 3 类来源 + user 拍板)。**调研没完成前禁止 bump SKILL.md frontmatter**。详见 `references/cases/pitfall-046-upgrade-without-model-capability-research.md`。
 >
 > **升级前必查内部矛盾（防 Pitfall 047,2026-06-23 NEW）**：任何改 prompt-engineering.md 之前,必须跑方法链审计:列出方法 1-15,标出冲突对(塞数字 vs 删数字 / 摄影前 vs 后 / 中文 vs 英文),给出解决方案 + 写进 changelog。**禁止静默保留矛盾**。详见 `references/cases/pitfall-047-prompt-method-chain-internal-contradiction.md`。
+>
+> **v2.9.0+ 新增 Pitfall 与指南索引**：
+> - `references/cases/pitfall-048-code-block-text-marker-leak.md` — 代码块 `text` 标记泄漏到提示词（2026-06-24，用户反馈"严重影响出图质量"）
+> - `references/cases/pitfall-034-direction-homogenization.md` — **v2.0 扩展 · 2026-06-24**: 方向同质化陷阱从"材料/操作同质化"扩展为"结构同质化"——新增结构家族隔离规则（环/板/壳/杆/翼/场），强制三个方向来自不同结构家族。触发：载人飞行器3个方向全部使用"环"。
 >
 > **v2.0.0 新增 Pitfall 与指南索引**：
 > - `references/cases/pitfall-026-outdoor-light-form-cliche.md` - 户外灯品类形态俗套避坑

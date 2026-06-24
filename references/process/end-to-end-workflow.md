@@ -32,6 +32,7 @@ outputs:
    - **STEP-06.0 [NEW · 必触发] 功能区拆解**：brief 落地后立即列 4-7 个功能区，每个写明位置+边界+接口+可见性。**触发条件**：功能数 ≥ 3 → 必做；功能数 ≥ 5 → 必做且每区必须独立选基础体块。详见 `references/guides/functional-zoning.md`。
    - **STEP-06.1 [改] 候选生成**：5 个候选 = 5 种**功能区排布方案**（不是 5 种基础体块）。
    - **STEP-06.2 [NEW] 基础体块分配**：选定的功能区排布下，每个功能区独立选基础体块。
+   - **STEP-06.3 [NEW · 2026-06-24 v3.0] 拓扑去同质化断路器**：在候选生成前，**必须列出四个物理叙事坐标（Monolithic Slab / Monocoque Tension Shell / Volumetric Subtraction / Tensegrity）**，并确保每个候选来自**不同的物理叙事坐标**。禁止两个候选共享同一坐标。禁止依赖"环、圈、格栅、阵列"等科幻陈词滥调。形态必须从"人与产品的关系"中自然浮现，而非抓取既有符号。必须考虑"不被看见的部分"（底面接合线、铰链、进气口边缘倒角）。详见 `references/cases/pitfall-034-direction-homogenization.md` v3.0。
    - 功能验证：每个候选必须回答"该形态能完成核心功能吗？""关键构件的可及性（清洁/更换/维修）如何？""静息状态（存放/充电/维护）合理吗？""功能区视觉上是否被表达（≥ 3 段视觉信号）？"任一答案为否，否决该候选。**KB 反向链接**: `references/knowledge-base/附录V-跨领域迁移指南.md`(跨领域迁移模式 + transfer 协议,可作为 STEP-06 候选生成的扩展灵感)。
 7. `STEP-07` 依次检查物理、法规、制造、成本、寿命和审美约束。
 8. `STEP-08` 检查品类俗套、旧失败和无依据形态模仿。**KB 反向链接**: `references/knowledge-base/02-设计方法论/03-误用风险清单.md`(完整误用风险清单)+ `references/knowledge-base/03-产品案例库/02-辅助案例.md`(7 个辅助案例)+ `references/knowledge-base/03-产品案例库/03-背景案例.md`(4 个背景案例)+ `references/knowledge-base/附录X-反例与边界案例库.md`(反例与边界案例库,展示反例识别模式)。
@@ -72,6 +73,38 @@ outputs:
 - 参考 `references/guides/prompt-engineering.md` 方法13（简化法）、方法14（品类锚定法）和方法15（功能暗示法）
 - 参考 `references/guides/method15-functional-hint.md` 功能暗示详细指南
 - 参考 `references/cases/failure-patterns.md` 避免13个失败模式
+
+**V3.0 审计增强 · 五段式物理空间协议（2026-06-24）**：
+
+每个方案的英文Prompt必须严格遵循以下5段式物理空间布局，严禁任何情绪词、时间词与风格抽象词：
+
+```markdown
+[Layout Block 1: 视角与空间锚定]
+Studio photograph, [视角，如 three-quarter view slightly above / eye-level dead-front view], of a single [产品中性核心词], LoveFrom 2030, post-Apple Jony Ive.
+
+[Layout Block 2: 核心拓扑与材质职责 (Material Duty)]
+[主要构件材质] slab/shell [物理动作，如 suspended over / flush integrated into] a [基座材质] base, [次要材质] [物理交接状态，如 flush in / recessed into].
+
+[Layout Block 3: 极致几何与切线控制 (G2 Fillet & Tangent)]
+G2 fillet edges, sweeping tangent into [交接面], [精确微观尺寸描述，如 0.5mm hairline seam / hairline amber LED slit].
+
+[Layout Block 4: 消失设计与行为触点 (Vanishing & Tactile Node)]
+[材质] tactile node [功能，如 for physical override] positioned at [精确位置]. Unseen elements perfectly aligned. Floats. Neutral gradient.
+
+[Layout Block 5: 绝对排除项 (Negative Filter)]
+No logo, no text, no visible screws, no visible joints, no redundant mechanical decoration, no sci-fi rings.
+```
+
+**禁止词滤网（绝对禁止进入Prompt）**：
+- ❌ futuristic, sleek, cybernetic, sci-fi, high-tech
+- ❌ Apple-like, minimalist design, Jony Ive style
+- ❌ sense of safety, feeling of trust, emotional connection
+- ❌ spinning slowly, gently hovering, gracefully flying
+- ❌ white matte plastic shell, transparent glass window（材料贴图化）
+
+**材料职责强制格式**：材料名称 | 结构职责 | 触感职责 | 制造方式 | 寿命 | 维护方式
+
+**新增"不被看见的部分"强制描述**：底面接合线、铰链、进气口边缘倒角、隐藏接口等必须在Layout Block 2或Block 4中描述。
 
 材料描述必须使用"材料职责"格式：材料名称 | 结构职责 | 触感职责 | 制造方式 | 寿命 | 维护方式。
 
