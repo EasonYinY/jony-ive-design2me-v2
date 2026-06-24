@@ -40,10 +40,29 @@ outputs:
 | `use_context_prompt` | 真实使用情境提示 | 只表达既有关系、动作、姿态、交互和反馈 |
 | `negative_prompt` | 抑制已知越界与生成错误 | 不得反向成为新的正向产品处方 |
 | `photography_controls` | 控制表达可见度 | 仅使用封闭枚举，不接收自由形态描述 |
-| `production_prompt` | 最终生产提示词 | 90 至 160 个非空白字符，按固定语义顺序表达 |
+| `production_prompt` | 最终生产提示词 | 语义完整优先，按固定语义顺序表达，必须包含精确数字、悬浮感、高频接触点 |
 | `prompt_trace` | 逐句追溯 | 每个语义短句只引用 DesignIR 或封闭摄影控制 |
 
-所有字段均为非空；提示词包与摄影控制均为不可变对象。编译每次返回新对象，不修改 `DirectionBundle` 或 `DesignIR`。
+### 当前版本 强制字段
+
+| 字段 | 用途 | 内容边界 |
+|---|---|---|
+| `material_precision` | 材料精确描述 | 必须包含材料名称 + 结构状态 + 触感描述，如 "smoked glass slab suspended over travertine base" |
+| `geometric_specs` | 几何规格 | 必须包含至少 2 个精确数字（尺寸/角度/公差/曲率），如 "6cm thick", "G2 fillet edges" |
+| `floating_state` | 悬浮状态 | 必须描述产品与环境的空间关系，如 "Floats", "levitates 2mm above glass pad" |
+| `negative_constraints` | 负面约束 | 必须包含 3-5 个具体产品相关的否定描述，如 "No logo, no text, no screws" |
+| `primary_contact` | 高频接触点 | 必须包含至少 1 个高频接触点的精确描述，如 "brass brew slit flush in glass" |
+
+###强制字段（感官材料+品牌语境）
+
+| 字段 | 用途 | 内容边界 |
+|---|---|---|
+| `brand_context` | 品牌语境锚定 | 必须包含 "LoveFrom 2030, post-Apple Jony Ive" |
+| `sensory_material` | 感官材料优先 | 必须使用感官可感知材料（"hairline-brushed titanium"）而非工程材料（"titanium alloy TC4"） |
+| `form_vocabulary` | 形态词汇 | 必须包含至少 1 个艾维标志性形态词（slab/G2 fillet/sweeping tangent/hairline） |
+| `detail_precision` | 精致细节 | 必须包含至少 1 个精致细节（amber LED hairline / single brass inlay dot / brew slit） |
+
+所有字段均为非空；提示词包与摄影控制均为不可变对象。编译器每次返回新对象，不修改 `DirectionBundle` 或 `DesignIR`。
 
 ## 摄影控制
 
@@ -75,6 +94,35 @@ outputs:
 - 可见目标不是 `DesignIR` 字段。
 - 摄影、光线、背景、景深或反向提示试图创造、删除、隐藏或改写产品定义。
 
-## 证据边界
+## 负面约束规则
+
+`negative_prompt` 必须基于本产品的具体特征生成，不得使用通用负面词。
+
+### 规则
+
+- 每个负面约束必须对应一个 `DesignIR` 中的「已否决候选」或「已排除特征」
+- 负面约束必须具体、可执行，不说 "no bad quality"，说 "no logo, no text, no screws"
+- 负面约束数量：3-5 个，过少则约束不足，过多则稀释焦点
+- 负面约束必须与产品类型强相关：咖啡机的 "no screws" 合理，无人机的 "no exposed blades" 合理
+
+### 优秀示例
+
+```
+"No logo, no text, no screws"
+← 对应：产品追求无缝外观，已排除螺丝连接（DesignIR.manufacturing 否决）
+
+"No visible buttons, single brass inlay dot"
+← 对应：已选择压电表面，排除机械按钮（DesignIR.interaction 否决）
+
+"No glossy plastic, no exposed blades"
+← 对应：已选择碳纤维，排除塑料；已选择涵道风扇，排除暴露叶片（DesignIR.cmf_system 否决）
+```
+
+### 否决条件
+
+- 使用通用负面词（"no bad quality", "no blur", "no distortion"）→ 重新编译
+- 负面约束与产品无关 → 重新编译
+- 负面约束少于 3 个或多于 5 个 → 重新编译
+- 负面约束与 DesignIR 已否决项无对应 → 重新编译
 
 本合同采用 `SOURCE_LEDGER.csv` 中 `VIS-001` 至 `VIS-004` 的条件性表达规则，以及 `BND-002`、`BND-003` 的禁止外推规则。这些内容只控制 Design IR 之后的表达，不作为 Jony Ive 的公开理论或新的产品证据。`MTH-012` 仍处于待核验状态，不进入正向运行知识。

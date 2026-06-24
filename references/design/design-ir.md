@@ -41,6 +41,12 @@ outputs:
 | `interaction` | 交互 | 写清输入、反馈、系统状态、错误预防和恢复路径 |
 | `maintenance` | 维护 | 写清清洁、拆解、诊断、修理、更换和回收路径 |
 | `distinctive_features` | 识别特征 | 至少一项，由关系、结构或操作自然导出，不得是风格贴花 |
+| `primary_contact_points` | 主要接触点 | 至少 2 个，包含精确位置、材料、触感反馈 |
+| `interaction_nodes` | 交互节点 | 每个高频操作的具体位置、手势、反馈 |
+| `cultural_hybrid` | 文化杂交 | 文化来源、杂交类型、与功能的一致性（当前版本 新增，可选） |
+| **`functional_zones`** | **功能区列表**（当前版本 新增 · 2026-06-23 咖啡机任务触发） | **≥ 3 个**（complex product ≥ 5 个），每个写明名称、位置、尺寸、可见性、与相邻区接缝 |
+| **`interior_visibility`** | **内部结构可见性** | 哪些功能区可见（半透明/外露/可拆）、哪些隐藏（≥ 1 个功能区应可见，对应艾维"诚实结构"） |
+| **`inter_zone_seams`** | **区间接缝信号** | 每两个功能区之间的接缝类型（chamfer / parting line / material switch / gasket / light strip / magnetic line） |
 
 所有字段必须为非空文本；`distinctive_features` 必须是非空且不可变的文本元组。
 

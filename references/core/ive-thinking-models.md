@@ -24,6 +24,15 @@ outputs:
 
 本快照只保留已通过跨案例证据门槛的可迁移方法。它们是从公开案例归纳出的 `INFERENCE`，不是 Jony Ive 原话，也不是形态风格处方。运行时必须与 `evidence-policy.md` 和 `five-dimension-engine.md` 共同使用；证据不足时停止归因。
 
+## 上游 KB 反向链接
+
+- [`references/knowledge-base/02-设计方法论/01-核心16法.md`](../knowledge-base/02-设计方法论/01-核心16法.md)：艾维核心 16 法的完整详述（1720 行 / 77.7 KB）。本快照是精简版；需要完整方法细节、案例细节、引文时读 KB 原文。
+- [`references/knowledge-base/01-认知框架/01-世界观与信念.md`](../knowledge-base/01-认知框架/01-世界观与信念.md)：7 个核心信念的完整世界观叙述（874 行）。
+- [`references/knowledge-base/05-价值观哲学/01-设计哲学.md`](../knowledge-base/05-价值观哲学/01-设计哲学.md)：完整设计哲学长文（559 行）。
+- [`references/knowledge-base/05-价值观哲学/02-五维联动.md`](../knowledge-base/05-价值观哲学/02-五维联动.md)：五维联动映射表，与本快照方法论直接对应。
+- [`references/knowledge-base/03-产品案例库/01-核心案例CPSO.md`](../knowledge-base/03-产品案例库/01-核心案例CPSO.md)：5 个核心案例 CPSO（Airbnb / Moncler / Balmuda / Linn / Terra Carta），是本快照所有方法结论的证据来源。
+- [`references/knowledge-base/03-产品案例库/03-深化案例判断逻辑.md`](../knowledge-base/03-产品案例库/03-深化案例判断逻辑.md)：案例判断逻辑（决策树 + 常见误区 + 反推验证），用于 STEP-08/09/14 的判断依据。
+
 ## MTH-002 先重写关系，再重写形态
 
 - 证据类型：`INFERENCE`，跨案例推断。
@@ -42,7 +51,7 @@ outputs:
 - 适用条件：有真实历史对象和用户行为可核对时
 - 反例：用年代感色彩、装饰或历史轮廓代替对已有行为记忆的理解。
 - 禁止外推：不得用复古装饰或老 Apple 外形代替行为证据
-- 运行规则：保留用户已经理解的动作和秩序，但使结构、工程与当下条件重新对齐。
+- 运行规则：保留用户已经理解的动作和秩序，但使结构、工程与当下条件重新对应。
 
 ## MTH-004 将边界转化为可解释的尊重
 

@@ -77,7 +77,7 @@ python3 -c "import sys; sys.path.insert(0, 'scripts'); from contracts import *; 
 | 文件 | 变更类型 | 日期 |
 |---|---|---|
 | `references/changelogs/README.md` | 新增 | 2026-06-20 |
-| `references/changelogs/v1.0.0-changelog.md` | 新增 | 2026-06-20 |
+| `references/changelogs/当前版本-changelog.md` | 新增 | 2026-06-20 |
 | `scripts/validate_skill.py` | 修改（+1 REQUIRED_REF） | 2026-06-20 |
 | `references/process/step-reference-map.md` | 修改（+REF-PROCESS-004） | 2026-06-20 |
 | `references/process/skill-reading-guide.md` | 修改（+STEP-01, +step-reference-map） | 2026-06-20 |

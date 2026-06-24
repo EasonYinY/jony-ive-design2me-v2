@@ -110,11 +110,103 @@ called_by:
 
 实现 Step ↔ Reference 双向路由。
 
+## 铁律 7：用户原文 0 简化原则（当前版本+）+ 镜像必须含接入（当前版本+）
+
+**当用户要求同步 / 镜像 / 搬运 / 同步更新 任何外部资料库(尤其是用户的 Obsidian 笔记、个人 wiki、v4.x 知识蒸馏等)到技能 references/ 时,必须遵守:**
+
+### 7.1 绝对禁止
+
+| 禁止行为 | 用户原话出处 |
+|---|---|
+| ❌ "为了精简合并"删字、合段、改写 | 2026-06-22 "不可以有任何 token 焦虑" |
+| ❌ "为了控制字符数"简化表达 | 2026-06-22 "不会因为 token 导致的文字描述优化,减少,删减,简化的描述" |
+| ❌ "为了文档整洁"调整原文结构 | 2026-06-22 "不要过度优化,简化,和删除" |
+| ❌ 注入 frontmatter / 重写 H1 / 改版本号 | "确保原始文字的表达完整,正确" |
+| ❌ 喂给 humanizer / AI 润色 | "不要过度优化" |
+| ❌ 字节级不一致的"语义化改写" | 用户原话优先于任何内部优化标准 |
+
+### 7.2 必须执行
+
+| 必须行为 | 实施细节 |
+|---|---|
+| ✅ **字节级精确镜像**(sha256 校验通过) | 用 `shasum -a 256` 双向比对,完全一致才算同步成功 |
+| ✅ **保留原文件名 / 子目录结构 / 章节编号** | 原 `00-` / `01-` / `02-` ... `附录U-` 命名**完整保留** |
+| ✅ **保留原 frontmatter / 注释块 / ASCII 架构图** | 不删任何注释行、不改 ASCII 图 |
+| ✅ **加 KB 内部元数据(README + SHA256SUMS)** | 在镜像目录根加 `README.md`(登记每篇元数据) + `SHA256SUMS.txt`(字节校验) |
+| ✅ **KB 内部元数据集中登记,不注入原文** | 28 篇原文 0 改动;元数据写在 KB 根 README |
+
+### 7.3 上游 KB vs 运行 reference 的隔离
+
+当用户外部资料库要落到 `references/` 下时,**禁止**直接合并到现有 `core/` / `design/` / `direction/` 等运行 reference。处理方式:
+
+```
+references/
+├── core/, design/, direction/, ...  ← 运行知识(自包含,稳定快照)
+└── knowledge-base/                  ← 用户原文 KB 镜像(上游参考,字节级镜像)
+    ├── README.md                    ← KB 内部总索引(登记每篇元数据)
+    ├── SHA256SUMS.txt               ← 每篇 sha256
+    └── {原资料库的 28 篇原文镜像}
+```
+
+**判定标准**:
+
+| 问题 | 答案 → 处理 |
+|---|---|
+| 这是技能运行需要的知识吗? | 是 → 落到 `references/core/` 等运行 reference(精简+有 frontmatter) |
+| 还是用户的外部参考/输入? | 是 → 落到 `references/knowledge-base/`(字节级镜像) |
+
+### 7.4 验证脚本白名单(必做)
+
+因为用户原文 KB 镜像会包含被运行 reference 规则禁止的字符串(case-study 真实引用如 "LoveFrom 2030"、"V4.x" 版本号、"Mobile Documents" 路径等),必须:
+
+1. **在 `validate_skill.py` 加常量** `UPSTREAM_KB_DIR = "knowledge-base"`
+2. **在 markdown_paths 循环里加 skip**:`if rel_posix.startswith(f"references/{UPSTREAM_KB_DIR}/"): continue`
+3. **在 `validate_reference_graph.py` 加同样 skip**(在 `_metadata` 调用前过滤)
+4. **同步命令必须留底**:在 KB README 写明 `rsync` 命令 + `diff SHA256SUMS` 校验命令
+
+详见 `references/changelogs/当前版本-changelog.md` 的实际案例(28 篇 + 737.2 KB + 0 改动)。
+
+### 7.5 反模式(常见错误)
+
+| 反模式 | 后果 | 正确做法 |
+|---|---|---|
+| 把 28 篇合并为 3 篇"摘要" | 丢失用户原文,违背 0 简化原则 | 28 篇完整镜像 + 在 KB README 登记元数据 |
+| 在原文里加 frontmatter | 改动了原文,不再字节级一致 | frontmatter 写在 KB README 表格里 |
+| 把 KB 喂给 STEP-15 提示词编译 | 破坏 prompt-contract 字符边界(90-160 字) | KB 只用于深度背景/教学/写作,不喂给 STEP |
+| 镜像后不写 sha256 校验 | 无法验证同步是否完整,下次同步无 baseline | 写 SHA256SUMS.txt,下次 `diff` 校验 |
+| 把 KB 内容复制到 `references/core/` 等运行 reference | 污染运行知识(自包含承诺破裂) | KB 与运行 reference 严格分离 |
+| **只完成镜像字节搬运,未接入到工作流** | **用户在 Pitfall 040 触发:"新增的内容是否完全被成功引用?"** | **完整三阶段:A 镜像 + B 接入 + C 验证** |
+
+### 7.6 完成定义:三阶段必须全做
+
+**用户说"同步/镜像"≠ 只搬运字节文件。完整任务必须含三阶段:**
+
+| 阶段 | 动作 | 完成定义 |
+|---|---|---|
+| **A · 镜像** | 字节级复制 + sha256 + 元数据 README | 28/28 sha256 一致 |
+| **B · 接入** | 在 SKILL.md 启动顺序 + step-reference-map + end-to-end-workflow + 运行 reference 中加反向链接 | grep `references/<mirror-dir>/` 在 ≥ 5 处出现 |
+| **C · 验证** | 跑 validate_*.py,新增失败 = 0 | 失败计数 ≤ baseline |
+
+**只完成 A 而声称"完成"是 Pitfall 040 触发的核心失误**(当前版本 → 当前版本 教训)。
+
+### 7.7 B 阶段 6 个必做动作
+
+1. **SKILL.md 启动顺序**:加 `<mirror 加载 step>`,链接到 mirror README
+2. **step-reference-map.md**:mirror 顶层 README 注册为 REF-XXX-ID,加入 3-5 个相关 STEP 行
+3. **end-to-end-workflow.md**:每个用到 mirror 内容的上游 STEP 加 `**Mirror 反向链接**:` 块
+4. **运行 reference**:每个会查 mirror 内容的 reference(failure-library / ive-thinking-models / aesthetic-gate 等)加 mirror 反向链接段
+5. **references/README.md 总索引**:mirror 顶层 README 注册为 `REF-XXX-INDEX` 行
+6. **scripts/validate_*.py**:mirror 目录加白名单常量
+
+**反向链接最少数量规则**:mirror N 篇文件至少 N÷3 处反向链接;16-30 篇 ≥ 15 处;30+ 篇 ≥ 25 处。
+
+详见 `references/guides/external-knowledge-mirror-integration.md` 与 `references/cases/pitfall-040-content-added-not-integrated.md`。
+
 ## 增量更新检查清单
 
 任何对 SKILL.md 的 patch / write 前必跑：
 
-- [ ] 读 `references/file-hygiene.md` 6 条铁律
+- [ ] 读 `references/file-hygiene.md` 7 条铁律
 - [ ] 读 SKILL.md「铁律」段 + 「文档路由地图」段
 - [ ] 改动属于 6 类允许内容之一？
 - [ ] 改动是否在 SKILL.md 已存在某段重复？

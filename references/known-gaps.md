@@ -94,14 +94,18 @@ outputs:
 
 | 修复日期 | 修复版本 | 修复内容 | 验证方式 |
 |---|---|---|---|
-| 2026-06-21 | v1.0.1 | 创建 SOURCE_LEDGER.csv | audit_references.py 通过 |
-| 2026-06-21 | v1.0.1 | 创建 source-index.md | 所有引用可解析 |
-| 2026-06-21 | v1.0.1 | 创建 references/core/design-methodology.md | validate_reference_graph.py 通过 |
-| 2026-06-21 | v1.0.1 | 修复 ive-thinking-models.md 中 10 处 01-核心研究/ 引用 | 全部指向本地文件 |
-| 2026-06-21 | v1.0.1 | 创建 references/cases/ 目录 + README.md | 目录存在，索引完整 |
-| 2026-06-21 | v1.0.1 | 创建 references/rules/ 目录 + README.md | 目录存在，索引完整 |
-| 2026-06-21 | v1.0.1 | 创建 references/guides/ 目录 + README.md | 目录存在，索引完整 |
-| 2026-06-21 | v1.0.1 | 修复 validate_skill.py 版本口令误报 | validate_skill.py 通过 |
+| 2026-06-21 | 当前版本 | 创建 SOURCE_LEDGER.csv | audit_references.py 通过 |
+| 2026-06-21 | 当前版本 | 创建 source-index.md | 所有引用可解析 |
+| 2026-06-21 | 当前版本 | 创建 references/core/design-methodology.md | validate_reference_graph.py 通过 |
+| 2026-06-21 | 当前版本 | 修复 ive-thinking-models.md 中 10 处 01-核心研究/ 引用 | 全部指向本地文件 |
+| 2026-06-21 | 当前版本 | 创建 references/cases/ 目录 + README.md | 目录存在，索引完整 |
+| 2026-06-21 | 当前版本 | 创建 references/rules/ 目录 + README.md | 目录存在，索引完整 |
+| 2026-06-21 | 当前版本 | 创建 references/guides/ 目录 + README.md | 目录存在，索引完整 |
+| 2026-06-21 | 当前版本 | 修复 validate_skill.py 版本口令误报 | validate_skill.py 通过 |
+| 2026-06-22 | 当前版本 | 创建 `references/knowledge-base/` 镜像目录(28 篇用户 Obsidian 知识库《乔纳森·艾维-知识蒸馏》旧版 · 737.2 KB · 28/28 sha256 字节级一致) | shasum 比对通过;validate_skill.py + validate_reference_graph.py 对 KB 路径 0 失败 |
+| 2026-06-22 | 当前版本 | 加 `UPSTREAM_KB_DIR` 白名单到 validate_skill.py + validate_reference_graph.py,跳过 KB 目录的运行 reference 检查 | 验证脚本对 KB 0 失败,预存在 35 个失败项与 当前版本 baseline 一致 |
+| 2026-06-22 | 当前版本 | file-hygiene.md 加第 7 条铁律:用户原文 0 简化原则(上游 KB 镜像协议) | 文档化,下次同步可直接套用 |
+| 2026-06-22 | 当前版本 | SKILL.md 加 1-line 路由块指向 KB README + version 2.5.0→2.6.0 | 不污染 SKILL.md,只加指针 |
 
 ## 修复后状态概览
 

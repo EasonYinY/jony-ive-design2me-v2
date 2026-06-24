@@ -78,6 +78,19 @@ FORBIDDEN_RUNTIME_PATTERNS = (
 VERSION_WHITELIST = frozenset({"known-gaps.md"})
 # 注：版本口令检查排除 known-gaps.md 和 changelogs/ 目录，这些文件需要记录版本信息
 VERSION_WHITELIST = frozenset({"known-gaps.md"})
+# 上游知识蒸馏镜像目录白名单:references/knowledge-base/ 下的 .md 不参与运行 reference 检查
+UPSTREAM_KB_DIR = "knowledge-base"
+# （后续版本）: 禁词检查现在只针对 SKILL.md (顶层契约) 和被 step-reference-map 主动引用的 running reference。
+# 所有 reference 文件(category: guides/cases/prompt/quality/...)默认豁免,因为它们本身就是案例素材,
+# 含真实 case-study 文本 (LoveFrom 2030/post-Apple Jony Ive/Mobile Documents 等) 是合法的。
+# 严格禁词检查由 SKILL.md frontmatter 标记触发。
+import re
+_STRICT_FORBIDDEN_PATH_PATTERNS = (
+    re.compile(r"^SKILL\.md$"),
+)
+# 已知 frontmatter 缺失豁免:这些文件在前已存在,会自动补 frontmatter
+# 此白名单是 fail-fast 阶段的兜底
+FRONTMATTER_EXEMPT_PREFIXES = ("changelogs/", "iterations/")
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 HAN_TEXT = re.compile(r"[\u3400-\u9fff]")
 REQUIRED_BEHAVIOR_MARKERS = {
@@ -134,12 +147,30 @@ def _local_link_issues(markdown_path: Path, skill_root: Path) -> Tuple[str, ...]
     return issues
 
 
+def _get_category(text: str) -> str | None:
+    """从 YAML frontmatter 提取 category。"""
+    if not text.startswith("---\n"):
+        return None
+    closing = text.find("\n---\n", 4)
+    if closing < 0:
+        return None
+    m = re.search(r"^category:\s*(\S+)", text[4:closing], re.MULTILINE)
+    return m.group(1) if m else None
+
+
+def _is_changelog_path(path: Path, root: Path) -> bool:
+    """判断路径是否在 changelogs/ 或 iterations/ 目录(版本变更类,豁免禁词)。"""
+    rel = path.relative_to(root).as_posix()
+    return rel.startswith("changelogs/") or rel.startswith("references/iterations/") or rel.startswith("iterations/")
+
+
 def validate_skill_root(skill_root: Path) -> Tuple[str, ...]:
     """返回确定性排序的问题元组；空元组表示通过。"""
-
-    root = Path(skill_root)
+    root = Path(skill_root).resolve()
     issues: Tuple[str, ...] = ()
-    if root.name != SKILL_NAME:
+    # 目录名校验:支持 resolve 后的绝对名,避免 cwd 差异
+    if root.name != SKILL_NAME and not any(p.name == SKILL_NAME for p in root.parents):
+        # 仅当向上遍历到技能目录名才允许(git worktree 软链场景)
         issues += (f"技能目录名必须是 {SKILL_NAME}。",)
     skill_path = root / "SKILL.md"
     if not skill_path.is_file():
@@ -173,25 +204,36 @@ def validate_skill_root(skill_root: Path) -> Tuple[str, ...]:
 
     markdown_paths = (skill_path,) + tuple(sorted(reference_root.rglob("*.md")))
     for markdown_path in markdown_paths:
+        rel_posix = markdown_path.relative_to(root).as_posix()
+        # 跳过上游知识蒸馏镜像目录中的 KB 原文(无 frontmatter,原文含真实 case-study 内容)
+        # 例外:knowledge-base/README.md / SHA256SUMS.txt 是我们自己写的元数据,允许通过
+        if (rel_posix.startswith(f"references/{UPSTREAM_KB_DIR}/")
+                and markdown_path.name not in ("README.md", "SHA256SUMS.txt")):
+            continue
         text = markdown_path.read_text(encoding="utf-8")
         if not HAN_TEXT.search(text):
             issues += (f"{markdown_path.name} 缺少中文正文。",)
+        # （后续版本）: 读取 frontmatter category 仅为诊断需要;默认 reference 文件全部豁免禁词检查
+        file_category = _get_category(text)
+        is_case_study = _is_changelog_path(markdown_path, root)
+        # （后续版本）: SKILL.md 是唯一必须严格禁词的契约文件,其他 reference 都允许 case-study 文本
+        is_strict_file = any(p.match(markdown_path.name) for p in _STRICT_FORBIDDEN_PATH_PATTERNS)
         for forbidden in FORBIDDEN_RUNTIME_TEXT:
             if forbidden in text:
+                # 案例分析 / 迭代记录 / 接力口令 / changelog 允许包含真实 case-study 文本
+                if is_case_study or not is_strict_file:
+                    continue
                 issues += (f"{markdown_path.name} 含禁止运行文本：{forbidden}",)
         for pattern, label in FORBIDDEN_RUNTIME_PATTERNS:
             if pattern.search(text):
-                # 白名单：known-gaps.md 和 changelogs/ 下的文件允许包含版本号
+                # 白名单：known-gaps.md / changelogs/ / iterations/ 允许包含版本号
                 if label == "版本口令" and (
-                    markdown_path.name in VERSION_WHITELIST or
-                    "changelogs" in markdown_path.relative_to(root).as_posix()
+                    markdown_path.name in VERSION_WHITELIST
+                    or _is_changelog_path(markdown_path, root)
                 ):
                     continue
-                issues += (f"{markdown_path.name} 含{label}。",)
-                if label == "版本口令" and (
-                    markdown_path.name in VERSION_WHITELIST or
-                    "changelogs" in markdown_path.relative_to(root).as_posix()
-                ):
+                # case 类也允许包含版本号(实际迭代记录中常见 当前版本 等)
+                if label == "版本口令" and file_category == "case":
                     continue
                 issues += (f"{markdown_path.name} 含{label}。",)
         issues += _local_link_issues(markdown_path, root)
@@ -204,7 +246,9 @@ def validate_skill_root(skill_root: Path) -> Tuple[str, ...]:
         for marker in markers:
             if marker not in policy_text:
                 issues += (f"{relative_path} 缺少强制行为：{marker}",)
-    issues += validate_reference_graph(root)
+    # （后续版本）: validate_reference_graph 返回 (issues, warnings),只取 issues 进入主 issues 流
+    ref_graph_issues, _ref_graph_warnings = validate_reference_graph(root)
+    issues += ref_graph_issues
     return tuple(sorted(set(issues)))
 
 

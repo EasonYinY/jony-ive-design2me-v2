@@ -24,29 +24,32 @@ outputs:
 
 ```
 references/guides/
-├── README.md                 # 本文件：总索引
-├── [按需添加指南文件]
+├── README.md                          # 本文件：总索引
+├── visual-tension-proportion.md       # 视觉张力比例设计
+├── identity-design.md                 # 识别性设计
+├── ergonomic-fatigue-data.md          # 人体工学疲劳数据
+├── lighting-design.md                 # 照明产品光路设计
+├── prompt-seam-precision.md           # 提示词接缝精度强化
+├── miniaturization-design.md          # 微型化产品设计
+├── container-sealing-design.md        # 容器密封设计
+├── temperature-visualization.md       # 温度可视化设计
+├── ive-level-design.md                # 艾维级设计系统化方法
 └── ...
 ```
 
 ## 已记录指南
 
-| 指南 ID | 标题 | 用途 | 来源 | 状态 |
+| 指南 ID | 标题 | 用途 | 来源 | 版本 |
 |---------|------|------|------|------|
-| — | 暂无 | — | — | 占位 |
-
-## 预期指南内容
-
-以下指南可根据需要逐步添加：
-
-| 指南 | 用途 | 建议内容 |
-|------|------|---------|
-| design-philosophy-deep-dive.md | 设计哲学深度解读 | Jony Ive 设计哲学的学术分析 |
-| cross-case-analysis.md | 跨案例分析方法 | 如何从多个案例中提取可迁移方法 |
-| evidence-collection-guide.md | 证据收集指南 | 如何收集和验证 S/A/B/C/D 级证据 |
-| user-research-integration.md | 用户研究集成 | 如何将用户研究融入十五步流程 |
-| manufacturing-constraints.md | 制造约束指南 | 常见制造约束及其设计影响 |
-| material-selection-guide.md | 材料选择指南 | 材料性能、制造、触感、老化综合评估 |
+| REF-GUIDE-001 | [视觉张力比例](visual-tension-proportion.md) | 功能比例确定后的视觉张力设计 | Round 1 实证 | 当前版本 |
+| REF-GUIDE-002 | [识别性设计](identity-design.md) | 标志性形态与细节设计 | Round 1 实证 | 当前版本 |
+| REF-GUIDE-003 | [人体工学疲劳数据](ergonomic-fatigue-data.md) | 人体工学疲劳量化数据 | Round 1 实证 | 当前版本 |
+| REF-GUIDE-004 | [照明产品光路设计](lighting-design.md) | 照明产品光路设计方法 | Round 2 实证 | 当前版本 |
+| REF-GUIDE-005 | [提示词接缝精度](prompt-seam-precision.md) | 提示词接缝精度强化 | Round 2 实证 | 当前版本 |
+| REF-GUIDE-006 | [微型化产品设计](miniaturization-design.md) | 微型化产品特殊设计方法 | Round 3 实证 | 当前版本 |
+| REF-GUIDE-007 | [艾维级设计方法](ive-level-design.md) | 艾维级设计系统化方法 | Round 5 突破 | 当前版本 |
+| REF-GUIDE-008 | [提示词工程方法](prompt-engineering.md) | 从优秀提示词提炼的提示词工程方法 | 优秀提示词分析 | 旧版 |
+| REF-GUIDE-009 | [文化杂交设计方法](cultural-hybrid-design.md) | 文化杂交设计方法 | 优秀提示词分析 | 旧版 |
 
 ## 使用方式
 
@@ -66,7 +69,7 @@ used_when:
 called_by:
   - [workflow-name]
 depends_on:
-  - [dependency-ref]
+  - NONE
 outputs:
   - guide_content
 ---
@@ -93,3 +96,8 @@ outputs:
 
 - [引用相关 reference]
 ```
+
+## 来源
+
+- 5轮迭代实证（R1-R5）
+- REF-PROCESS-001: 四阶段十五步主流程

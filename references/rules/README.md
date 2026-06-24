@@ -66,7 +66,7 @@ used_when:
 called_by:
   - [workflow-name]
 depends_on:
-  - [dependency-ref]
+  - NONE
 outputs:
   - rule_definition
 ---

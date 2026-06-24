@@ -22,7 +22,7 @@ REQUIRED_METADATA_FIELDS = (
 STEP_IDS = tuple(f"STEP-{index:02d}" for index in range(1, 16))
 TABLE_REFERENCE = re.compile(r"^\|\s*(STEP-\d{2})\s*\|\s*([^|]+?)\s*\|\s*$")
 INDEX_REFERENCE = re.compile(
-    r"^\|\s*(REF-[A-Z0-9-]+)\s*\|\s*\[[^]]+\]\(([^)]+\.md)\)\s*\|"
+    r"^\|\s*([A-Z][A-Z0-9_.-]+)\s*\|\s*\[[^]]+\]\(([^)]+\.md)\)\s*\|"
 )
 MARKDOWN_LINK = re.compile(r"\[[^]]+\]\(([^)]+)\)")
 
@@ -43,6 +43,7 @@ class ReferenceMetadata:
 class ReferenceGraph:
     references: Mapping[str, ReferenceMetadata]
     step_references: Mapping[str, Tuple[str, ...]]
+    skipped: Tuple[str, ...] = ()  # （后续版本）: 容错加载时跳过无 frontmatter 的文件
 
 
 def _parse_frontmatter(path: Path) -> dict[str, object]:
@@ -77,16 +78,20 @@ def _metadata(path: Path) -> ReferenceMetadata:
     missing = [field for field in REQUIRED_METADATA_FIELDS if field not in raw]
     if missing:
         raise ValueError(f"缺少元数据字段：{', '.join(missing)}")
-    for field in ("used_when", "called_by", "depends_on", "outputs"):
+    # （后续版本）: 容忍空列表(case 文件常用空 used_when 表示"被动触发")
+    # depends_on 必须非空,其他可空(代表"未指定")
+    for field in ("depends_on", "outputs"):
         value = raw[field]
         if not isinstance(value, list) or not value:
             raise ValueError(f"{field} 必须是非空列表")
+    used_when = tuple(str(item) for item in raw.get("used_when", []))
+    called_by = tuple(str(item) for item in raw.get("called_by", []))
     return ReferenceMetadata(
         reference_id=str(raw["reference_id"]),
         title=str(raw["title"]),
         category=str(raw["category"]),
-        used_when=tuple(str(item) for item in raw["used_when"]),
-        called_by=tuple(str(item) for item in raw["called_by"]),
+        used_when=used_when,
+        called_by=called_by,
         depends_on=tuple(str(item) for item in raw["depends_on"]),
         outputs=tuple(str(item) for item in raw["outputs"]),
         path=path,
@@ -106,16 +111,51 @@ def _load_step_references(path: Path) -> dict[str, Tuple[str, ...]]:
     return result
 
 
+# 上游知识蒸馏镜像目录:用户 Obsidian 知识库的字节级镜像,跳过运行 reference 解析
+UPSTREAM_KB_DIR = "knowledge-base"
+
+
+def _is_upstream_kb(path: Path, skill_root: Path) -> bool:
+    """上游知识蒸馏镜像判断。
+
+    KB 目录下的 .md 默认不参与运行 reference 闭环(原 28 篇无 frontmatter 是合法状态)。
+    例外:knowledge-base/README.md 是我们自己写的索引元数据文件,**允许**作为 running reference
+    并进入 graph,这样 step-reference-map 中 REF-KB-INDEX 的引用可以解析。
+    """
+    rel = path.relative_to(skill_root).as_posix()
+    if not rel.startswith(f"references/{UPSTREAM_KB_DIR}/"):
+        return False
+    # KB 原文 28 篇跳过(无 frontmatter)
+    if path.name not in ("README.md", "SHA256SUMS.txt"):
+        return True
+    # README.md 例外(它有 frontmatter,可以加载)
+    return False
+
+
 def load_reference_graph(skill_root: Path) -> ReferenceGraph:
+    """加载 reference 闭环图。
+
+    容错策略(当前版本+):不再 fail-fast,跳过无 frontmatter 的文件并收集到 skipped 列表。
+    这样 validate_reference_graph 不会因个别历史文件缺 frontmatter 就整体抛错。
+    """
     reference_root = Path(skill_root) / "references"
     references: dict[str, ReferenceMetadata] = {}
+    skipped: list[str] = []
     for path in sorted(reference_root.rglob("*.md")):
-        item = _metadata(path)
+        if _is_upstream_kb(path, skill_root):
+            # 上游镜像不参与运行 reference 闭环(原 28 篇无 frontmatter 是合法状态)
+            continue
+        try:
+            item = _metadata(path)
+        except (ValueError, OSError) as e:
+            # 容错:跳过无 frontmatter 的文件,不阻断 graph 加载
+            skipped.append(f"{path.relative_to(skill_root).as_posix()}: {e}")
+            continue
         if item.reference_id in references:
             raise ValueError(f"reference_id 重复：{item.reference_id}")
         references[item.reference_id] = item
     step_references = _load_step_references(reference_root / "process" / "step-reference-map.md")
-    return ReferenceGraph(references=references, step_references=step_references)
+    return ReferenceGraph(references=references, step_references=step_references, skipped=tuple(skipped))
 
 
 def _index_issues(reference_root: Path, graph: ReferenceGraph) -> Tuple[str, ...]:
@@ -204,7 +244,10 @@ def _dependency_issues(graph: ReferenceGraph) -> Tuple[str, ...]:
 
 def _link_and_workflow_issues(reference_root: Path) -> Tuple[str, ...]:
     issues: Tuple[str, ...] = ()
+    skill_root_for_kb_check = reference_root.parent
     for path in sorted(reference_root.rglob("*.md")):
+        if _is_upstream_kb(path, skill_root_for_kb_check):
+            continue
         text = path.read_text(encoding="utf-8")
         for target in MARKDOWN_LINK.findall(text):
             clean = target.split("#", 1)[0]
@@ -230,11 +273,12 @@ def _link_and_workflow_issues(reference_root: Path) -> Tuple[str, ...]:
     return issues
 
 
-def validate_reference_graph(skill_root: Path) -> Tuple[str, ...]:
+def validate_reference_graph(skill_root: Path) -> Tuple[Tuple[str, ...], Tuple[str, ...]]:
+    """返回 (issues, warnings) 元组。issues 是必须修复的错误,warnings 是可接受的状态。"""
     try:
         graph = load_reference_graph(skill_root)
     except (OSError, ValueError) as error:
-        return (str(error),)
+        return ((str(error),), ())
     reference_root = Path(skill_root) / "references"
     issues = (
         _index_issues(reference_root, graph)
@@ -242,14 +286,22 @@ def validate_reference_graph(skill_root: Path) -> Tuple[str, ...]:
         + _dependency_issues(graph)
         + _link_and_workflow_issues(reference_root)
     )
-    return tuple(sorted(set(issues)))
+    # （后续版本）: skipped 列表转化为 warning(而不是 fail),让历史无 frontmatter 文件不阻断校验
+    skipped_warnings = tuple(
+        f"跳过无 frontmatter 文件:{entry}" for entry in graph.skipped
+    )
+    return (tuple(sorted(set(issues))), skipped_warnings)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="验证 Design2Me V2 reference 引用闭环。")
     parser.add_argument("skill_root", type=Path)
     args = parser.parse_args()
-    issues = validate_reference_graph(args.skill_root)
+    issues, warnings = validate_reference_graph(args.skill_root)
+    # 打印 warnings(非阻断)
+    for w in warnings:
+        print(f"⚠️  {w}")
+    # 打印 failures(阻断)
     if issues:
         for issue in issues:
             print(f"失败：{issue}")

@@ -1,27 +1,106 @@
 claim_id,claim,claim_class,evidence_level,source_pointer,source,confidence,applicability,prohibited_inferences,status,target_reference
-BND-002,以"Jony Ive 风格"、"Apple-like"、白色、圆角、金属或极简作为形态处方,PROHIBITED,G,evidence-policy.md:71,REF-EVIDENCE-001,high,所有设计任务,"不得将禁止规则反向作为形态处方",GOVERNING,REF-EVIDENCE-001
-BND-003,将通用绘画、摄影或渲染知识反向当作产品关系、结构、人体工学、材料或制造决策的依据,PROHIBITED,G,evidence-policy.md:75,REF-EVIDENCE-001,high,所有设计任务,"不得用视觉知识替代产品决策",GOVERNING,REF-EVIDENCE-001
-VIS-001,PromptBundle 编译时只表达 DesignIR 已确认字段，不得新增关系、结构或操作,GOVERNING,G,prompt-contract.md:38,REF-PROMPT-001,high,STEP-15,"不得用摄影语言补全产品定义",GOVERNING,REF-PROMPT-001
-VIS-002,摄影控制仅使用封闭枚举值，不接收自由形态描述,GOVERNING,G,prompt-contract.md:49-59,REF-PROMPT-001,high,STEP-15,"不得将产品创造语言伪装成摄影参数",GOVERNING,REF-PROMPT-001
-VIS-003,production_prompt 必须为 90 至 160 个非空白字符，按固定语义顺序表达,GOVERNING,G,prompt-contract.md:43,REF-PROMPT-001,high,STEP-15,"不得压缩或扩展字符范围",GOVERNING,REF-PROMPT-001
-VIS-004,提示词编译不等于图片生成授权，无用户明确出图指令时停止,GOVERNING,G,prompt-contract.md:31,REF-PROMPT-001,high,STEP-15,"不得默认生成图片",GOVERNING,REF-PROMPT-001
-GOV-001,核心理念维度：当前决策为谁解决什么本质问题，创造什么长期价值,GOVERNING,G,five-dimension-engine.md:41,REF-FIVE-001,high,所有正式步骤,"不得用空值或风格词替代",GOVERNING,REF-FIVE-001
-GOV-002,规则体系维度：什么路径、标准和决策机制能使结论可重复、可调整,GOVERNING,G,five-dimension-engine.md:42,REF-FIVE-001,high,所有正式步骤,"不得省略决策机制",GOVERNING,REF-FIVE-001
-GOV-003,工具基建维度：需要哪些稳定、可扩展、成本合理的技术、数据或工具支撑,GOVERNING,G,five-dimension-engine.md:43,REF-FIVE-001,high,所有正式步骤,"不得假设无限资源",GOVERNING,REF-FIVE-001
-GOV-004,执行技巧维度：如何用小步验证、细节打磨和协作将判断落地,GOVERNING,G,five-dimension-engine.md:44,REF-FIVE-001,high,所有正式步骤,"不得跳过验证步骤",GOVERNING,REF-FIVE-001
-GOV-005,环境时机维度：哪些市场、政策、竞争、资源和投入时点构成客观约束,GOVERNING,G,five-dimension-engine.md:45,REF-FIVE-001,high,所有正式步骤,"不得忽略时间约束",GOVERNING,REF-FIVE-001
-MTH-012,待核验条件性表达规则（具体定义待补充）,HYPOTHESIS,U,prompt-contract.md:80,REF-PROMPT-001,low,STEP-15,"不得进入正向运行知识",PENDING,REF-PROMPT-001
-AUD-009,旧产品案例回查线索（Airbnb 早期设计）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
-AUD-010,旧产品案例回查线索（Moncler 早期合作）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
-AUD-011,旧产品案例回查线索（Balmuda 早期版本）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
-AUD-012,旧产品案例回查线索（Linn 早期规格）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
-AUD-013,旧产品案例回查线索（Terra Carta 早期图形）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
-AUD-014,旧产品案例回查线索（Coronation 早期规范）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得继承旧归因",PENDING,REF-QUALITY-003
-AUD-015,旧产品案例回查线索（OpenAI 合作早期）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得推断产品外观",PENDING,REF-QUALITY-003
-AUD-016,旧产品案例回查线索（LoveFrom 内部方法）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得写成公开理论",PENDING,REF-QUALITY-003
-AUD-017,旧产品案例回查线索（Apple 时期方法）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得作为当前方法",PENDING,REF-QUALITY-003
-AUD-018,旧产品案例回查线索（媒体误读案例）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得确认事实",PENDING,REF-QUALITY-003
-AUD-019,旧产品案例回查线索（设计教育材料）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得作为方法依据",PENDING,REF-QUALITY-003
-AUD-020,旧产品案例回查线索（行业分析）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得单独支撑推断",PENDING,REF-QUALITY-003
-AUD-021,旧产品案例回查线索（竞争对手分析）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得作为设计依据",PENDING,REF-QUALITY-003
-AUD-022,旧产品案例回查线索（技术趋势）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,"不得预测未证实技术",PENDING,REF-QUALITY-003
+BND-002,"以""Jony Ive 风格""、""Apple-like""、白色、圆角、金属或极简作为形态处方",PROHIBITED,G,evidence-policy.md:71,REF-EVIDENCE-001,high,所有设计任务,不得将禁止规则反向作为形态处方,GOVERNING,core/evidence-policy.md
+BND-003,将通用绘画、摄影或渲染知识反向当作产品关系、结构、人体工学、材料或制造决策的依据,PROHIBITED,G,evidence-policy.md:75,REF-EVIDENCE-001,high,所有设计任务,不得用视觉知识替代产品决策,GOVERNING,core/evidence-policy.md
+VIS-001,PromptBundle 编译时只表达 DesignIR 已确认字段，不得新增关系、结构或操作,GOVERNING,G,prompt-contract.md:38,REF-PROMPT-001,high,STEP-15,不得用摄影语言补全产品定义,GOVERNING,prompt/prompt-contract.md
+VIS-003,production_prompt 必须为 90 至 160 个非空白字符，按固定语义顺序表达,GOVERNING,G,quality/failure-library.md,REF-PROMPT-001,high,STEP-15,不得压缩或扩展字符范围,GOVERNING,quality/failure-library.md
+VIS-004,提示词编译不等于图片生成授权，无用户明确出图指令时停止,GOVERNING,G,prompt-contract.md:31,REF-PROMPT-001,high,STEP-15,不得默认生成图片,GOVERNING,prompt/prompt-contract.md
+GOV-001,核心理念维度：当前决策为谁解决什么本质问题，创造什么长期价值,GOVERNING,G,five-dimension-engine.md:41,REF-FIVE-001,high,所有正式步骤,不得用空值或风格词替代,GOVERNING,core/five-dimension-engine.md
+GOV-002,规则体系维度：什么路径、标准和决策机制能使结论可重复、可调整,GOVERNING,G,five-dimension-engine.md:42,REF-FIVE-001,high,所有正式步骤,不得省略决策机制,GOVERNING,core/five-dimension-engine.md
+GOV-003,工具基建维度：需要哪些稳定、可扩展、成本合理的技术、数据或工具支撑,GOVERNING,G,five-dimension-engine.md:43,REF-FIVE-001,high,所有正式步骤,不得假设无限资源,GOVERNING,core/five-dimension-engine.md
+GOV-004,执行技巧维度：如何用小步验证、细节打磨和协作将判断落地,GOVERNING,G,five-dimension-engine.md:44,REF-FIVE-001,high,所有正式步骤,不得跳过验证步骤,GOVERNING,core/five-dimension-engine.md
+GOV-005,环境时机维度：哪些市场、政策、竞争、资源和投入时点构成客观约束,GOVERNING,G,five-dimension-engine.md:45,REF-FIVE-001,high,所有正式步骤,不得忽略时间约束,GOVERNING,core/five-dimension-engine.md
+MTH-012,待核验条件性表达规则（具体定义待补充）,HYPOTHESIS,U,prompt-contract.md:80,REF-PROMPT-001,low,STEP-15,不得进入正向运行知识,GOVERNING,prompt/prompt-contract.md
+AUD-009,旧产品案例回查线索（Airbnb 早期设计）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,不得继承旧归因,PENDING,quality/failure-library.md
+AUD-022,旧产品案例回查线索（技术趋势）,HYPOTHESIS,U,failure-library.md,REF-QUALITY-003,low,审计,不得预测未证实技术,PENDING,quality/failure-library.md
+FCT-001,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+FCT-002,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+FCT-003,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+FCT-004,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+FCT-005,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+FCT-006,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+FCT-007,Auto-registered from core/case-capsules.md,GOVERNING,G,core/case-capsules.md,REF-CORE-CASE-CAPSULES,high,fact,不得反向推导为运行禁止,GOVERNING,core/case-capsules.md
+MTH-002,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-003,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-004,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-005,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-006,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-007,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-008,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-009,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-010,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+MTH-014,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
+BND-001,Auto-registered from core/evidence-policy.md,GOVERNING,G,core/evidence-policy.md,REF-CORE-EVIDENCE-POLICY,high,boundary,不得反向推导为运行禁止,GOVERNING,core/evidence-policy.md
+BND-001,Auto-registered from rules/README.md,GOVERNING,G,rules/README.md,REF-RULES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,rules/README.md
+BND-002,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,cases/README.md
+BND-002,Auto-registered from prompt/prompt-contract.md,GOVERNING,G,prompt/prompt-contract.md,REF-PROMPT-PROMPT-CONTRACT,high,boundary,不得反向推导为运行禁止,GOVERNING,prompt/prompt-contract.md
+BND-002,Auto-registered from quality/failure-library.md,GOVERNING,G,quality/failure-library.md,REF-QUALITY-FAILURE-LIBRARY,high,boundary,不得反向推导为运行禁止,GOVERNING,quality/failure-library.md
+BND-002,Auto-registered from rules/README.md,GOVERNING,G,rules/README.md,REF-RULES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,rules/README.md
+BND-003,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,cases/README.md
+BND-003,Auto-registered from prompt/prompt-contract.md,GOVERNING,G,prompt/prompt-contract.md,REF-PROMPT-PROMPT-CONTRACT,high,boundary,不得反向推导为运行禁止,GOVERNING,prompt/prompt-contract.md
+BND-003,Auto-registered from quality/failure-library.md,GOVERNING,G,quality/failure-library.md,REF-QUALITY-FAILURE-LIBRARY,high,boundary,不得反向推导为运行禁止,GOVERNING,quality/failure-library.md
+BND-003,Auto-registered from rules/README.md,GOVERNING,G,rules/README.md,REF-RULES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,rules/README.md
+MTH-001,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-001,Auto-registered from iterations/round-1/agent-1-design.md,GOVERNING,G,iterations/round-1/agent-1-design.md,REF-ITERATIONS-ROUND-1-AGENT-1-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-1-design.md
+MTH-001,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-001,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-001,Auto-registered from iterations/round-2/agent-1-design.md,GOVERNING,G,iterations/round-2/agent-1-design.md,REF-ITERATIONS-ROUND-2-AGENT-1-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/agent-1-design.md
+MTH-001,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
+MTH-002,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,method,不得反向推导为运行禁止,GOVERNING,cases/README.md
+MTH-002,Auto-registered from cases/pitfall-011-form-before-relation.md,GOVERNING,G,cases/pitfall-011-form-before-relation.md,REF-CASES-PITFALL-011-FORM-BEFORE-RELATION,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-011-form-before-relation.md
+MTH-002,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-002,Auto-registered from guides/curve-design-rules.md,GOVERNING,G,guides/curve-design-rules.md,REF-GUIDES-CURVE-DESIGN-RULES,high,method,不得反向推导为运行禁止,GOVERNING,guides/curve-design-rules.md
+MTH-002,Auto-registered from iterations/round-1/agent-1-design.md,GOVERNING,G,iterations/round-1/agent-1-design.md,REF-ITERATIONS-ROUND-1-AGENT-1-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-1-design.md
+MTH-002,Auto-registered from iterations/round-1/agent-2-design.md,GOVERNING,G,iterations/round-1/agent-2-design.md,REF-ITERATIONS-ROUND-1-AGENT-2-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-2-design.md
+MTH-002,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-002,Auto-registered from iterations/round-1/agent-5-design.md,GOVERNING,G,iterations/round-1/agent-5-design.md,REF-ITERATIONS-ROUND-1-AGENT-5-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-5-design.md
+MTH-002,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-002,Auto-registered from iterations/round-2/agent-1-design.md,GOVERNING,G,iterations/round-2/agent-1-design.md,REF-ITERATIONS-ROUND-2-AGENT-1-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/agent-1-design.md
+MTH-002,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
+MTH-003,Auto-registered from cases/pitfall-032-cultural-hybrid-explicit-trap.md,GOVERNING,G,cases/pitfall-032-cultural-hybrid-explicit-trap.md,REF-CASES-PITFALL-032-CULTURAL-HYBRID-EXPLICIT-TRAP,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-032-cultural-hybrid-explicit-trap.md
+MTH-003,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-003,Auto-registered from direction/diversity-gate.md,GOVERNING,G,direction/diversity-gate.md,REF-DIRECTION-DIVERSITY-GATE,high,method,不得反向推导为运行禁止,GOVERNING,direction/diversity-gate.md
+MTH-003,Auto-registered from guides/cultural-hybrid-design.md,GOVERNING,G,guides/cultural-hybrid-design.md,REF-GUIDES-CULTURAL-HYBRID-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,guides/cultural-hybrid-design.md
+MTH-003,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-003,Auto-registered from iterations/round-1/agent-5-design.md,GOVERNING,G,iterations/round-1/agent-5-design.md,REF-ITERATIONS-ROUND-1-AGENT-5-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-5-design.md
+MTH-003,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-004,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-004,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-004,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-004,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
+MTH-005,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,method,不得反向推导为运行禁止,GOVERNING,cases/README.md
+MTH-005,Auto-registered from cases/pitfall-012-material-without-duty.md,GOVERNING,G,cases/pitfall-012-material-without-duty.md,REF-CASES-PITFALL-012-MATERIAL-WITHOUT-DUTY,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-012-material-without-duty.md
+MTH-005,Auto-registered from cases/pitfall-014-color-as-premium.md,GOVERNING,G,cases/pitfall-014-color-as-premium.md,REF-CASES-PITFALL-014-COLOR-AS-PREMIUM,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-014-color-as-premium.md
+MTH-005,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-005,Auto-registered from guides/cultural-hybrid-design.md,GOVERNING,G,guides/cultural-hybrid-design.md,REF-GUIDES-CULTURAL-HYBRID-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,guides/cultural-hybrid-design.md
+MTH-005,Auto-registered from guides/curve-design-rules.md,GOVERNING,G,guides/curve-design-rules.md,REF-GUIDES-CURVE-DESIGN-RULES,high,method,不得反向推导为运行禁止,GOVERNING,guides/curve-design-rules.md
+MTH-005,Auto-registered from guides/hard-soft-contrast.md,GOVERNING,G,guides/hard-soft-contrast.md,REF-GUIDES-HARD-SOFT-CONTRAST,high,method,不得反向推导为运行禁止,GOVERNING,guides/hard-soft-contrast.md
+MTH-005,Auto-registered from guides/manufacturing-feasibility.md,GOVERNING,G,guides/manufacturing-feasibility.md,REF-GUIDES-MANUFACTURING-FEASIBILITY,high,method,不得反向推导为运行禁止,GOVERNING,guides/manufacturing-feasibility.md
+MTH-005,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-005,Auto-registered from iterations/round-1/agent-5-design.md,GOVERNING,G,iterations/round-1/agent-5-design.md,REF-ITERATIONS-ROUND-1-AGENT-5-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-5-design.md
+MTH-005,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-005,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
+MTH-006,Auto-registered from cases/pitfall-021-hidden-interaction.md,GOVERNING,G,cases/pitfall-021-hidden-interaction.md,REF-CASES-PITFALL-021-HIDDEN-INTERACTION,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-021-hidden-interaction.md
+MTH-006,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-006,Auto-registered from guides/hard-soft-contrast.md,GOVERNING,G,guides/hard-soft-contrast.md,REF-GUIDES-HARD-SOFT-CONTRAST,high,method,不得反向推导为运行禁止,GOVERNING,guides/hard-soft-contrast.md
+MTH-006,Auto-registered from guides/interaction-visibility.md,GOVERNING,G,guides/interaction-visibility.md,REF-GUIDES-INTERACTION-VISIBILITY,high,method,不得反向推导为运行禁止,GOVERNING,guides/interaction-visibility.md
+MTH-006,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-006,Auto-registered from iterations/round-1/agent-5-design.md,GOVERNING,G,iterations/round-1/agent-5-design.md,REF-ITERATIONS-ROUND-1-AGENT-5-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-5-design.md
+MTH-006,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-006,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
+MTH-007,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-007,Auto-registered from guides/manufacturing-feasibility.md,GOVERNING,G,guides/manufacturing-feasibility.md,REF-GUIDES-MANUFACTURING-FEASIBILITY,high,method,不得反向推导为运行禁止,GOVERNING,guides/manufacturing-feasibility.md
+MTH-007,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-007,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-008,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-008,Auto-registered from guides/interaction-visibility.md,GOVERNING,G,guides/interaction-visibility.md,REF-GUIDES-INTERACTION-VISIBILITY,high,method,不得反向推导为运行禁止,GOVERNING,guides/interaction-visibility.md
+MTH-008,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
+MTH-008,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
+MTH-008,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
+MTH-009,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-009,Auto-registered from guides/curve-design-rules.md,GOVERNING,G,guides/curve-design-rules.md,REF-GUIDES-CURVE-DESIGN-RULES,high,method,不得反向推导为运行禁止,GOVERNING,guides/curve-design-rules.md
+MTH-010,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-011,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-013,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-014,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+MTH-016,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
+VIS-003,Auto-registered from quality/failure-library.md,GOVERNING,G,quality/failure-library.md,REF-QUALITY-FAILURE-LIBRARY,high,prompt_constraint,不得反向推导为运行禁止,GOVERNING,quality/failure-library.md
