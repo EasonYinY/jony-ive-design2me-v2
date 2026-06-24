@@ -47,6 +47,15 @@ outputs:
 10. `STEP-10` 推导形态、比例和部件层级。新增强制字段：每个关键尺寸必须标注来源（人体测量/工程约束/功能需求/制造工艺）；禁止纯审美比例（如"黄金比例""视觉平衡"）。**新增视觉张力比例设计**：在功能比例确定后，必须通过极端比例、不对称比例、层次比例或动态比例创造视觉张力和识别性。参考 `references/guides/visual-tension-proportion.md`。**新增文化杂交检查**：至少一个方向包含文化杂交元素（历史对象×现代功能、地域材料×全球功能、生物形态×科技功能）。参考 `references/guides/cultural-hybrid-design.md`。
 11. `STEP-11` 推导人体工学、动作、反馈和恢复路径。**新增高频接触点设计**：每个方向必须定义至少2个主要接触点（精确位置、材料、触感反馈）和每个高频操作的交互节点（位置、手势、反馈）。参考 `references/guides/prompt-engineering.md` 方法5。
 12. `STEP-12` 推导 CMF、制造、老化、清洁和维护。新增"材料职责"强制格式：材料名称 | 结构职责 | 触感职责 | 制造方式 | 寿命 | 维护方式。禁止使用纯颜色词（如"深岩灰""香槟金"）替代材料职责说明。
+    - **STEP-12.5 [NEW · 2026-06-24 {{skill_version}}] 多材质职责链解耦（Material Duty Chain Decoupling）**：严禁将产品作为单一材质块统一描述。必须强制拆解为三个相互依存的材质层级，并遵循 `[材料名称] + [微观加工工艺] + [承担的物理/交互职责] + [时间沉淀表现]` 的标准公式：
+      1. **主构型壳体材质（Primary Structural Base）**：承担大体量气动/物理防护职责，要求耐磨、内敛、高度漫反射质感。必须指定具体工业精加工工艺（如 honed / bead-blasted / satin / mirror-polished）。
+      2. **交互与触觉接触材质（Tactile Interaction Interface）**：人手、舱门、按键接触区域，必须选用导热率让人安心、触觉反馈清晰、能留下好看老化痕迹的亲肤/高精材料（如氟橡胶、冷感陶瓷、阳极氧化铝）。
+      3. **功能性能量/流体转换材质（Functional Energy/Fluid Transition）**：出风口、排风口、喷射器、接口区域，由于承受高温、高频流体或信号传输，必须显式指定具备强理化特征的工业材质（如耐高温特种陶瓷、钨钛合金、光学级微晶玻璃）。
+      详见 `references/guides/prompt-engineering.md` 方法21。
+    - **STEP-12.6 [NEW · 2026-06-24 {{skill_version}}] 功能性孔口与秩序收束协议（Aperture & Order Integration）**：按键、交互口、出风口、排风口必须被物理几何秩序死死收束。必须显式指定其"边界消解方式"：
+      - **缝隙隐匿法（Slot-Invisibility）**：排风口与交互口必须"齐平嵌入"（Flush）在两种材质交界的 G2 连续缝隙内，或极细的线性能量阵列（Linear Array），绝不破坏整体秩序。
+      - **微观倒角强化法（Diamond-Cut Hardening）**：每一个机械按键、接口边缘，必须强制指定"0.5mm 钻石切边"或"CNC 铣削凹槽"，利用高亮边缘（Specularity Highlight）在 Lovart 模型中逼出极度真实的精密工业感。
+      详见 `references/guides/prompt-engineering.md` 方法22。
 13. `STEP-13` 形成三个完整且可追溯的 DesignIR。**新增字段**：`primary_contact_points`（主要接触点）、`interaction_nodes`（交互节点）、`cultural_hybrid`（文化杂交，可选）。
 14. `STEP-14` 通过审美质量门并证据化排序。**新增识别性设计检查**：在八项质量门基础上，增加识别性设计检查（标志性形态、标志性细节、材料对比、比例记忆）。参考 `references/guides/identity-design.md`。识别性评分需 ≥ 8/10。**新增视觉语言一致性检查**：三个方向的提示词必须共享同一视觉语言基础（悬浮感、背景、焦点、摄影语法、负面约束、材料精确度、几何精确度）。参考 `references/guides/prompt-engineering.md`。
 
@@ -124,7 +133,10 @@ No text, no branding, no visible screws, no status icons, no cybernetic patterns
 
 材料描述必须使用"材料职责"格式：材料名称 | 结构职责 | 触感职责 | 制造方式 | 寿命 | 维护方式。
 
-**视觉等效编译强制要求**：compile_prompt.py 在编译时自动执行视觉等效洗涤（方法17）和尺度缩放滤网（方法18），将材料职责转化为光学物理表征，删除工程噪音词。
+- **视觉等效编译强制要求**：compile_prompt.py 在编译时自动执行视觉等效洗涤（方法17）和尺度缩放滤网（方法18），将材料职责转化为光学物理表征，删除工程噪音词。
+- **多材质职责链解耦（Material Duty Chain Decoupling）**：严禁单一材质统领全身。必须强制遵守"三元材质重叠律"：① 主壳体材质必须指定具体工业精加工工艺；② 接口与交互组件必须指定至少2个具体机械部件并说明装配关系；③ 流体转换组件必须指定与主壳体对比的次级功能材质并明确几何秩序收束方式。详见 `references/guides/prompt-engineering.md` 方法21。
+- **功能性孔口与秩序收束（Aperture & Order Integration）**：按键、交互口、出风口、排风口必须被物理几何秩序收束。缝隙隐匿法（Flush 嵌入 G2 连续缝隙）+ 微观倒角强化法（0.5mm 钻石切边 / CNC 铣削凹槽）。详见 `references/guides/prompt-engineering.md` 方法22。
+- **CMF 丰富度与组件真实性质量门**：提示词必须包含 ≥3 种相交材质，每种材质指定具体加工工艺词汇（如 bead-blasted / CNC-milled / diamond-cut）。若未满足，系统拒绝输出并重写。
 
 ## 执行模式约定
 

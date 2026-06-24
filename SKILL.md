@@ -19,7 +19,7 @@ metadata:
 > **升级历史**: 见 `references/changelogs/`(每个版本独立文件,0 删除)。  
 > **外部知识库镜像**: 见 `references/knowledge-base/README.md` + `SHA256SUMS.txt`。  
 > **文件卫生铁律**: `references/file-hygiene.md`(SKILL.md 严禁 9 类内容)。  
-> **本版本关键变更与触发原因**: 最新 `references/changelogs/*.md`。
+> **本版本关键变更与触发原因**: `references/changelogs/v3.5.2-changelog.md`（审计驱动：4 硬协议 + 4 新方法 + 模型适配层重构）。
 > **动态变量协议铁律**: `references/file-hygiene.md` § 8.6 + `references/cases/pitfall-053-dynamic-version-variable-pitfalls.md`(占位符永不渲染 + v 前缀陷阱 + bash 3.2 兼容)。
 
 ## 启动顺序
