@@ -1,6 +1,9 @@
 ---
-reference_id: REF-CASE-048
-title: Pitfall 048 - Code Block `text` Marker Leaking into Prompt
+reference_id: REF-CASE-048-A
+title: Pitfall 048-A - 代码块 text 标记泄漏到提示词
+category: cases
+supersedes_id_was: REF-CASE-048
+disambiguation_note: 原 REF-CASE-048 与 pitfall-048-backup-skill-illusion.md 冲突(后者日期更早,留为权威)。本文件分配 -A 后缀。
 category: cases
 used_when:
   - STEP-15

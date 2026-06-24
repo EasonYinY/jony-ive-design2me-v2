@@ -26,7 +26,7 @@ outputs:
 - When user says **"升级技能版本"** → Immediately execute version upgrade workflow
 - When user says **"升级"** → Same immediate execution, no additional confirmation needed
 - **Do NOT ask**: "您确认要升级吗?" or "升级到哪个版本?"
-- **Directly execute**: minor bump (e.g., 3.2.0 → 3.3.0 → 3.4.0)
+- **Directly execute**: minor bump (e.g., 3.2.0 → 3.3.0 → {{skill_version}})
 
 ### Workflow
 1. Update SKILL.md frontmatter `version:`
@@ -53,4 +53,4 @@ outputs:
 ## 4. Source
 
 - User explicit statements in 2026-06-24 session
-- jony-ive-design2me-v2 v3.2.0 → v3.3.0 → v3.4.0 upgrade process
+- jony-ive-design2me-v2 {{skill_version}} → {{skill_version}}.x → v3.1.0 upgrade process (user 期望路径,当前最新 = {{skill_version}})

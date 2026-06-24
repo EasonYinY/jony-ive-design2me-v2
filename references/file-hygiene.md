@@ -230,3 +230,71 @@ references/
 2. 在 SKILL.md 中替换为 1-line 指针
 3. 在 `references/changelogs/` 中记录此次卫生清理
 4. 不删除原始内容（0 删除原则）
+
+---
+
+## 铁律 8：User 显式偏好优先级 + 升级后清理协议（2026-06-24 新增）
+
+> **触发**:user 2026-06-24 显式声明 "{{skill_version}} 以上,绝不可能低于这个版本,所有的都是统一一个版本号" + "所有备份都删除"。
+
+### 8.1 升级后版本号统一协议
+
+当 user 显式说"全部统一一个版本号"或类似指令时:
+
+| 步骤 | 动作 |
+|---|---|
+| 1 | **确认最新版本号**(user 显式指定 ≥ 某数字,如 "{{skill_version}} 以上") |
+| 2 | **SKILL.md frontmatter** `version:` 改到最新 |
+| 3 | **批量替换 references 里所有版本号引用**(包括白名单元文件 — user 显式指令 > 教学价值保留) |
+| 4 | **跳过 `changelogs/` 目录**(每个 changelog 是独立版本叙事,跨版本串会破坏历史) |
+| 5 | **跳过 `knowledge-base/` 目录**(用户原文字节级镜像,不可改) |
+| 6 | **新建 `references/changelogs/v{new}-changelog.md`** 记录本次升级 |
+| 7 | **加白名单**:批量替换会破坏自指文件(如 `scripts/check_version_pollution.py` 第 35 行白名单注释),加到 `ALLOWED_PATHS` |
+
+### 8.2 备份清理协议
+
+当 user 显式说"所有备份都删除"或类似指令时:
+
+| 项 | 处理 |
+|---|---|
+| `*.bak-{timestamp}` 文件 | **全删**(`find . -name "*.bak-*" -type f -delete`) |
+| `*-BACKUP-v*` 副本目录 | **全删**(`rm -rf ../{skill}-BACKUP-*`) |
+| BACKUP 路径示例在元 pitfall 文档里 | **保留**(讲历史的文档,但版本号按 8.1 统一改) |
+| `.git` 里的版本历史 | **保留**(git 历史 ≠ 文件系统备份) |
+
+### 8.3 User 显式偏好 > 内部一致性最优解
+
+**核心原则**:`user 显式声明 > 铁律 1-7 > skill 内部逻辑最优解`。
+
+当 user 指令与 file-hygiene 铁律冲突时(如批量替换破坏元文件教学价值),**执行 user 指令 + 记录 pitfall**(本协议执行后已在 `references/cases/pitfall-049-bulk-version-replacement-destroys-context.md` 记录)。
+
+### 8.4 与 jony-ive-perspective 无关声明
+
+**user 2026-06-24 显式声明**:"该升级和 jony-ive-perspective 没有任何关系"。
+
+- 本技能的升级、版本号、内容变更**不得**影响 jony-ive-perspective
+- jony-ive-perspective 是独立技能(V4.x 系列),本技能是 V3.x 系列
+- 跨技能版本号引用(如 `艾维大脑架构 v4.1`)在本技能里**禁止保留**(会被批量替换为当前版本号,但实际破坏语义 — 已在 pitfall-049-B 记录)
+
+### 8.5 检测命令(下次升级前跑)
+
+```bash
+# 1. 当前版本号
+grep "^version:" SKILL.md
+
+# 2. 备份文件
+find . -name "*.bak-*" 2>/dev/null
+ls -d ../{skill-name}-BACKUP* 2>/dev/null
+
+# 3. references 里版本号引用数量
+grep -rE "v[0-9]+\.[0-9]+(\.[0-9]+)?" references/ --include="*.md" | grep -v "references/changelogs/" | wc -l
+```
+
+## 违规处理（保留原段）
+
+发现违反铁律的内容时：
+
+1. 将违规内容 MOVE 到正确的 reference 文件
+2. 在 SKILL.md 中替换为 1-line 指针
+3. 在 `references/changelogs/` 中记录此次卫生清理
+4. 不删除原始内容（0 删除原则）

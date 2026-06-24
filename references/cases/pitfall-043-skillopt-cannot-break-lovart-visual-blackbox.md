@@ -1,6 +1,8 @@
 ---
 pitfall_id: pitfall-043
+reference_id: REF-CASE-043-skillopt
 title: SkillOpt 训练不能突破 Lovart 视觉权重分配黑盒 — 2026-06-23 实测
+category: cases
 date: 2026-06-23
 severity: critical
 trigger: 用户要求"用 SkillOpt 训练提升出图质量" 或 "用 AI 训练 SKILL.md 改善 prompt"

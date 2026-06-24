@@ -1,7 +1,7 @@
 ---
 reference_id: REF-GUIDE-019-04
 title: 交互细节可视化增强 v2
-version: 2.0
+version: {{skill_version}}
 category: guides
 used_when:
   - INTERACTION-DETAIL-VISUALIZATION

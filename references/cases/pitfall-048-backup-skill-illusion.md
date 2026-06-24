@@ -20,7 +20,7 @@ outputs:
 # Pitfall 048: BACKUP 副本里的"升级"是错觉
 
 > **日期**: 2026-06-23
-> **触发**: 飞行载人器具任务 + 第三方 AI 审计反馈后,用户要求"整体更新 skill"并 bump version 到 v3.0.0。我(agent)在 BACKUP 副本目录 `jony-ive-design2me-v2-BACKUP-v1.1.0-20260621-134945-BACKUP-v1.1.1-20260621-150429` 中完成了完整 v3.0.0 升级,但**真实 skill 路径 `creative/jony-ive-design2me-v2/` 仍处于 v2.9.0 状态**——BACKUP 副本不代表当前 skill。
+> **触发**: 飞行载人器具任务 + 第三方 AI 审计反馈后,用户要求"整体更新 skill"并 bump version 到 {{skill_version}}。我(agent)在 BACKUP 副本目录 `jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-134945-BACKUP-{{skill_version}}-20260624-150429` 中完成了完整 {{skill_version}} 升级,但**真实 skill 路径 `creative/jony-ive-design2me-v2/` 仍处于 {{skill_version}} 状态**——BACKUP 副本不代表当前 skill。
 > **严重级别**: 🔴 BLOCKER(任何 skill 升级的实际效果)
 > **与既有 pitfall 的关系**: 扩展 `pitfall-030-skill-name-ambiguity.md`(只警告"路径歧义"),本 pitfall 进一步说明"路径歧义导致**升级错觉**"。
 
@@ -33,8 +33,8 @@ outputs:
 ```
 ~/.hermes/skills/creative/
 ├── jony-ive-design2me-v2/                                    # 真实 skill
-├── jony-ive-design2me-v2-BACKUP-v1.1.0-20260621-134945/        # 备份
-└── jony-ive-design2me-v2-BACKUP-v1.1.0-20260621-134945-BACKUP-v1.1.1-20260621-150429/  # 嵌套备份
+├── jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-134945/        # 备份
+└── jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-134945-BACKUP-{{skill_version}}-20260624-150429/  # 嵌套备份
 ```
 
 BACKUP 后缀模式: `BACKUP-<旧版本号>-<时间戳>[-BACKUP-<更旧版本号>-<时间戳>]`
@@ -45,7 +45,7 @@ BACKUP 后缀模式: `BACKUP-<旧版本号>-<时间戳>[-BACKUP-<更旧版本号
 - 改 SKILL.md frontmatter version
 - 改 references/ 下的多个文件
 - 跑验证脚本(通过,因 BACKUP 副本自身一致)
-- 输出"v3.0.0 升级完成"报告
+- 输出"{{skill_version}} 升级完成"报告
 
 **但**: 真实 skill 路径下,SKILL.md 仍是 `version: 2.9.0`,所有 `references/` 修改都落到了**历史快照**,不是当前 skill。
 
@@ -54,7 +54,7 @@ BACKUP 后缀模式: `BACKUP-<旧版本号>-<时间戳>[-BACKUP-<更旧版本号
 这是**最危险**的失败模式:
 - agent 不报错
 - 验证脚本不报错(BACKUP 副本自身是自洽的)
-- 用户**直到下次重开 skill 才可能发现**"咦,v3.0.0 没生效?"
+- 用户**直到下次重开 skill 才可能发现**"咦,{{skill_version}} 没生效?"
 - 浪费 1+ 小时的实际工作
 
 ## 2. 失败根因
@@ -142,17 +142,17 @@ def check_no_backup_illusion(skill_root: Path) -> Tuple[List[str], List[str]]:
 
 ## 8. 实证(2026-06-23)
 
-我(agent)在 `jony-ive-design2me-v2-BACKUP-v1.1.0-20260621-134945-BACKUP-v1.1.1-20260621-150429/` 完整执行了"v3.0.0 升级":
+我(agent)在 `jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-134945-BACKUP-{{skill_version}}-20260624-150429/` 完整执行了"{{skill_version}} 升级":
 - SKILL.md `version: 2.9.0` → `3.0.0`
 - 新增 3 个规则文件(rule-014/015/016)
-- 新增 `references/changelogs/v3.0.0-changelog.md`
+- 新增 `references/changelogs/{{skill_version}}-changelog.md`
 - 强化 `scripts/contracts.py` 占位符检测
 - 新增 `scripts/check_step_compression.py`
 - 全部 4 个验证脚本通过
 
-但**真实 skill 路径** `~/.hermes/skills/creative/jony-ive-design2me-v2/` **完全没动**——仍处于 v2.9.0 状态。所有"v3.0.0 升级"工作等价于 0。
+但**真实 skill 路径** `~/.hermes/skills/creative/jony-ive-design2me-v2/` **完全没动**——仍处于 {{skill_version}} 状态。所有"{{skill_version}} 升级"工作等价于 0。
 
-**用户实际看到的状态**: 真实 skill 仍是 v2.9.0,且 v2.9.0 已经包含大量升级(知识蒸馏库 / Pitfall 040-047 / 模型适配协议等),BACKUP 副本的"v3.0.0"反而**落后**于真实 skill 的实际状态。
+**用户实际看到的状态**: 真实 skill 仍是 {{skill_version}},且 {{skill_version}} 已经包含大量升级(知识蒸馏库 / Pitfall 040-047 / 模型适配协议等),BACKUP 副本的"{{skill_version}}"反而**落后**于真实 skill 的实际状态。
 
 ## 9. 教训
 
@@ -167,7 +167,7 @@ def check_no_backup_illusion(skill_root: Path) -> Tuple[List[str], List[str]]:
 - 用户应**清理** BACKUP 副本,避免歧义
 
 ### 9.3 给用户
-- BACKUP 后缀命名策略**应**包含日期+序号(`BACKUP-2026-06-23-01` 而非 `BACKUP-v1.1.0`)
+- BACKUP 后缀命名策略**应**包含日期+序号(`BACKUP-2026-06-23-01` 而非 `BACKUP-{{skill_version}}`)
 - 或用 `.snapshot/` 目录统一管理
 - 或用 git/mercurial 做版本控制而非目录备份
 
@@ -175,6 +175,6 @@ def check_no_backup_illusion(skill_root: Path) -> Tuple[List[str], List[str]]:
 
 - 2026-06-23 飞行载人器具任务 + 第三方 AI 审计
 - 用户指令"整体更新 skill" + "整个技能只能有一个版本号"
-- 我(agent)在 BACKUP 副本执行"v3.0.0 升级"的工作流
+- 我(agent)在 BACKUP 副本执行"{{skill_version}} 升级"的工作流
 - `skill_view` 报"Ambiguous skill name"3 skills match
-- 后续 `skill_view(name="creative/jony-ive-design2me-v2")` 显示真实 skill 仍 v2.9.0
+- 后续 `skill_view(name="creative/jony-ive-design2me-v2")` 显示真实 skill 仍 {{skill_version}}

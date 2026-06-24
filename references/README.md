@@ -39,6 +39,7 @@ outputs:
 | PITFALL-027 | [单材料设计陷阱](cases/pitfall-027-single-material-trap.md) | category=cases | used_when=CMF设计,材料选择 |
 | PITFALL-028 | [纯自然形态天花板](cases/pitfall-028-pure-natural-form-ceiling.md) | category=cases | used_when=文化杂交设计,形态选择 |
 | PITFALL-029 | [空气动力学陷阱](cases/pitfall-029-aerodynamic-trap.md) | category=cases | used_when=穿戴设备设计,形态选择 |
+| PITFALL-029-A | [Pitfall 029-A — Lovart pending_confirmation 静默失败](cases/pitfall-029-lovart-pending-confirmation.md) | category=cases | used_when=LOVART-EXECUTION |
 | PITFALL-030 | [AI生成产品级精度天花板](cases/pitfall-030-ai-product-ceiling.md) | category=cases | used_when=图片生成,艾维级设计目标,质感提升 |
 | PITFALL-030-02 | [技能名称歧义处理](cases/pitfall-030-skill-name-ambiguity.md) | category=cases | used_when=技能加载失败,多版本技能冲突,skill_view 拒绝猜测 |
 | PITFALL-031 | [准艾维级天花板突破](cases/pitfall-031-quasi-ive-ceiling.md) | category=cases | used_when=艾维级目标设计 |
@@ -73,15 +74,23 @@ outputs:
 | REF-CASE-025 | [Pitfall 025 — 规则写在文档里但未在编译器/质量门中强制执行](cases/pitfall-025-rule-enforcement-gap.md) | category=cases | used_when=skill-optimization,image-generation,rule-audit |
 | REF-CASE-025-02 | [Pitfall 025 - 跳过技能升级直接重跑](cases/pitfall-025-upgrade-before-rerun.md) | category=cases | used_when=SKILL-UPGRADE |
 | REF-CASE-026 | [Pitfall 026 — 提示词→图片衰减](cases/pitfall-026-prompt-to-image-attenuation.md) | category=cases | used_when=IMAGE-GENERATION |
+| REF-CASE-026-A | [Pitfall 026-A — 复杂产品被压扁成 1 块(功能分区缺失)](cases/pitfall-026-flat-design-no-functional-zoning.md) | category=cases | used_when=STEP-06,STEP-10 |
+| REF-CASE-026-B | [Pitfall 026-B — Flying vehicle prompt anti-patterns (Nano Banana Pro)](cases/pitfall-026-flying-vehicle-prompt-antipatterns.md) | category=cases | used_when=PROMPT-COMPILATION,FLYING-VEHICLE |
 | REF-CASE-026-02 | [Pitfall 026 - 验证脚本正则表达式不匹配 PITFALL ID](cases/pitfall-026-validation-script-regex-bug.md) | category=cases | used_when=SKILL-UPGRADE,VALIDATION |
 | REF-CASE-027 | [Pitfall 027 — 复杂提示词超时](cases/pitfall-027-complex-prompt-timeout.md) | category=cases | used_when=IMAGE-GENERATION |
+| REF-CASE-027-A | [Pitfall 027-A — Lovart shell quoting failure (multi-line prompts)](cases/pitfall-027-lovart-shell-quoting.md) | category=cases | used_when=LOVART-INVOCATION |
 | REF-CASE-027-02 | [Pitfall 027 — 交互细节衰减](cases/pitfall-027-interaction-detail-attenuation.md) | category=cases | used_when=INTERACTION-DETAIL-VISUALIZATION |
 | REF-CASE-028 | [Pitfall 028 — 自然形态表达不稳定](cases/pitfall-028-natural-form-instability.md) | category=cases | used_when=NATURAL-FORM-DESIGN |
 | REF-CASE-029 | [Pitfall 029 — 复杂产品衰减增大](cases/pitfall-029-complex-product-attenuation.md) | category=cases | used_when=PRODUCT-SELECTION,EXPECTATION-SETTING |
 | REF-CASE-030 | [Pitfall 030 — 佩戴状态不可见](cases/pitfall-030-wearable-state-invisible.md) | category=cases | used_when=PRODUCT-SELECTION,WEARABLE-DESIGN |
+| REF-CASE-030-A | [Pitfall 030-A — 环形结构同质化(Ring Homogenization)](cases/pitfall-030-ring-homogenization.md) | category=cases | used_when=STEP-06 |
 | REF-CASE-031 | [Pitfall 031 — 曲面屏幕透明度](cases/pitfall-031-curved-screen-transparency.md) | category=cases | used_when=SCREEN-DESIGN,CURVED-SURFACE |
 | REF-CASE-032 | [Pitfall 032 — 迭代模式中 Subagent 不可靠](cases/pitfall-032-subagent-unreliable-in-iteration.md) | category=cases | used_when=ITERATION-MODE,MULTI-ROUND-EXECUTION |
 | REF-CASE-PITFALL-001 | [Pitfall 001 - 输出合同违反](cases/pitfall-001-output-contract-violation.md) | category=cases | used_when=OUTPUT-VALIDATION |
+| REF-CASE-048 | [Pitfall 048 — BACKUP 副本里的"升级"是错觉](cases/pitfall-048-backup-skill-illusion.md) | category=cases | used_when=SKILL-UPGRADE,BACKUP-DETECTION |
+| REF-CASE-048-A | [Pitfall 048-A — 代码块 `text` 标记泄漏到提示词](cases/pitfall-048-code-block-text-marker-leak.md) | category=cases | used_when=STEP-15,PROMPT-COMPILATION |
+| REF-CASE-049 | [Pitfall 049 — 技能版本清理](cases/pitfall-049-skill-version-cleanup.md) | category=cases | used_when=SKILL-VERSION-AUDIT,CLEANUP |
+| REF-CASE-049-B | [Pitfall 049-B — 批量版本号替换破坏跨技能引用](cases/pitfall-049-bulk-version-replacement-destroys-context.md) | category=cases | used_when=BULK-VERSION-REPLACE |
 | REF-CASES-NEW | [失败模式库 (Failure Patterns)](cases/failure-patterns.md) | category=cases |
 | REF-PROCESS-001 | [四阶段十五步主流程](process/end-to-end-workflow.md) | category=process | used_when=STEP-01,STEP-06,STEP-09 |
 | REF-PROCESS-002 | [十五步引用映射](process/step-reference-map.md) | category=process | used_when=ROUTING |
@@ -136,6 +145,7 @@ outputs:
 | REF-GUIDE-011 | [曲面设计规则 — 亮眼曲线与明确细节](guides/curve-design-rules.md) | category=guides | used_when=AESTHETIC-GATE |
 | REF-GUIDE-012 | [软硬对比设计规则 — 柔的规律性](guides/hard-soft-contrast.md) | category=guides | used_when=AESTHETIC-GATE |
 | REF-GUIDE-013 | [交互显性化设计规则 — 隐性显性](guides/interaction-visibility.md) | category=guides | used_when=AESTHETIC-GATE |
+| REF-GUIDE-013-A | [功能分区(Functional Zoning) — 复杂产品的硬约束](guides/functional-zoning.md) | category=guides | used_when=STEP-06,STEP-10,STEP-13 |
 | REF-GUIDE-014 | [制造可行性设计规则 — 分件与工艺](guides/manufacturing-feasibility.md) | category=guides | used_when=AESTHETIC-GATE |
 | REF-GUIDE-015 | [方法15 - 功能暗示法](guides/method15-functional-hint.md) | category=guides | used_when=PROMPT-COMPILATION,STEP-15 |
 | REF-GUIDE-015-02 | [多材料接缝设计指南](guides/multi-material-joint-design.md) | category=guides | used_when=MATERIAL-SELECTION |

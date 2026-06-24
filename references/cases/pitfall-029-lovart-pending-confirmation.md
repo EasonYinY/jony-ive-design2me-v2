@@ -1,6 +1,9 @@
 ---
-reference_id: PITFALL-029
-title: Lovart pending_confirmation 静默失败
+reference_id: PITFALL-029-A
+title: Pitfall 029-A - Lovart pending_confirmation silent failure
+category: cases
+supersedes_id_was: PITFALL-029
+disambiguation_note: 原 PITFALL-029 与 pitfall-029-aerodynamic-trap.md 冲突,本文件分配 -A 后缀。官方权威 PITFALL-029 = 空气动力学陷阱(由 README.md 登记)。
 category: cases
 used_when:
   - LOVART-EXECUTION

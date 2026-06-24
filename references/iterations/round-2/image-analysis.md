@@ -1,6 +1,6 @@
 ---
 reference_id: REF-ITERATION-R2-ANALYSIS
-version: 1.2.0
+version: {{skill_version}}
 title: Round 2 图片分析与艾维水平评估（便携式咖啡机）
 category: iterations
 used_when:

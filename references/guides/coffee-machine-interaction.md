@@ -1,7 +1,7 @@
 ---
 reference_id: REF-GUIDE-021
 title: 咖啡机品类交互设计指南
-version: 1.0
+version: {{skill_version}}
 category: guides
 used_when:
   - COFFEE-MACHINE-DESIGN

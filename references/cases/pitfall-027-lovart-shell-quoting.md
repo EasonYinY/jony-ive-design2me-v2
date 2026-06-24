@@ -1,7 +1,9 @@
 ---
-reference_id: REF-CASE-027
-title: Pitfall 027 - Lovart shell quoting failure with multi-line prompts
+reference_id: REF-CASE-027-A
+title: Pitfall 027-A - Lovart shell quoting failure with multi-line prompts
 category: cases
+supersedes_id_was: REF-CASE-027
+disambiguation_note: 原 REF-CASE-027 与 pitfall-027-complex-prompt-timeout.md 冲突,本文件分配 -A 后缀。官方权威 REF-CASE-027 = 复杂提示词超时(由 README.md 登记)。
 used_when:
   - LOVART-INVOCATION
   - SHELL-EXECUTION

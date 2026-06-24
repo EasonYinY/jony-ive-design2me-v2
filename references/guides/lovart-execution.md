@@ -20,7 +20,7 @@ outputs:
 > **日期**: 2026-06-21(初始) · 2026-06-23(模式升级)
 > **触发**: 用户明确要求"调用 Lovart nano banana pro 模型生成图片"
 
-> **v1.1 升级(2026-06-23)**: 新增"模式 1:write_file + cat"作为强制默认。原 v1.0 的 heredoc 模式在多行提示词 + 含单/双引号场景下触发 `exit=2`(详见 pitfall-027)。本指南从今起**禁止使用 heredoc**,统一走文件路径。
+> **当前模式升级(2026-06-23)**: 新增"模式 1:write_file + cat"作为强制默认。原早期版本的 heredoc 模式在多行提示词 + 含单/双引号场景下触发 `exit=2`(详见 pitfall-027)。本指南从今起**禁止使用 heredoc**,统一走文件路径。
 
 ---
 
@@ -59,7 +59,7 @@ python3 ~/.hermes/skills/lovart/scripts/lovart-skill/skills/lovart-skill/agent_s
 ### 模式 2(已废弃):heredoc 嵌入(仅适用于极短提示词)
 
 ```bash
-# ⚠️ v1.1 起不再推荐,仅作历史记录
+# ⚠️ 当前版本起不再推荐,仅作历史记录
 source ~/.lovart/credentials.sh && unset LOVART_BASE_URL && \
 python3 ~/.hermes/skills/lovart/scripts/lovart-skill/skills/lovart-skill/agent_skill.py chat \
   --prompt "[提示词]" \

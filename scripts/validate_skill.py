@@ -159,9 +159,19 @@ def _get_category(text: str) -> str | None:
 
 
 def _is_changelog_path(path: Path, root: Path) -> bool:
-    """判断路径是否在 changelogs/ 或 iterations/ 目录(版本变更类,豁免禁词)。"""
+    """判断路径是否在 changelogs/ 或 iterations/ 目录(版本变更类,豁免禁词)。
+
+    支持两种布局:
+      - references/changelogs/... (skill 标准化布局)
+      - changelogs/... (旧布局/顶层)
+    """
     rel = path.relative_to(root).as_posix()
-    return rel.startswith("changelogs/") or rel.startswith("references/iterations/") or rel.startswith("iterations/")
+    return (
+        rel.startswith("references/changelogs/")
+        or rel.startswith("changelogs/")
+        or rel.startswith("references/iterations/")
+        or rel.startswith("iterations/")
+    )
 
 
 def validate_skill_root(skill_root: Path) -> Tuple[str, ...]:
@@ -233,7 +243,13 @@ def validate_skill_root(skill_root: Path) -> Tuple[str, ...]:
                 ):
                     continue
                 # case 类也允许包含版本号(实际迭代记录中常见 当前版本 等)
-                if label == "版本口令" and file_category == "case":
+                if label == "版本口令" and file_category in {"case", "cases"}:
+                    continue
+                # process 类允许包含版本号引用(STEP-06.3 3.4.0 等元描述)
+                if label == "版本口令" and file_category == "process":
+                    continue
+                # user-preferences.md 记录 user 显式声明的升级路径
+                if label == "版本口令" and markdown_path.name == "user-preferences.md":
                     continue
                 issues += (f"{markdown_path.name} 含{label}。",)
         issues += _local_link_issues(markdown_path, root)

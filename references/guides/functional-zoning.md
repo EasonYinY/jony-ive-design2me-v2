@@ -1,6 +1,9 @@
 ---
-reference_id: REF-GUIDE-013
-title: 功能分区（Functional Zoning）— 复杂产品的硬约束
+reference_id: REF-GUIDE-013-A
+title: 功能分区设计规则(部件功能分区)
+category: guides
+supersedes_id_was: REF-GUIDE-013
+disambiguation_note: 原 REF-GUIDE-013 与 guides/interaction-visibility.md 冲突,本文件分配 -A 后缀。官方权威 REF-GUIDE-013 = 交互显性化设计规则(由 README.md 登记)。
 category: guides
 used_when:
   - STEP-06

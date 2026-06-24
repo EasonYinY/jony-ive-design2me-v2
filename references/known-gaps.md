@@ -106,6 +106,15 @@ outputs:
 | 2026-06-22 | 当前版本 | 加 `UPSTREAM_KB_DIR` 白名单到 validate_skill.py + validate_reference_graph.py,跳过 KB 目录的运行 reference 检查 | 验证脚本对 KB 0 失败,预存在 35 个失败项与 当前版本 baseline 一致 |
 | 2026-06-22 | 当前版本 | file-hygiene.md 加第 7 条铁律:用户原文 0 简化原则(上游 KB 镜像协议) | 文档化,下次同步可直接套用 |
 | 2026-06-22 | 当前版本 | SKILL.md 加 1-line 路由块指向 KB README + version 2.5.0→2.6.0 | 不污染 SKILL.md,只加指针 |
+| 2026-06-24 | 当前版本 | 修复 6 个 README 断链 guides (audit-feedback-2026-06-24 + 5 个协议 stub) | README 索引验证通过 |
+| 2026-06-24 | 当前版本 | 修复 6 处 reference_id frontmatter 冲突(REF-CASE-026/027/030/048/REF-GUIDE-013 -A/-B 后缀) | validate_reference_graph.py 0 duplicate |
+| 2026-06-24 | 当前版本 | 删除 SOURCE_LEDGER.csv 中 3 行 phantom 登记 (BND-002/003/MTH-005 → cases/README.md) | audit_references.py 通过 |
+| 2026-06-24 | 当前版本 | SKILL.md 瘦身 297 行 → 87 行(-71%),升级史全部移至 changelogs/ | 文件卫生铁律 3 落地 |
+| 2026-06-24 | 当前版本 | check_version_pollution.py 45 处污染清零 + 8 个元文件加 ALLOWED_PATHS 白名单 | 0 处污染 |
+| 2026-06-24 | 当前版本 | 创建 `scripts/verify-all.sh` 一键跑 4 个验证脚本(bash 3.2 兼容版) | verify-all.sh 输出 4 项 exit code 汇总 |
+| 2026-06-24 | 当前版本 | 修复 _is_changelog_path 不识别 references/changelogs/ 前缀 bug | v1.3.1-changelog.md 不再被误报 |
+| 2026-06-24 | 当前版本 | audit_references.py + validate_skill.py + check_version_pollution.py 版本号豁免语义统一 | 三脚本对 case/process/user-prefs 元文件一致豁免 |
+| 2026-06-24 | 当前版本 | 新增 pitfall-049 (批量版本号替换破坏上下文) + pitfall-050 (空目录误判) + pitfall-051 (bash 3.2 兼容) | 三类新陷阱已记录,下次同类修复时不再重蹈 |
 
 ## 修复后状态概览
 

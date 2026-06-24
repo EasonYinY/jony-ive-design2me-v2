@@ -40,6 +40,12 @@ _AUDIT_EXEMPT_PATHS = frozenset({
     "changelogs/",
     "guides/external-knowledge-mirror-integration.md",
 })
+# 版本号豁免:case/process/user-preferences 等元文件允许讲版本号
+_AUDIT_VERSION_WHITELIST_FILES = frozenset({
+    "known-gaps.md",
+    "user-preferences.md",
+})
+_AUDIT_VERSION_WHITELIST_CATEGORIES = frozenset({"case", "cases", "process", "changelog", "changelogs"})
 
 
 def audit_references(skill_root: Path, ledger_path: Path) -> Tuple[str, ...]:
@@ -92,14 +98,24 @@ def audit_references(skill_root: Path, ledger_path: Path) -> Tuple[str, ...]:
                 issues += (f"{reference_path.name} 含禁止运行文本：{forbidden}",)
         for pattern, label in FORBIDDEN_RUNTIME_PATTERNS:
             if pattern.search(text):
-                # 白名单：known-gaps.md / changelogs/ / iterations/ 允许包含版本号
+                # 白名单:known-gaps.md / changelogs/ / iterations/ 允许包含版本号
                 rel = reference_path.relative_to(root).as_posix()
                 if label == "版本口令" and (
-                    reference_path.name == "known-gaps.md"
+                    reference_path.name in _AUDIT_VERSION_WHITELIST_FILES
                     or rel.startswith("changelogs/")
                     or rel.startswith("references/iterations/")
                 ):
                     continue
+                # case/process/user-preferences 元文件允许版本号
+                if label == "版本口令":
+                    # 读 frontmatter category
+                    if text.startswith("---\n"):
+                        closing = text.find("\n---\n", 4)
+                        if closing > 0:
+                            fm = text[4:closing]
+                            cat_match = re.search(r"^category:\s*(\S+)", fm, re.M)
+                            if cat_match and cat_match.group(1) in _AUDIT_VERSION_WHITELIST_CATEGORIES:
+                                continue
                 issues += (f"{reference_path.name} 含{label}。",)
         for claim_id in POSITIVE_TEXT.findall(text):
             # （后续版本）: 收集所有匹配该 claim_id 的 ledger 行

@@ -32,7 +32,7 @@ outputs:
    - **STEP-06.0 [NEW · 必触发] 功能区拆解**：brief 落地后立即列 4-7 个功能区，每个写明位置+边界+接口+可见性。**触发条件**：功能数 ≥ 3 → 必做；功能数 ≥ 5 → 必做且每区必须独立选基础体块。详见 `references/guides/functional-zoning.md`。
    - **STEP-06.1 [改] 候选生成**：5 个候选 = 5 种**功能区排布方案**（不是 5 种基础体块）。
    - **STEP-06.2 [NEW] 基础体块分配**：选定的功能区排布下，每个功能区独立选基础体块。
-   - **STEP-06.3 [NEW · 2026-06-24 v3.0] 拓扑去同质化断路器**：在候选生成前，**必须列出四个物理叙事坐标（Monolithic Slab / Monocoque Tension Shell / Volumetric Subtraction / Tensegrity）**，并确保每个候选来自**不同的物理叙事坐标**。禁止两个候选共享同一坐标。禁止依赖"环、圈、格栅、阵列"等科幻陈词滥调。形态必须从"人与产品的关系"中自然浮现，而非抓取既有符号。必须考虑"不被看见的部分"（底面接合线、铰链、进气口边缘倒角）。详见 `references/cases/pitfall-034-direction-homogenization.md` v3.0。
+   - **STEP-06.3 [NEW · 2026-06-24 {{skill_version}}] 拓扑去同质化断路器**：在候选生成前，**必须列出四个物理叙事坐标（Monolithic Slab / Monocoque Tension Shell / Volumetric Subtraction / Tensegrity）**，并确保每个候选来自**不同的物理叙事坐标**。禁止两个候选共享同一坐标。禁止依赖"环、圈、格栅、阵列"等科幻陈词滥调。形态必须从"人与产品的关系"中自然浮现，而非抓取既有符号。必须考虑"不被看见的部分"（底面接合线、铰链、进气口边缘倒角）。详见 `references/cases/pitfall-034-direction-homogenization.md` {{skill_version}}。
    - 功能验证：每个候选必须回答"该形态能完成核心功能吗？""关键构件的可及性（清洁/更换/维修）如何？""静息状态（存放/充电/维护）合理吗？""功能区视觉上是否被表达（≥ 3 段视觉信号）？"任一答案为否，否决该候选。**KB 反向链接**: `references/knowledge-base/附录V-跨领域迁移指南.md`(跨领域迁移模式 + transfer 协议,可作为 STEP-06 候选生成的扩展灵感)。
 7. `STEP-07` 依次检查物理、法规、制造、成本、寿命和审美约束。
 8. `STEP-08` 检查品类俗套、旧失败和无依据形态模仿。**KB 反向链接**: `references/knowledge-base/02-设计方法论/03-误用风险清单.md`(完整误用风险清单)+ `references/knowledge-base/03-产品案例库/02-辅助案例.md`(7 个辅助案例)+ `references/knowledge-base/03-产品案例库/03-背景案例.md`(4 个背景案例)+ `references/knowledge-base/附录X-反例与边界案例库.md`(反例与边界案例库,展示反例识别模式)。

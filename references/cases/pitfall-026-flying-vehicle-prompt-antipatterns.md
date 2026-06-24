@@ -1,7 +1,9 @@
 ---
-reference_id: REF-CASE-026
-title: Pitfall 026 - Flying vehicle prompt anti-patterns in Nano Banana Pro
+reference_id: REF-CASE-026-B
+title: Pitfall 026-B - Flying vehicle prompt anti-patterns in Nano Banana Pro
 category: cases
+supersedes_id_was: REF-CASE-026
+disambiguation_note: 原 REF-CASE-026 与 pitfall-026-prompt-to-image-attenuation.md / pitfall-026-flat-design-no-functional-zoning.md 三重冲突,本文件分配 -B 后缀。官方权威 REF-CASE-026 = 提示词→图片衰减(由 README.md 登记)。
 used_when:
   - PROMPT-COMPILATION
   - FLYING-VEHICLE

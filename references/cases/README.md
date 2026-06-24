@@ -34,3 +34,6 @@
 | pitfall-047 | 提示词方法链内部矛盾 | 改前必须跑方法链审计 | cases/pitfall-047 | 已记录 |
 | pitfall-048 | BACKUP 副本里"升级"是错觉 | 2026-06-23 飞行器任务实证 | REF-CASE-030 | 已记录 |
 | **pitfall-030-ring** | **环形结构同质化** | **3方向都含环且位置/数量/关系同质化** | **2026-06-24 用户反馈** | **已记录** |
+| pitfall-049 | 批量版本号替换破坏上下文 | re.sub 替换前未分类合法上下文 | cases/pitfall-049 | 已记录 |
+| pitfall-050 | 目录大小误判为"空" | `ls -la` total ≠ 文件数 | cases/pitfall-050 | 已记录 |
+| pitfall-051 | bash 3.2 不支持关联数组 | macOS 默认 bash 用 `declare -A` | cases/pitfall-051 | 已记录 |

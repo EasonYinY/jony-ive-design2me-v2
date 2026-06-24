@@ -21,7 +21,7 @@ outputs:
 # Pitfall 027 - 审计师/外部建议与现有规则冲突时的诚实反查协议
 
 > **日期**: 2026-06-24
-> **触发**: 资深审计师两轮反馈中,建议 "Suspended in a pure, seamless neutral studio grey (#D1D1D1 or #E5E5E5)" — 但这与本技能 v3.0.0 `REF-PROMPT-004 §3 纯白背景强制` + `REF-QUALITY-001 §视觉语言一致性` 直接冲突
+> **触发**: 资深审计师两轮反馈中,建议 "Suspended in a pure, seamless neutral studio grey (#D1D1D1 or #E5E5E5)" — 但这与本技能 {{skill_version}} `REF-PROMPT-004 §3 纯白背景强制` + `REF-QUALITY-001 §视觉语言一致性` 直接冲突
 > **严重级别**: 🟠 HIGH for SKILL-AUDIT 场景
 > **强制范围**: 所有审计师/外部 AI 反馈处理流程(尤其在 Pitfall 026 协议下)
 
@@ -40,7 +40,7 @@ outputs:
 | 判断项 | 触发 |
 |---|---|
 | 外部建议含具体技术参数(颜色码、尺寸、镜号) | ✓ |
-| 外部建议与本技能 v3.0.0+ 任意 `REF-` 文件存在潜在冲突 | ✓ |
+| 外部建议与本技能 {{skill_version}}+ 任意 `REF-` 文件存在潜在冲突 | ✓ |
 | 外部建议由"听起来专业"权威发出(资深审计师 / 行业专家) | ✓ |
 | 外部建议数量 ≥ 3 条(防止单点建议污染) | ✓ |
 
@@ -49,7 +49,7 @@ outputs:
 ### 审计师建议原文
 > "Suspended in a pure, seamless neutral studio grey (#D1D1D1 or #E5E5E5) non-reflective void."
 
-### 现有规则(本技能 v3.0.0 强制)
+### 现有规则(本技能 {{skill_version}} 强制)
 - `REF-PROMPT-004 §3 纯白背景强制`:**所有提示词必须 `Pure white background`**,禁止 Neutral gradient,已废弃
 - `REF-QUALITY-001 §视觉语言一致性`:纯白背景是 8 维度一致性硬要求
 - `REF-CASE-016 background_intrusion`:**任何非纯白背景触发 FAIL**
@@ -59,7 +59,7 @@ outputs:
 - 视觉语言一致性 8 维度中的"背景一致性"硬要求纯白
 
 ### 决策
-**不照搬审计师灰背景建议,保留 v3.0.0 强制 pure white**。在 `audit-feedback-2026-06-24-prompt-architecture.md` 第 2.2 节明确记录"为何不照搬"。
+**不照搬审计师灰背景建议,保留 {{skill_version}} 强制 pure white**。在 `audit-feedback-2026-06-24-prompt-architecture.md` 第 2.2 节明确记录"为何不照搬"。
 
 ## 4. 决策矩阵(诚实反查协议)
 

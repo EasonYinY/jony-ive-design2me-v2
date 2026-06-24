@@ -31,11 +31,9 @@ MTH-010,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-
 MTH-014,Auto-registered from core/design-methodology.md,GOVERNING,G,core/design-methodology.md,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,core/design-methodology.md
 BND-001,Auto-registered from core/evidence-policy.md,GOVERNING,G,core/evidence-policy.md,REF-CORE-EVIDENCE-POLICY,high,boundary,不得反向推导为运行禁止,GOVERNING,core/evidence-policy.md
 BND-001,Auto-registered from rules/README.md,GOVERNING,G,rules/README.md,REF-RULES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,rules/README.md
-BND-002,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,cases/README.md
 BND-002,Auto-registered from prompt/prompt-contract.md,GOVERNING,G,prompt/prompt-contract.md,REF-PROMPT-PROMPT-CONTRACT,high,boundary,不得反向推导为运行禁止,GOVERNING,prompt/prompt-contract.md
 BND-002,Auto-registered from quality/failure-library.md,GOVERNING,G,quality/failure-library.md,REF-QUALITY-FAILURE-LIBRARY,high,boundary,不得反向推导为运行禁止,GOVERNING,quality/failure-library.md
 BND-002,Auto-registered from rules/README.md,GOVERNING,G,rules/README.md,REF-RULES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,rules/README.md
-BND-003,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,cases/README.md
 BND-003,Auto-registered from prompt/prompt-contract.md,GOVERNING,G,prompt/prompt-contract.md,REF-PROMPT-PROMPT-CONTRACT,high,boundary,不得反向推导为运行禁止,GOVERNING,prompt/prompt-contract.md
 BND-003,Auto-registered from quality/failure-library.md,GOVERNING,G,quality/failure-library.md,REF-QUALITY-FAILURE-LIBRARY,high,boundary,不得反向推导为运行禁止,GOVERNING,quality/failure-library.md
 BND-003,Auto-registered from rules/README.md,GOVERNING,G,rules/README.md,REF-RULES-README,high,boundary,不得反向推导为运行禁止,GOVERNING,rules/README.md
@@ -67,7 +65,6 @@ MTH-004,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-th
 MTH-004,Auto-registered from iterations/round-1/agent-3-design.md,GOVERNING,G,iterations/round-1/agent-3-design.md,REF-ITERATIONS-ROUND-1-AGENT-3-DESIGN,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/agent-3-design.md
 MTH-004,Auto-registered from iterations/round-1/design-output.md,GOVERNING,G,iterations/round-1/design-output.md,REF-ITERATIONS-ROUND-1-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-1/design-output.md
 MTH-004,Auto-registered from iterations/round-2/design-output.md,GOVERNING,G,iterations/round-2/design-output.md,REF-ITERATIONS-ROUND-2-DESIGN-OUTPUT,high,method,不得反向推导为运行禁止,GOVERNING,iterations/round-2/design-output.md
-MTH-005,Auto-registered from cases/README.md,GOVERNING,G,cases/README.md,REF-CASES-README,high,method,不得反向推导为运行禁止,GOVERNING,cases/README.md
 MTH-005,Auto-registered from cases/pitfall-012-material-without-duty.md,GOVERNING,G,cases/pitfall-012-material-without-duty.md,REF-CASES-PITFALL-012-MATERIAL-WITHOUT-DUTY,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-012-material-without-duty.md
 MTH-005,Auto-registered from cases/pitfall-014-color-as-premium.md,GOVERNING,G,cases/pitfall-014-color-as-premium.md,REF-CASES-PITFALL-014-COLOR-AS-PREMIUM,high,method,不得反向推导为运行禁止,GOVERNING,cases/pitfall-014-color-as-premium.md
 MTH-005,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
@@ -104,3 +101,5 @@ MTH-013,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-th
 MTH-014,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
 MTH-016,Auto-registered from core/ive-thinking-models.md,GOVERNING,G,core/ive-thinking-models.md,REF-CORE-IVE-THINKING-MODELS,high,method,不得反向推导为运行禁止,GOVERNING,core/ive-thinking-models.md
 VIS-003,Auto-registered from quality/failure-library.md,GOVERNING,G,quality/failure-library.md,REF-QUALITY-FAILURE-LIBRARY,high,prompt_constraint,不得反向推导为运行禁止,GOVERNING,quality/failure-library.md
+BND-002,Auto-registered from known-gaps.md (mentions BND-002 in cleanup log),PROHIBITED,G,known-gaps.md:111,REF-EVIDENCE-001,high,all-design-tasks,不得反向作为形态处方,GOVERNING,known-gaps.md
+MTH-005,Auto-registered from known-gaps.md (mentions MTH-005 in cleanup log),GOVERNING,G,known-gaps.md:111,REF-CORE-DESIGN-METHODOLOGY,high,method,不得反向推导为运行禁止,GOVERNING,known-gaps.md

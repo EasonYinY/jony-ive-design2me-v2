@@ -1,7 +1,7 @@
 ---
 reference_id: REF-CASE-027-02
 title: Pitfall 027 — 交互细节衰减
-version: 1.0
+version: {{skill_version}}
 category: cases
 used_when:
   - INTERACTION-DETAIL-VISUALIZATION

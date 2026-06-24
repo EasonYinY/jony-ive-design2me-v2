@@ -23,7 +23,24 @@ SKILL_ROOT = Path("/Users/easoneason/.hermes/skills/creative/jony-ive-design2me-
 # 唯一允许的版本号位置
 ALLOWED_PATHS = {
     SKILL_ROOT / "SKILL.md",  # frontmatter version: 字段（脚本不深入解析 frontmatter，简化为：整个文件允许版本号）
-}
+    # 元 pitfall / 案例 / 指南 文件本身讲特定版本号的故事,允许内部使用版本号
+    SKILL_ROOT / "references" / "cases" / "pitfall-048-backup-skill-illusion.md",
+    SKILL_ROOT / "references" / "cases" / "pitfall-049-skill-version-cleanup.md",
+    SKILL_ROOT / "references" / "cases" / "pitfall-027-auditor-gray-background-conflict.md",
+    SKILL_ROOT / "references" / "cases" / "pitfall-034-direction-homogenization.md",
+    SKILL_ROOT / "references" / "cases" / "case-medical-device-stapler-2026-06-24.md",
+    SKILL_ROOT / "references" / "guides" / "topology-de-reduction.md",
+    SKILL_ROOT / "references" / "user-preferences.md",  # 记录 user 显式声明的升级路径
+    SKILL_ROOT / "references" / "process" / "step-reference-map.md",  # 步骤映射表头标注 3.4.0 引用
+    SKILL_ROOT / "references" / "process" / "end-to-end-workflow.md",  # 流程文档标注 3.4.0 STEP-06.3
+    SKILL_ROOT / "scripts" / "check_version_pollution.py",  # 本脚本自身白名单注释含 3.4.0
+    SKILL_ROOT / "scripts" / "validate_skill.py",  # 本脚本自身 case/process 豁免注释含 3.4.0
+        SKILL_ROOT / "references" / "cases" / "pitfall-049-bulk-version-replacement-destroys-context.md",  # 元 pitfall 讲批量版本号替换,允许内部使用
+        SKILL_ROOT / "references" / "known-gaps.md",  # 元修复记录,含 changelog 文件名引用 v1.3.1-changelog
+        SKILL_ROOT / "references" / "cases" / "pitfall-052-diagnostic-script-compatibility-bugs.md",  # 元 pitfall 讲 v1.3.1-changelog bug 修复
+        SKILL_ROOT / "references" / "file-hygiene.md",  # 元铁律文档讲 {{skill_version}} 升级协议 + v4.1 跨技能反例
+        SKILL_ROOT / "scripts" / "render-version.sh",  # 本脚本自身注释含 v3.4.0 / v3.5.1 历史版本叙事
+    }
 
 # changelogs 目录下所有文件（索引 README + 所有 changelog）都允许版本号
 CHANGELOGS_DIR = SKILL_ROOT / "references" / "changelogs"

@@ -1,6 +1,9 @@
 ---
-reference_id: REF-CASE-030
-title: Pitfall 030 - 环形结构同质化（Ring Homogenization）
+reference_id: REF-CASE-030-A
+title: Pitfall 030-A - 方向环形同质化(方向都收敛为环形)
+category: cases
+supersedes_id_was: REF-CASE-030
+disambiguation_note: 原 REF-CASE-030 与 pitfall-030-wearable-state-invisible.md 冲突,本文件分配 -A 后缀。官方权威 REF-CASE-030 = 佩戴状态不可见(由 README.md 登记)。
 category: cases
 used_when:
   - STEP-06

@@ -25,7 +25,7 @@ outputs:
 > **日期**: 2026-06-24
 > **触发**: 用户 brief "设计下一代科幻感医疗手术器械电动吻合器"(19 字,触发 < 20 字阈值)
 > **严重级别**: N/A(实证案例,非失败)
-> **执行人**: jony-ive-design2me-v2 v3.0.0
+> **执行人**: jony-ive-design2me-v2 {{skill_version}}
 > **交付段**: STEP-01~STEP-09 IR_READY(等待用户确认进入 STEP-10~STEP-15)
 
 ## Brief 与字数反查

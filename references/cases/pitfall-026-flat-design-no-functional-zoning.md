@@ -1,7 +1,9 @@
 ---
-reference_id: REF-CASE-026
-title: Pitfall 026 - 复杂产品被压扁成 1 块（功能分区缺失）
+reference_id: REF-CASE-026-A
+title: Pitfall 026-A - 复杂产品被压扁成 1 块（功能分区缺失）
 category: cases
+supersedes_id_was: REF-CASE-026
+disambiguation_note: 原 REF-CASE-026 与 pitfall-026-prompt-to-image-attenuation.md 冲突,本文件分配 -A 后缀。官方权威 REF-CASE-026 = 提示词→图片衰减(由 README.md 登记)。
 used_when:
   - STEP-06
   - STEP-10

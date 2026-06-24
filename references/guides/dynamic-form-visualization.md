@@ -1,7 +1,7 @@
 ---
 reference_id: REF-GUIDE-022
 title: 动态形态图片表达指南
-version: 1.0
+version: {{skill_version}}
 category: guides
 used_when:
   - DYNAMIC-FORM-DESIGN

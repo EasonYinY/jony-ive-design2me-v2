@@ -1,6 +1,6 @@
 ---
 reference_id: REF-ITERATION-R2-OUTPUT
-version: 1.2.0
+version: {{skill_version}}
 title: Round 2 完整15步推理输出（便携式咖啡机）
 category: iterations
 used_when:

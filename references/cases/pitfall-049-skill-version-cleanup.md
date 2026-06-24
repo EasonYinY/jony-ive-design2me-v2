@@ -28,9 +28,9 @@ outputs:
 ```
 ~/.hermes/skills/creative/
 ├── jony-ive-design2me-v2
-├── jony-ive-design2me-v2-BACKUP-v1.1.0-20260621-134945
-├── jony-ive-design2me-v2-BACKUP-v1.1.0-20260621-134945-BACKUP-v1.1.1-20260621-150429
-└── jony-ive-design2me-v2-BACKUP-v1.1.x-20260624-110000-before-mouse-archetype-prior-upgrade
+├── jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-134945
+├── jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-134945-BACKUP-{{skill_version}}-20260624-150429
+└── jony-ive-design2me-v2-BACKUP-{{skill_version}}-20260624-110000-before-mouse-archetype-prior-upgrade
 ```
 
 ## 问题

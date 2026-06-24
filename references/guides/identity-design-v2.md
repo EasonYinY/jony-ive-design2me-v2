@@ -1,7 +1,7 @@
 ---
 reference_id: REF-GUIDE-020-02
 title: 识别性设计增强 v2
-version: 2.0
+version: {{skill_version}}
 category: guides
 used_when:
   - IDENTITY-DESIGN
