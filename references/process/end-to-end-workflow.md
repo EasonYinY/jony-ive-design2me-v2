@@ -62,6 +62,19 @@ outputs:
 ## 表达与评审
 
 15. `STEP-15` 为三个完整方向分别生成追溯记录和压缩提示词。默认在三段提示词交付后停止；只有用户在当前请求中明确要求出图时，才进入图片生成与评审循环。**KB 反向链接（仅供提示词写作参考,严禁直接复制进 PromptBundle 破坏 prompt-contract 字符边界）**: `references/knowledge-base/02-设计方法论/02-Prompt协议.md`(关系命题/材料职责/触觉节点/时间检查的完整 Prompt 协议)+ `references/knowledge-base/07-视觉语料库/01-图像提示词库.md`(12 个产品的完整图像提示词语料,提供句式/词汇参考)+ `references/knowledge-base/08-优秀提示词搜集/02-进阶指南.md`(Prompt 进阶方法)+ `references/knowledge-base/08-优秀提示词搜集/03-实战模板.md`(8 个实战模板)+ `references/knowledge-base/附录Y-AI生成应用指南.md`(AI 生成应用与边界提示)。
+    - **STEP-15.5 [NEW · 2026-06-24 {{skill_version}}] 五维工业级提示词架构（5-Stage Industrial Prompt Schema）**：提示词必须放弃散文式叙述，强行切换为以下五维结构：
+      1. **阶段一：功能原型与轴向主量体（Functional Archetype & Axis）**：开篇第一句必须由"相机设置 + 明确的产品原型词（Archetype）"组成。用几何语言和物理方位词，明确界定"主驾驶/操作区"和"动力/功能输出源"，确立视觉重心与方向感。泛化公式：`Studio photograph of a [明确产品原型], featuring a highly visible [核心功能组件] defining its front orientation...`
+      2. **阶段二：多材质职责链与对撞纹理（CMF Interlocking & Micro-Textures）**：严格禁止单一材质。必须采用"自然纹理"与"科技精密纹理"的交织对撞。使用 Lovart 模型最敏感的机械加工术语（CNC 微铣削、激光蚀刻渐变、注浆成型）来"逼出"细节。泛化公式：`Primary body made of [自然/哑光材质 + 微观纹理], directly interlocking with a secondary [精密金属/科技材质] accented by [微观科技纹理]...`
+      3. **阶段三：3D 立体光学结构（Volumetric Lighting Structures）**：严禁使用 `flat LED light` 等平面词汇。必须引入"光学介质"与"实体结构"。将光线描述为被包裹在"三维光导管（3D light-pipe）"、"石英折射棱镜（refractive quartz prism）"或"带微幅槽线的立体腔体"内部的物理实体。泛化公式：`A recessed 3D linear light-guide tube, encased inside a micro-grooved frosted crystal channel, emitting a controlled, volumetric soft amber architectural glow...`
+      4. **阶段四：设计谱系控制与反文字污染（Debranded Lineage Control）**：将具体品牌词 `LoveFrom 2030` 替换为抽象作画风格描述语，并加入严厉物理去品牌化指令。泛化公式：`...reflecting the pure minimalist design lineage of Jony Ive's aesthetic philosophy, strictly debranded, absolute zero alphanumeric text, no printed logos, seamless pristine surfaces.`
+      5. **阶段五：地面锚定与硬表面环境闭塞（Grounding & Hard-Surface AO）**：通过具体物理悬浮高度/接触缝隙与地面材质，强迫模型计算出精密高亮边界与浓重环境光闭塞（AO）阴影。
+      详见 `references/guides/prompt-engineering.md` 方法23。
+    - **STEP-15.6 [NEW · 2026-06-24 {{skill_version}}] 反纯粹抽象与功能 Legible 质量门**：在提示词编译阶段强制追加以下校验：
+      1. **拦截品牌词污染**：禁止直接向 Prompt 输出 "LoveFrom"、"Apple" 或任何具体年份数字。必须编译为：`reflecting the pure minimalist design lineage of Jony Ive's aesthetic philosophy, strictly debranded, absolute zero alphanumeric text`。
+      2. **材质丰富度对撞要求**：每个方案的 CMF 表达必须至少包含 1 种天然/珩磨纹理（如 honed basalt, water-honed grain）与 1 种微观机械科技纹理（如 laser-etched gradient micro-grooves, micro-knurled patterns）在几何边界处的机械交叠。
+      3. **禁止平面发光层**：全面废除 "LED line"、"glowing strip" 等词汇。必须强制编译为 3D 立体光学结构，指定具体物理容纳腔体与光学折射介质（如: recessed 3D linear light-guide tube encased inside a micro-grooved frosted quartz channel）。
+      4. **原型 Legibility 校验**：提示词第一段必须明确描述定义该产品核心功能的关键宏观大部件与轴向（如飞行器的全景舱门与推进矢量轴），确保 Lovart 模型第一眼生成正确的物理功能原型。
+      详见 `references/cases/pitfall-060-debranding-and-legibility.md`。
 
 **新增提示词输出要求**：
 - 最终提示词必须使用代码块显示；额外输出英文提示词（共 6 组代码块：3 中文 + 3 英文）
