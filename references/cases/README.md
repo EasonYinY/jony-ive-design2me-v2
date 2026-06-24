@@ -37,3 +37,5 @@
 | pitfall-049 | 批量版本号替换破坏上下文 | re.sub 替换前未分类合法上下文 | cases/pitfall-049 | 已记录 |
 | pitfall-050 | 目录大小误判为"空" | `ls -la` total ≠ 文件数 | cases/pitfall-050 | 已记录 |
 | pitfall-051 | bash 3.2 不支持关联数组 | macOS 默认 bash 用 `declare -A` | cases/pitfall-051 | 已记录 |
+| pitfall-063 | 复杂工业系统原型丢失 | 重型设备/医疗设备被误判为建筑/家具 | 2026-06-24 MRI审计 | 已记录 |
+| **case-mri-audit** | **MRI 设计审计案例** | **双审计驱动的系统级重构完整记录** | **2026-06-24/25 审计** | **已记录** |

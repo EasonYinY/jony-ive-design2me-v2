@@ -27,6 +27,11 @@ outputs:
    - **STEP-04.5 [NEW · 2026-06-24 {{skill_version}}] 空间包络硬验证（Spatial Package Validation Matrix）**：在 STEP-04 尾部强制增加体积与包络估算。任何形态生成前的尺寸必须通过 `[净尺寸需求 + 结构厚度容差 + 安全防护边界 = 最终输出数值]` 的显性算式硬校验。载具类公差 ±10%，电子设备 ±0.5mm。未通过校验的尺寸必须标注 `UNVALIDATED` 并回退重新推导。详见 `references/cases/pitfall-055-scale-fact-disconnect.md`。
 5. `STEP-05` 提炼必须解决的核心矛盾。新增反形态预设检查：关系模式必须描述"动作"而非"形态"；若直接对应已知产品形态（如指环=智能戒指、半球=美容仪、轨道=工业设备），退回 STEP-04 重新推导。**KB 反向链接**: `references/knowledge-base/02-设计方法论/01-核心16法.md` §4-§6(核心矛盾提炼 / 材料职责 / 时间检查的具体方法)。
    - **STEP-05.5 [NEW · 2026-06-24 {{skill_version}}] 语义洗涤器（Semantic Sanitizer）**：禁止以下两类词汇进入形态推导：① 意识形态/艺术流派名词（如：侘寂、赛博朋克、孟菲斯、极简主义）；② 情感暗示词（如：手工感、温暖感、陌生感、充满信任）。所有形态表达必须通过几何曲率（G2/G3 Continuity）、部件交接（Recessed/Flush/Suspended）和材料物理特性（Tensile/Compressive/Translucent）进行高维泛化重写。详见 `references/cases/pitfall-056-semantic-mimicry.md`。
+   - **STEP-05.7 [NEW · 2026-06-24 {{skill_version}}] 行业原型锚定门（Archetype Verification Gate）**：在核心矛盾提炼后、候选生成前，强制注入行业原型拓扑保护协议。详见 `references/guides/archetype-verification.md`。当 Brief 属于"重型设备/复杂系统/精密工具/医疗仪器"类目时，必须显式定义该类目的【不可缩减三大形态特征】（Irreducible Archetype Features），确保后续形态分化不会切断与品类原型的语义联系。检查项：
+     - **拓扑完备性**：该产品品类在人类集体潜意识中的"第一特征"是什么？（如：MRI 的扫描舱口、相机的镜头突起、飞行器的推进器轴线）。该特征在形态分化后是否依然占据视觉主体（Volume Weight > 40%）？
+     - **尺度错觉防御**：形态描述词是否会引发扩散模型在微观（桌面级）与宏观（建筑级）之间的尺度漂移？必须通过 `[净尺寸需求 + 结构厚度容差 + 安全防护边界 = 最终输出数值]` 的显性算式硬校验。
+     - **功能 Legibility**：提示词第一段是否明确描述了定义该产品核心功能的关键宏观大部件与轴向？是否包含至少一个"功能暗示词"（如 patient cradle, scanning bore, control panel）确保 Lovart 模型识别正确品类？
+     - **禁止纯几何替代**：严禁用纯几何体（slab, cube, cylinder, ring）完全替代行业原型词。几何体只能作为形态修饰，不能作为语义主语。例如：❌ "A solid basalt slab" → ✅ "A monolithic MRI scanning enclosure with a 65cm bore cavity, surfaced in honed basalt"。
 
 ## 方向筛选
 
@@ -62,8 +67,8 @@ outputs:
 ## 表达与评审
 
 15. `STEP-15` 为三个完整方向分别生成追溯记录和压缩提示词。默认在三段提示词交付后停止；只有用户在当前请求中明确要求出图时，才进入图片生成与评审循环。**KB 反向链接（仅供提示词写作参考,严禁直接复制进 PromptBundle 破坏 prompt-contract 字符边界）**: `references/knowledge-base/02-设计方法论/02-Prompt协议.md`(关系命题/材料职责/触觉节点/时间检查的完整 Prompt 协议)+ `references/knowledge-base/07-视觉语料库/01-图像提示词库.md`(12 个产品的完整图像提示词语料,提供句式/词汇参考)+ `references/knowledge-base/08-优秀提示词搜集/02-进阶指南.md`(Prompt 进阶方法)+ `references/knowledge-base/08-优秀提示词搜集/03-实战模板.md`(8 个实战模板)+ `references/knowledge-base/附录Y-AI生成应用指南.md`(AI 生成应用与边界提示)。
-    - **STEP-15.5 [NEW · 2026-06-24 {{skill_version}}] 五维工业级提示词架构（5-Stage Industrial Prompt Schema）**：提示词必须放弃散文式叙述，强行切换为以下五维结构：
-      1. **阶段一：功能原型与轴向主量体（Functional Archetype & Axis）**：开篇第一句必须由"相机设置 + 明确的产品原型词（Archetype）"组成。用几何语言和物理方位词，明确界定"主驾驶/操作区"和"动力/功能输出源"，确立视觉重心与方向感。泛化公式：`Studio photograph of a [明确产品原型], featuring a highly visible [核心功能组件] defining its front orientation...`
+    - **STEP-15.5 [NEW · 2026-06-24 {{skill_version}}] 五维工业级提示词架构（5-Stage Industrial Prompt Schema）**：提示词必须放弃散文式叙述，强行切换为以下五维结构。注意：内部推理可使用 `[Layout Block X: ...]` 作为思维框架，但**最终输出必须删除所有 `[Layout Block X: ...]` 标记**，只保留内容，用空行分隔段落。详见 `references/cases/pitfall-048-code-block-text-marker-leak.md`。
+      1. **阶段一：功能原型与轴向主量体（Functional Archetype & Axis）**：开篇第一句必须由"相机设置 + 明确的产品原型词（Archetype）"组成。用几何语言和物理方位词，明确界定"主驾驶/操作区"和"动力/功能输出源"，确立视觉重心与方向感。**注意：此处的"原型词"是物理功能原型（如 manned flight vessel / espresso machine），不是品牌语境词。品牌语境必须移至阶段四处理。** 泛化公式：`Studio photograph of a [明确产品原型], featuring a highly visible [核心功能组件] defining its front orientation...`
       2. **阶段二：多材质职责链与对撞纹理（CMF Interlocking & Micro-Textures）**：严格禁止单一材质。必须采用"自然纹理"与"科技精密纹理"的交织对撞。使用 Lovart 模型最敏感的机械加工术语（CNC 微铣削、激光蚀刻渐变、注浆成型）来"逼出"细节。泛化公式：`Primary body made of [自然/哑光材质 + 微观纹理], directly interlocking with a secondary [精密金属/科技材质] accented by [微观科技纹理]...`
       3. **阶段三：3D 立体光学结构（Volumetric Lighting Structures）**：严禁使用 `flat LED light` 等平面词汇。必须引入"光学介质"与"实体结构"。将光线描述为被包裹在"三维光导管（3D light-pipe）"、"石英折射棱镜（refractive quartz prism）"或"带微幅槽线的立体腔体"内部的物理实体。泛化公式：`A recessed 3D linear light-guide tube, encased inside a micro-grooved frosted crystal channel, emitting a controlled, volumetric soft amber architectural glow...`
       4. **阶段四：设计谱系控制与反文字污染（Debranded Lineage Control）**：将具体品牌词 `LoveFrom 2030` 替换为抽象作画风格描述语，并加入严厉物理去品牌化指令。泛化公式：`...reflecting the pure minimalist design lineage of Jony Ive's aesthetic philosophy, strictly debranded, absolute zero alphanumeric text, no printed logos, seamless pristine surfaces.`
@@ -75,6 +80,27 @@ outputs:
       3. **禁止平面发光层**：全面废除 "LED line"、"glowing strip" 等词汇。必须强制编译为 3D 立体光学结构，指定具体物理容纳腔体与光学折射介质（如: recessed 3D linear light-guide tube encased inside a micro-grooved frosted quartz channel）。
       4. **原型 Legibility 校验**：提示词第一段必须明确描述定义该产品核心功能的关键宏观大部件与轴向（如飞行器的全景舱门与推进矢量轴），确保 Lovart 模型第一眼生成正确的物理功能原型。
       详见 `references/cases/pitfall-060-debranding-and-legibility.md`。
+    - **STEP-15.7 [NEW · 2026-06-24 {{skill_version}}] 高秩序工业细节加载协议（High-Order Industrial Detail Loading Protocol）**：针对复杂工业系统（医疗设备、精密仪器、重型机械），禁止产品表面"绝对虚无"。必须引入三级细节加载，将"克制"重新定义为"复杂被秩序收束"，而非"空白"。详见 `references/guides/prompt-engineering.md` 方法24-26。三级细节：
+      1. **认知状态指示层（Cognitive State UI）**：人机交互界面必须以"与材料表面完全平齐的、无缝集成的、微观排印的控制矩阵"形式融入产品。措辞：`Flush-integrated micro-typographic control zones embedded seamlessly into the surface. High-density micro-perforated dynamic display flush with the outer skin, exhibiting no decorative ornament when dormant.`
+      2. **法律与工程信任标签（Regulatory & Engineering Veracity）**：微型、激光雕刻、极高排印秩序的刻度线、警告图标、设备型号铭牌。措辞：`Sub-millimeter laser-etched scale markings, warning typography, and functional indicators aligned to a strict engineering grid, maintaining absolute typographic restraint.`
+      3. **制造工艺接口（Manufacturing Interface Detail）**：极其克制的零间隙接缝（0.3mm flush seams）、功能性丝印、盲用触觉定位点。措辞：`0.3mm tight engineering gaps, flawless structural split-lines serving as functional division of materials, precise parting lines showing uncompromising manufacturing rigor.`
+      4. **禁止绝对虚无**：提示词中必须包含至少一个上述三级细节层，不得只写 "no text, no logo" 后留空。
+    - **STEP-15.9 [NEW · 2026-06-25 {{skill_version}}] 五段式权重重组架构（Five-Layer Weighted Prompt Architecture）**：STEP-15 的输出结构必须严格重组为五大独立层级，按以下权重比例组织词组：
+      - **Layer A: 摄影环境与体量尺度控制 (Weight: 20%)** — 严禁在大件设备上使用小品级 studio 词汇。根据产品物理尺度动态选择摄影语料：
+        - 小型器物（< 30cm）：`Studio photograph, three-quarter view, macro detail shot`
+        - 中型设备（30cm - 1.5m）：`Studio photograph, three-quarter view, medium shot`
+        - 大型设备（> 1.5m）：`Architectural-grade studio composition, medium-long shot with orthogonal precision, grand volumetric presence`
+      - **Layer B: 拓扑原型与主几何秩序 (Weight: 30%)** — 锁死品类基本功能拓扑，维持物种视觉主体体量权重（Volume Weight > 40%）。必须包含：品类锚定词 + 不可缩减三大特征 + 主几何关系描述。
+      - **Layer C: 高秩序微观细节与丝印系统 (Weight: 15%)** — 规定丝印、按键、UI 在材料拓扑内的网格化存在状态。必须包含至少一个三级细节层（方法24-26）。
+      - **Layer D: 尺度材料职责与时间老化 (Weight: 20%)** — 基于 [material] for [specific function] 语法的三问闭环描述。必须区分：结构材料（刚性/屏蔽/承载）+ 交互材料（触觉/情感）+ 隐蔽接口材料（ unseen / aging）。
+      - **Layer E: 光影控制与复杂性负向排除 (Weight: 15%)** — 排除不受控的装饰噪音。禁止一刀切否定词（no text/no logo），改用"高秩序收束"描述（如 `whispered rather than screamed`）。
+      详见 `references/guides/prompt-engineering.md` 方法27（五段式权重重组）。
+    - **STEP-15.10 [NEW · 2026-06-25 {{skill_version}}] 防御性决策树（Fail-Safe Verification Gate）**：在最终输出提示词前，必须运行以下自动化审计分支逻辑：
+      - **规则1**：IF (Prompt 包含 "No text" OR "No logo") AND (Brief 属于高精密/医疗/工业品类) → 强制删除该绝对化否定词，重新调用【功能细节密度矩阵】，补齐 `flush-integrated micro-typographic text indicators` 描述。
+      - **规则2**：IF (Prompt 包含 "travertine" OR "obsidian" OR "walnut" OR "marble") AND (Brief 物理尺度 > 1.5m) → 强制拦截桌面级高端家居材质词，重新调用【大型设备材料职责库】，强制替换为 `medical-grade non-porous ceramic matrices` 或 `precision bead-blasted performance alloys`。
+      - **规则3**：IF (Prompt 缺少品类原型结构描述) → 强制打断，提取 Brief 中的原始物理拓扑名词，将 [A][B][C] 原型结构作为第一主语强行插入 Layer A 与 Layer B 中。
+      详见 `references/guides/fail-safe-verification-gate.md`。
+    - **STEP-15.8 [NEW · 2026-06-24 {{skill_version}}] 材料职责诚实性校验（Material Responsibility Honesty Check）**：禁止将建筑/家具材料（travertine, walnut, marble）用于重型精密医疗设备的外壳。材料必须承担功能职责，不能仅表达"高级感"。重型设备外壳必须使用工程复合材料、高刚性合金或医用级高分子，并指定具体工业精加工工艺。例如：❌ "travertine base" → ✅ "bead-blasted matte engineering composite enclosure, 40mm wall thickness, providing electromagnetic shielding and structural rigidity"。详见 `references/cases/pitfall-061-material-responsibility-violation.md`。
 
 **新增提示词输出要求**：
 - 最终提示词必须使用代码块显示；额外输出英文提示词（共 6 组代码块：3 中文 + 3 英文）
@@ -95,6 +121,9 @@ outputs:
 - **尺度缩放滤网（Scale Zoom Filter）**：宏观体量产品（载具/家具）自动抑制微观尺寸（<1mm），泛化为对比级视觉信号（hairline shadow line / high-contrast alignment split）。详见 `references/guides/prompt-engineering.md` 方法18。
 - **语义洗涤器（Semantic Sanitizer）**：提示词编译阶段强制过滤意识形态/艺术流派名词和情感暗示词。详见 `references/cases/pitfall-056-semantic-mimicry.md`。
 - **品类动态排除词（Category Dynamic Exclusion）**：根据 brief 品类自动绑定动态排除词，写入 Layout Block 5。详见 `references/cases/pitfall-058-category-dynamic-exclusion.md`。
+- **原型锚定与拓扑保护（Archetype Anchor & Topological Protection）**：复杂工业系统必须在提示词第一段保留品类原型词（如 MRI scanner / espresso machine / drone），禁止用纯几何体（slab/cube/cylinder）完全替代。详见 `references/guides/archetype-verification.md`。
+- **高秩序工业细节加载（High-Order Industrial Detail Loading）**：复杂工业系统必须在提示词中包含至少一个三级细节层（认知状态UI / 工程信任标签 / 制造工艺接口），禁止产品表面"绝对虚无"。详见 `references/guides/prompt-engineering.md` 方法24（认知状态UI层）、方法25（工程信任标签层）、方法26（制造工艺接口层）。
+- **材料职责诚实性（Material Responsibility Honesty）**：重型设备必须使用工程复合材料/高刚性合金/医用级高分子，禁止用建筑/家具材料（travertine/walnut/marble）。详见 `references/cases/pitfall-061-material-responsibility-violation.md`。
 - 参考 `references/guides/prompt-engineering.md` 方法13（简化法）、方法14（品类锚定法）和方法15（功能暗示法）
 - 参考 `references/guides/method15-functional-hint.md` 功能暗示详细指南
 - 参考 `references/cases/failure-patterns.md` 避免13个失败模式（品类锚定法）和方法15（功能暗示法）
@@ -110,7 +139,7 @@ outputs:
 
 ```markdown
 [Layout Block 1: 视角与空间锚定]
-Studio photograph, [精确视角，如 three-quarter view slightly above / eye-level dead-front view], of a single [产品中性核心词], LoveFrom 2030, shot on 35mm lens, pristine gallery lighting.
+Studio photograph, [精确视角，如 three-quarter view slightly above / eye-level dead-front view], of a single [产品中性核心词], [设计谱系描述，如 reflecting the pure minimalist design lineage of Jony Ive's aesthetic philosophy], shot on 35mm lens, pristine gallery lighting.
 
 [Layout Block 2: 核心拓扑与交接关系 (Visualized Intersect)]
 A solid [构件A材质] slab [物理交接动作，强制使用：recessed flush into / hovering exactly 10mm above with visual airgap / piercing through] a [构件B材质] base. Material transition controlled by absolute geometric alignment.

@@ -7,6 +7,7 @@ used_when:
   - PROMPT-COMPILATION
 called_by:
   - end-to-end-workflow.md (STEP-15.6)
+  - step-reference-map.md (STEP-15)
   - prompt-engineering.md 方法23
   - compile_prompt.py
 depends_on:

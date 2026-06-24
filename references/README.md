@@ -139,7 +139,10 @@ outputs:
 | **REF-GUIDE-CSM** | **[品类反偏见语境清洗机制](guides/context-sanitation-matrix.md)** | **category=guides · 8 品类通用反偏见矩阵 + 9 段编译位置 · 2026-06-24 审计师反馈** |
 | **REF-GUIDE-TDR** | **[几何降维归原协议](guides/topology-de-reduction.md)** | **category=guides · 强制从拓扑几何体出发,禁止已知产品形态 · 2026-06-24 审计师反馈** |
 | **REF-GUIDE-CSP** | **[工艺色谱协议](guides/craft-spectrum-palette.md)** | **category=guides · 颜色 4 元素(基础色+表面工艺+反射+触觉) · 2026-06-24 审计师反馈** |
-| **REF-GUIDE-AUDIT-24** | **[审计师反馈处理记录 2026-06-24](guides/audit-feedback-2026-06-24-prompt-architecture.md)** | **category=guides · Pitfall 026 处理协议 + 5 个新协议 + 诚实反查审计师灰背景错误 · 2026-06-24 审计师反馈** |
+| REF-GUIDE-AUDIT-24 | [审计师反馈处理记录 2026-06-24](guides/audit-feedback-2026-06-24-prompt-architecture.md) | category=guides · Pitfall 026 处理协议 + 5 个新协议 + 诚实反查审计师灰背景错误 · 2026-06-24 审计师反馈 |
+| **REF-GUIDE-ARCHETYPE** | **[行业原型锚定验证](guides/archetype-verification.md)** | **category=guides · 不可缩减三大形态特征 + 拓扑完备性 + 尺度错觉防御 + 功能 Legibility · 2026-06-24 MRI 审计触发** |
+| **REF-GUIDE-SCALE-CMF** | **[尺度自适应 CMF 与摄影编译算法](guides/scale-aware-cmf-compiler.md)** | **category=guides · 大/中/小三档尺度匹配 + 禁止桌面级材质用于大型设备 · 2026-06-25 审计触发** |
+| **REF-GUIDE-FAILSAFE** | **[防御性决策树（Fail-Safe Verification Gate）](guides/fail-safe-verification-gate.md)** | **category=guides · 三条自动化审计规则（否定词/材质尺度/原型丢失拦截）· 2026-06-25 审计触发** |
 | REF-GUIDE-010 | [Lovart 图片生成执行指南](guides/lovart-execution.md) | category=guides | used_when=IMAGE-GENERATION |
 | REF-GUIDE-010A | [用户设计方法论](guides/user-design-methodology.md) | category=guides |
 | REF-GUIDE-011 | [曲面设计规则 — 亮眼曲线与明确细节](guides/curve-design-rules.md) | category=guides | used_when=AESTHETIC-GATE |

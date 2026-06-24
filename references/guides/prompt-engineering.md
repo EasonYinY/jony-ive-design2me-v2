@@ -927,6 +927,10 @@ A recessed 3D linear light-guide tube, encased inside a micro-grooved frosted cr
 
 将具体品牌词 `LoveFrom 2030` 替换为抽象作画风格描述语，并加入严厉物理去品牌化指令，在分词阶段拦截模型的文字生成。
 
+**关键规则：品牌语境与物理原型词必须分离**
+- 阶段一（功能原型）**只描述物理功能原型**，绝不包含品牌/年份/设计师名字
+- 阶段四（设计谱系）**专门处理品牌语境**，用抽象谱系描述替代具体品牌词
+
 **泛化公式**：
 ```
 ...reflecting the pure minimalist design lineage of Jony Ive's aesthetic philosophy, strictly debranded, absolute zero alphanumeric text, no printed logos, seamless pristine surfaces.
@@ -937,6 +941,7 @@ A recessed 3D linear light-guide tube, encased inside a micro-grooved frosted cr
 - ❌ "Apple"
 - ❌ 任何具体年份数字
 - ❌ "Jony Ive style"（风格模仿，非谱系描述）
+- ❌ 在阶段一使用品牌语境词（详见 `references/cases/pitfall-061-brand-context-separation.md`）
 
 ### 阶段五：地面锚定与硬表面环境闭塞（Grounding & Hard-Surface AO）
 
@@ -1392,6 +1397,386 @@ Q6: 用户是否拍板?(防 pitfall-046)
 | 方法 11「5 层层次法」| 与方法 7 的结构对齐(Subject+Action+Location+Composition+Style) |
 | 新增方法 16 | **决策框架**,先选模型再选链路再选具体方法 |
 
+
+---
+
+## 方法24: 高秩序工业细节加载协议（认知状态UI层）
+
+### 原理
+
+针对复杂工业系统（医疗设备、精密仪器、重型机械），禁止产品表面"绝对虚无"。将"克制"重新定义为"复杂被秩序收束"，而非"空白"。人机交互界面必须以"与材料表面完全平齐的、无缝集成的、微观排印的控制矩阵"形式融入产品。
+
+### 核心措辞
+
+```
+Flush-integrated micro-typographic control zones embedded seamlessly into the surface. 
+High-density micro-perforated dynamic display flush with the outer skin, 
+exhibiting no decorative ornament when dormant.
+```
+
+### 应用规则
+
+1. 仅适用于复杂工业系统（医疗设备、精密仪器、重型机械、飞行器）
+2. 消费电子/日常用品不需要此层，保持"消失设计"
+3. 该层描述的是" dormant（休眠）状态"的界面，非激活状态
+4. 必须指定与主壳体材质的对比关系（如：阳极氧化铝壳体上的微孔陶瓷显示区）
+5. 禁止出现"screen""display panel""button"等平面词汇
+
+### 与其他方法的关系
+
+| 方法 | 关系 |
+|------|------|
+| 方法22（功能性孔口与秩序收束）| 方法24是方法22的UI/交互子层 |
+| 方法25（工程信任标签）| 方法24与方法25共同构成"三级细节"的前两级 |
+| 方法26（制造工艺接口）| 方法24-26共同构成完整的三级细节加载协议 |
+
+---
+
+## 方法25: 高秩序工业细节加载协议（工程信任标签层）
+
+### 原理
+
+工业产品的"法律与工程信任标签"不是视觉噪声，而是"被秩序收束的复杂"。微型、激光雕刻、极高排印秩序的刻度线、警告图标、设备型号铭牌，以亚毫米级精度融入产品表面，成为制造精度的视觉证据。
+
+### 核心措辞
+
+```
+Sub-millimeter laser-etched scale markings, warning typography, and functional indicators 
+aligned to a strict engineering grid, maintaining absolute typographic restraint.
+```
+
+### 应用规则
+
+1. 必须指定排版秩序（aligned to a strict engineering grid）
+2. 必须指定尺度（sub-millimeter / micro-etched）
+3. 必须指定制造方式（laser-etched / CNC-engraved / photo-etched）
+4. 禁止出现"sticker""label""printed text"等平面贴附词汇
+5. 警告图标必须融入几何秩序（如：三角形警告符号蚀刻在G2连续缝隙内）
+
+### 与其他方法的关系
+
+| 方法 | 关系 |
+|------|------|
+| 方法24（认知状态UI）| 方法25与方法24共同构成"三级细节"的前两级 |
+| 方法26（制造工艺接口）| 方法25-26共同构成完整的三级细节加载协议 |
+| 方法14（品类锚定法）| 方法25增强品类锚定法的"工程可信度"维度 |
+
+---
+
+## 方法26: 高秩序工业细节加载协议（制造工艺接口层）
+
+### 原理
+
+极其克制的零间隙接缝（0.3mm flush seams）、功能性丝印、盲用触觉定位点，是工业产品"诚实的结构表达"。接缝不是缺陷，而是制造精度的证据；分模线不是瑕疵，而是材料职责的边界。
+
+### 核心措辞
+
+```
+0.3mm tight engineering gaps, flawless structural split-lines serving as functional division of materials, 
+precise parting lines showing uncompromising manufacturing rigor.
+```
+
+### 应用规则
+
+1. 必须指定缝隙尺度（0.3mm / 0.5mm / hairline）
+2. 必须指定缝隙功能（structural division / thermal expansion / EMI shielding）
+3. 必须指定制造精度（flawless / zero-tolerance / CNC-milled）
+4. 禁止出现"seam""gap""joint"等无修饰词汇
+5. 缝隙必须服务于功能（材料分界、热膨胀、电磁屏蔽），不能是装饰性分缝
+
+### 与其他方法的关系
+
+| 方法 | 关系 |
+|------|------|
+| 方法24（认知状态UI）| 方法26与方法24共同构成"三级细节"的后两级 |
+| 方法25（工程信任标签）| 方法26与方法25共同构成完整的三级细节加载协议 |
+| 方法21（多材质职责链解耦）| 方法26是方法21的制造精度表达层 |
+
+---
+
+
+---
+
+## 方法27: 五段式权重重组架构（Five-Layer Weighted Prompt Architecture）
+
+### 原理
+
+针对高复杂度工业系统（医疗设备、重型机械、飞行器），将提示词从"散文式堆砌"重组为**五大独立层级**，每层按固定权重比例组织，确保：
+- 摄影语料与产品尺度匹配（防止小品级词汇用于大型设备）
+- 拓扑原型占据视觉主体（Volume Weight > 40%）
+- 微观细节以"秩序收束"形式存在（而非绝对虚无）
+- 材料职责与产品尺度匹配（防止桌面级材质用于大型设备）
+- 负面约束以"高秩序收束"描述（而非一刀切否定词）
+
+### 五段式结构
+
+```
+[Layer A: 摄影环境与体量尺度控制 — Weight: 20%]
+[Layer B: 拓扑原型与主几何秩序 — Weight: 30%]
+[Layer C: 高秩序微观细节与丝印系统 — Weight: 15%]
+[Layer D: 尺度材料职责与时间老化 — Weight: 20%]
+[Layer E: 光影控制与复杂性负向排除 — Weight: 15%]
+```
+
+### Layer A: 摄影环境与体量尺度控制 (20%)
+
+**规则**：根据产品物理尺度动态选择摄影语料，严禁在大件设备上使用小品级 studio 词汇。
+
+| 尺度分类 | 尺寸范围 | 摄影语料 |
+|---------|---------|---------|
+| 小型器物 | < 30cm | `Studio photograph, three-quarter view, macro detail shot` |
+| 中型设备 | 30cm - 1.5m | `Studio photograph, three-quarter view, medium shot` |
+| 大型设备 | > 1.5m | `Architectural-grade studio composition, medium-long shot with orthogonal precision, grand volumetric presence` |
+
+**错误示例**：对 2.5m 高的 MRI 设备使用 `Studio photograph, three-quarter view` → 模型压缩为桌面级尺度
+**正确示例**：`Architectural-grade studio composition, medium-long shot with orthogonal precision, exhibiting a grand volumetric presence of a 3T MRI scanner`
+
+### Layer B: 拓扑原型与主几何秩序 (30%)
+
+**规则**：锁死品类基本功能拓扑，维持物种视觉主体体量权重（Volume Weight > 40%）。
+
+**必须包含**：
+1. **品类锚定词**：明确的品类名称（如 `3T MRI scanner`, `autonomous cargo drone`, `espresso machine`）
+2. **不可缩减三大特征**：来自 `archetype-verification.md` 的三大形态特征
+3. **主几何关系描述**：特征之间的空间关系（如 `cylindrical bore cavity intersecting with horizontal patient bed`）
+
+**公式**：
+```
+The form strictly honors its [品类] archetype topology, dominated by a [特征A] and a [特征B], unified through [几何关系].
+```
+
+### Layer C: 高秩序微观细节与丝印系统 (15%)
+
+**规则**：规定丝印、按键、UI 在材料拓扑内的网格化存在状态。必须包含至少一个三级细节层（方法24-26）。
+
+**通用模板**：
+```
+All essential [operational nomenclature / warning labels / status interfaces] are flush-integrated into the surface with zero relief, strictly governed by a rigorous typographic grid, perfectly aligned to the [G2/G3 hairline parting lines], executed in [ultra-muted low-contrast tones], visible only upon physical proximity, whispered rather than screamed.
+```
+
+**禁止**：`No text, no logo, no status icons`（一刀切否定词）
+**改用**：`whispered rather than screamed`（高秩序收束描述）
+
+### Layer D: 尺度材料职责与时间老化 (20%)
+
+**规则**：基于 [material] for [specific function] 语法的三问闭环描述。必须区分三类材料职责：
+
+| 材料类型 | 职责 | 示例 |
+|---------|------|------|
+| **结构材料** | 刚性/屏蔽/承载/热管理 | `bead-blasted aerospace aluminum for structural rigidity and electromagnetic shielding` |
+| **交互材料** | 触觉/情感/人体工学 | `warm non-porous composite fabric on patient bed surface for physical comfort and dignity` |
+| **隐蔽接口材料** | unseen / aging / 维护 | `brushed titanium for bed rail mechanism, indicating care for the unseen, aging gracefully over a ten-year lifecourse` |
+
+**尺度匹配规则**：
+- 大型设备（> 1.5m）：禁止 `travertine`, `walnut`, `marble`, `obsidian` 等桌面级材质
+- 大型设备必须使用：建筑级/宏观工业级材料职责描述
+
+### Layer E: 光影控制与复杂性负向排除 (15%)
+
+**规则**：排除不受控的装饰噪音，但禁止一刀切否定词。
+
+**正确结构**：
+```
+Floats within a neutral, uniform environmental gradient. Subtle diffuse lighting creates soft wrapping highlights and deep, clean negative spaces that define the true relationship between forms. No chaotic sci-fi greebles, no decorative panel ribbing, no superficial luxury cliches, no floating abstract shapes detached from the functional archetype, pure purposeful industrial expression.
+```
+
+**禁止**：`No text, no logo, no screws`（绝对化否定）
+**改用**：`whispered rather than screamed`（秩序化收束）
+
+### 五段式编译示例（MRI 大型设备）
+
+```text
+[Layer A] Architectural-grade studio composition, medium-long shot with orthogonal precision, exhibiting a grand volumetric presence of a 3T magnetic resonance imaging scanner, defined by Lovart 2030 post-Apple Jony Ive design orthodoxy.
+
+[Layer B] The form strictly honors its medical archetype topology, dominated by a monolithic cylindrical main gantry housing the central bore cavity, and a horizontal patient transport bed seamlessly intersecting the core with G2 curvature continuity, sweeping tangents into the grounding base with zero-tolerance flush alignment.
+
+[Layer C] All essential operational nomenclature, micrometric typographic warning labels, zero-glare technical scales, and precision status bar interfaces are flush-integrated into the ceramic matrix with zero relief, strictly governed by a rigorous typographic grid, perfectly aligned to the hairline parting lines, executed in ultra-muted low-contrast slate gray tones, visible only upon physical proximity, whispered rather than screamed.
+
+[Layer D] Pristine medical-grade matte white ceramic for the grand structural gantry enclosure providing clinical confidence; warm, tactile non-porous composite fabric on the patient bed surface for physical comfort and dignity; brushed bead-blasted titanium for the structural bed rail mechanism indicating care for the unseen, aging gracefully over a ten-year lifecourse.
+
+[Layer E] Floats within a neutral, uniform light-gray environmental gradient. Subtle diffuse lighting creates soft wrapping highlights and deep, clean negative spaces that define the true relationship between forms. No chaotic sci-fi greebles, no decorative panel ribbing, no superficial luxury cliches, pure purposeful medical industrial expression.
+```
+
+### 五段式编译示例（鼠标 小型器物）
+
+```text
+[Layer A] Studio photograph, three-quarter view, macro detail shot of an ergonomic wireless mouse, defined by Lovart 2030 post-Apple Jony Ive design orthodoxy.
+
+[Layer B] The form strictly honors its pointing-device archetype topology, dominated by a monolithic palm-rest volume with a precisely recessed scroll wheel channel and two primary click surfaces, unified through a single continuous G2 curvature sweeping from the front lip to the rear heel.
+
+[Layer C] All essential operational indicators, micrometric LED status dots, and precision scroll wheel knurling are flush-integrated into the surface with zero relief, strictly governed by a rigorous geometric grid, perfectly aligned to the hairline parting lines, executed in ultra-muted low-contrast tones, visible only upon physical proximity, whispered rather than screamed.
+
+[Layer D] Bead-blasted matte aluminum for the primary structural shell providing thermal dissipation and structural rigidity; warm silicone composite for the side grip surfaces providing tactile comfort and anti-slip security; precision-machined stainless steel for the scroll wheel axle indicating care for the unseen, aging gracefully over a ten-year lifecourse.
+
+[Layer E] Floats within a neutral, uniform light-gray environmental gradient. Soft diffused lighting creates gentle wrapping highlights and deep, clean negative spaces. No chaotic RGB lighting, no decorative grooves, no superficial gaming cliches, pure purposeful industrial expression.
+```
+
+### 来源
+
+- 审计报告：2026-06-25 系统级重构审计（五段式权重重组架构）
+- 核心病灶：提示词散文式堆砌，缺乏层级权重控制
+- 根因分析：摄影语料与产品尺度不匹配，导致模型尺度漂移
+- 升级触发：用户审计报告"尺度自适应 CMF 与摄影编译算法"
+
+---
+
+## 方法28: 尺度自适应 CMF 与摄影编译算法（Scale-Aware CMF & Photographic Compiler）
+
+### 原理
+
+系统必须根据 Brief 输入的产品物理外形尺寸（定义大、中、小三档物理尺度），动态调用完全不同阶数的 CMF 语料与摄影透视控制语料。防止微观桌面级材质词导致模型反向压缩产品主体比例。
+
+### 三档物理尺度定义
+
+| 档位 | 尺寸范围 | 典型品类 | 摄影语料 | CMF 语料 |
+|------|---------|---------|---------|---------|
+| **小型** | < 30cm | 鼠标、耳机、手表、咖啡机 | `Studio photograph, three-quarter view, macro detail shot` | 桌面级材质：`walnut`, `travertine`, `obsidian`, `brushed brass` |
+| **中型** | 30cm - 1.5m | 显示器、打印机、医疗推车 | `Studio photograph, three-quarter view, medium shot` | 设备级材质：`bead-blasted aluminum`, `matte composite`, `tempered glass` |
+| **大型** | > 1.5m | MRI、CT、无人机、汽车 | `Architectural-grade studio composition, medium-long shot with orthogonal precision, grand volumetric presence` | 建筑级/工业级材质：`monolithic architectonic enclosures`, `precision bead-blasted performance alloys`, `structural architectural basalt anchors`, `high-grade acoustic dampening composite panels` |
+
+### 大型设备（> 1.5m）编译规则
+
+**禁止词**：严禁使用任何带有微观桌面摆件、手办、首饰倾向的材质描述：
+- ❌ `travertine base`
+- ❌ `small obsidian slab`
+- ❌ `micro hairline slit`
+- ❌ `walnut accent`
+- ❌ `marble inlay`
+
+**替代材料职责语料**：
+```
+Monolithic architectonic enclosures
+Precision bead-blasted performance alloys
+Structural architectural basalt anchors
+High-grade acoustic dampening composite panels
+Pristine medical-grade non-porous ceramic matrices
+```
+
+**摄影语料升阶**：
+```
+Architectural-grade studio composition
+Medium-long shot with orthogonal precision
+Grand volumetric presence
+Cinematic subtle diffuse environmental light
+Soft volumetric wrapping highlights revealing the monumental scale
+```
+
+### 中型设备（30cm - 1.5m）编译规则
+
+**摄影语料**：
+```
+Studio photograph, three-quarter view, medium shot
+Balanced environmental lighting
+Clear volumetric definition
+```
+
+**CMF 语料**：
+```
+Bead-blasted aluminum
+Matte engineering composite
+Tempered glass panel
+Precision-machined stainless steel accent
+```
+
+### 小型设备（< 30cm）编译规则
+
+**摄影语料**：
+```
+Studio photograph, three-quarter view, macro detail shot
+Intimate lighting revealing micro-textures
+Shallow depth of field
+```
+
+**CMF 语料**：
+```
+Walnut
+Travertine
+Obsidian
+Brushed brass
+Micro hairline slit
+```
+
+### 自动化尺度判定流程
+
+```
+STEP-1: 读取 Brief 物理尺寸（长×宽×高）
+STEP-2: 取最大维度作为尺度判定依据
+STEP-3: 判定档位：
+  IF max_dimension < 30cm → 小型档
+  IF 30cm <= max_dimension <= 1.5m → 中型档
+  IF max_dimension > 1.5m → 大型档
+STEP-4: 根据档位调用对应摄影语料库和 CMF 语料库
+STEP-5: 在提示词编译时强制替换禁用词
+STEP-6: 运行防御性决策树（方法29）验证
+```
+
+### 来源
+
+- 审计报告：2026-06-25 系统级重构审计（尺度自适应 CMF 与摄影编译算法）
+- 核心病灶：微观材质词导致模型反向压缩产品主体比例
+- 根因分析：缺乏尺度-材质-摄影的联动匹配机制
+- 升级触发：用户审计报告"尺度自适应 CMF 与摄影编译算法"
+
+---
+
+## 方法29: 防御性决策树（Fail-Safe Verification Gate）
+
+### 原理
+
+在最终输出提示词前，运行自动化审计分支逻辑，防止三类常见漂移：
+1. 绝对化否定词漂移（No text/logo 用于高精密设备）
+2. 材质尺度错配漂移（桌面级材质用于大型设备）
+3. 原型丢失漂移（品类锚定词缺失）
+
+### 决策树规则
+
+**规则1：绝对化否定词拦截**
+```
+IF (Prompt 包含 "No text" OR "No logo" OR "No status icons" OR "No warning labels") 
+   AND (Brief.Category ∈ {医疗设备, 精密仪器, 重型机械, 工业设备}) 
+THEN
+   强制删除该绝对化否定词
+   重新调用【功能细节密度矩阵】
+   补齐 "flush-integrated micro-typographic text indicators" 描述
+   输出：Layer C 高秩序微观细节描述
+```
+
+**规则2：材质尺度错配拦截**
+```
+IF (Prompt 包含 "travertine" OR "obsidian" OR "walnut" OR "marble" OR "small slab") 
+   AND (Brief.PhysicalScale.MaxDimension > 1.5m) 
+THEN
+   强制拦截桌面级高端家居材质词
+   重新调用【大型设备材料职责库】
+   强制替换为：
+     - "medical-grade non-porous ceramic matrices"
+     - "precision bead-blasted performance alloys"
+     - "monolithic architectonic enclosures"
+   输出：Layer D 尺度材料职责描述
+```
+
+**规则3：原型丢失拦截**
+```
+IF (Prompt 缺少品类锚定词) 
+   OR (Prompt 缺少不可缩减三大特征描述)
+   OR (Prompt 使用纯几何体替代品类词: "slab", "cube", "cylinder", "ring", "plate")
+THEN
+   强制打断
+   提取 Brief 中的原始物理拓扑名词
+   将 [A][B][C] 原型结构作为第一主语强行插入 Layer A 与 Layer B
+   输出：修正后的 Layer A + Layer B
+```
+
+### 执行时机
+
+在 STEP-15 提示词编译完成后、最终输出前，必须运行防御性决策树。任一规则触发 → 自动修正 → 重新编译 → 再次验证，直至全部通过。
+
+### 来源
+
+- 审计报告：2026-06-25 系统级重构审计（防御性决策树）
+- 核心病灶：提示词漂移导致生成结果不可识别
+- 根因分析：缺乏自动化审计机制
+- 升级触发：用户审计报告"三级单点测试防御性决策树"
 ---
 
 ## 来源

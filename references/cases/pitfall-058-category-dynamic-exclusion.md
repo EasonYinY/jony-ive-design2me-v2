@@ -42,7 +42,8 @@ outputs:
 | 消费电子 | `glossy plastic, LED strips, decorative grooves, tech-grid pattern, circuit board aesthetic` |
 | 家具 | `rustic texture, farmhouse style, ornate carving, vintage distressing` |
 | 穿戴设备 | `sporty silicone, fitness tracker aesthetic, neon accents, rubberized coating` |
-| 医疗设备 | `clinical white, hospital aesthetic, sterile plastic, institutional look` |
+| 医疗设备 | `clinical white, hospital aesthetic, sterile plastic, institutional look, warning labels, visible tubing, adjustment knobs, medical cross symbols, blue accent strips` |
+| 大型医疗设备（MRI/CT/放疗） | `clinical white, hospital aesthetic, sterile plastic, institutional look, warning labels, visible tubing, adjustment knobs, medical cross symbols, blue accent strips, glossy plastic shell, exposed cabling, industrial grating, dangling cables, fluorescent tube lighting, beige plastic panels, rubber bumpers, caution tape yellow` |
 
 ## 检查清单
 

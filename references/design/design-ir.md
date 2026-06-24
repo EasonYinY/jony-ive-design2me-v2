@@ -47,6 +47,9 @@ outputs:
 | **`functional_zones`** | **功能区列表**（当前版本 新增 · 2026-06-23 咖啡机任务触发） | **≥ 3 个**（complex product ≥ 5 个），每个写明名称、位置、尺寸、可见性、与相邻区接缝 |
 | **`interior_visibility`** | **内部结构可见性** | 哪些功能区可见（半透明/外露/可拆）、哪些隐藏（≥ 1 个功能区应可见，对应艾维"诚实结构"） |
 | **`inter_zone_seams`** | **区间接缝信号** | 每两个功能区之间的接缝类型（chamfer / parting line / material switch / gasket / light strip / magnetic line） |
+| **`archetype_features`** | **行业原型三大特征**（当前版本 新增 · 2026-06-24 审计报告触发） | 当 Brief 属于复杂工业系统时，必须列出该品类的【不可缩减三大形态特征】（Irreducible Archetype Features），确保形态分化不会切断与品类原型的语义联系。详见 `references/guides/archetype-verification.md` |
+| **`detail_loading_protocol`** | **三级细节加载协议**（当前版本 新增 · 2026-06-24 审计报告触发） | 针对复杂工业系统，必须指定至少一个三级细节层：①认知状态UI层（Flush-integrated micro-typographic control zones）②工程信任标签层（Sub-millimeter laser-etched scale markings）③制造工艺接口层（0.3mm tight engineering gaps）。详见 `references/guides/prompt-engineering.md` 方法24-26 |
+| **`material_responsibility`** | **材料职责诚实性**（当前版本 新增 · 2026-06-24 审计报告触发） | 重型设备外壳材料必须承担功能职责（电磁屏蔽/结构刚性/热管理），禁止仅表达"高级感"。必须使用工程复合材料/高刚性合金/医用级高分子，并指定具体工业精加工工艺。详见 `references/cases/pitfall-061-material-responsibility-violation.md` |
 
 所有字段必须为非空文本；`distinctive_features` 必须是非空且不可变的文本元组。
 

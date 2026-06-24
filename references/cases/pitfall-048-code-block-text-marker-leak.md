@@ -58,7 +58,44 @@ Studio photograph, three-quarter view slightly above...
 STEP-15 输出提示词时：
 - **禁止**使用 ` ```text ` 或 ` ```txt ` 等带语言标记的代码块
 - **必须使用**无语言标记的纯代码块：` ``` `（三个反引号，无后缀）
+- **禁止**使用 ` ```markdown ` 标记，原因同上（`markdown` 词会泄漏到提示词内容中）
 - 或使用行内代码格式（不推荐，提示词较长时）
+
+### 内部结构标签泄漏（2026-06-25 MRI 任务新发现）
+
+**现象**：STEP-15 使用五段式物理空间协议（Layout Block 1-5）作为内部推理结构，但 `[Layout Block X: ...]` 标记被错误输出到最终提示词中。
+
+**错误示例**：
+```
+❌ 错误输出（结构标签泄漏）:
+[Layout Block 1: 视角与空间锚定]
+Studio photograph, three-quarter view slightly above...
+
+[Layout Block 2: 核心拓扑与交接关系]
+A solid honed basalt slab...
+```
+→ 用户复制时包含 `[Layout Block X: ...]` 标记
+→ AI 图像生成模型接收异常前缀
+
+**修复**：
+1. **内部推理阶段**可使用 `[Layout Block X: ...]` 作为思维框架
+2. **最终输出阶段**必须删除所有 `[Layout Block X: ...]` 标记
+3. 只保留五段式协议的**内容**，不保留标签
+4. 每段之间用**空行**自然分隔，不用标签分隔
+
+**正确示例**：
+```
+✅ 正确输出（无标签，纯内容）:
+Studio photograph, three-quarter view slightly above, of a single next-generation dry-magnet 3T MRI scanner...
+
+A solid honed basalt slab, 250cm long and 40cm thick...
+
+G2 fillet edges around the aperture...
+
+Integrated tactile surface nodes...
+
+No text, no branding, no visible screws...
+```
 
 ### 用户端（复制时）
 
@@ -70,6 +107,8 @@ STEP-15 输出提示词时：
 
 - [ ] STEP-15 输出代码块是否使用了 ` ```text `？→ 改为 ` ``` `
 - [ ] 提示词是否以 `text` 开头？→ 删除
+- [ ] 提示词是否以 `markdown` 开头？→ 删除（` ```markdown ` 标记泄漏）
+- [ ] 提示词是否包含 `[Layout Block X: ...]` 标记？→ 删除
 - [ ] 提示词是否以正确的摄影语法开头？→ `Studio photograph` / `Product shot` / `A...`
 
 ## 来源

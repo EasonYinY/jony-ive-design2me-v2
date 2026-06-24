@@ -1,7 +1,7 @@
 ---
 name: jony-ive-design2me-v2
 description: 以证据驱动的十五步产品设计工作流，逐步显式交付可审计判断、三个本质不同的完整方向、DesignIR、审美质量门和可追溯中文绘画提示词，并默认在提示词处停止、不生成图片。适用于工业设计、图片评审、提示词改写、设计理念、UI/UX、服务、组织、穿戴、模块化任务，以及用户基于结果提出意见后要求继续优化本技能的场景；不进行人物扮演或表面风格模仿。
-version: 3.5.2
+version: 3.5.3
 author: EasonYinY
 license: MIT
 metadata:
@@ -19,7 +19,8 @@ metadata:
 > **升级历史**: 见 `references/changelogs/`(每个版本独立文件,0 删除)。  
 > **外部知识库镜像**: 见 `references/knowledge-base/README.md` + `SHA256SUMS.txt`。  
 > **文件卫生铁律**: `references/file-hygiene.md`(SKILL.md 严禁 9 类内容)。  
-> **本版本关键变更与触发原因**: `references/changelogs/v3.5.2-changelog.md`（审计驱动：4 硬协议 + 4 新方法 + 模型适配层重构）。
+> **本版本关键变更与触发原因**: `references/changelogs/v3.5.2-changelog.md`（审计驱动：4 硬协议 + 4 新方法 + 模型适配层重构）。  
+> **复杂工业系统升级（2026-06-24/25 双审计）**: `references/changelogs/v3.5.3-changelog.md` — 原型锚定门 + 高秩序细节加载 + 五段式权重重组 + 尺度自适应 CMF + 防御性决策树。详见 `references/guides/archetype-verification.md` + `references/guides/scale-aware-cmf-compiler.md` + `references/guides/fail-safe-verification-gate.md`。
 > **动态变量协议铁律**: `references/file-hygiene.md` § 8.6 + `references/cases/pitfall-053-dynamic-version-variable-pitfalls.md`(占位符永不渲染 + v 前缀陷阱 + bash 3.2 兼容)。
 
 ## 启动顺序
