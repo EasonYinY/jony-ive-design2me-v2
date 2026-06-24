@@ -6,7 +6,7 @@ used_when:
   - STEP-04
   - STEP-10
 called_by:
-  - end-to-end-workflow.md
+  - end-to-end-workflow.md (STEP-04.5)
   - prompt-engineering.md
 depends_on:
   - REF-PROCESS-001

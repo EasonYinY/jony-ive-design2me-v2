@@ -1,5 +1,5 @@
 ---
-reference_id: REF-RESEARCH-001
+reference_id: REF-RESEARCH-001-LEGACY
 title: Nano Banana Pro / 2 模型能力调研 (Lovart 路由)
 category: research
 used_when:
