@@ -24,7 +24,9 @@ outputs:
 2. `STEP-02` 区分事实、推断、假设、未知项和禁止内容。**KB 反向链接**: `references/knowledge-base/00-大脑架构总览.md`(五维联动: 核心理念/规则体系/工具基建/执行技巧/环境时机)+ `references/knowledge-base/05-价值观哲学/02-五维联动.md`(五维映射详述)+ `references/knowledge-base/01-认知框架/01-世界观与信念.md`(7 个核心信念,可作为 Brief 解析的事实锚点)。
 3. `STEP-03` 用行为与关系重写 brief。**新增用户明确要求显性化**：若用户提出明确风格/感觉要求（如"科技感""简洁风""复古感"），必须在该步骤显性拆解为可执行的设计方向定义（形态特征、材料选择、工艺表达、视觉语言、触感暗示、交互反馈），不得简单带过或仅作为标签粘贴。参考 `references/guides/user-requirement-disassembly.md`。**KB 反向链接**: `references/knowledge-base/03-产品案例库/01-核心案例CPSO.md`(5 个 CPSO 格式案例: Airbnb / Moncler / Balmuda / Linn / Terra Carta,展示完整 Brief → 关系命题重写)+ `references/knowledge-base/03-产品案例库/03-深化案例判断逻辑.md`(决策树 + 常见误区 + 反推验证,Step-03 判断的核心参考)。
 4. `STEP-04` 建立可测量的物理与人体事实。新增强制字段：①使用时的身体部位及关键尺寸范围（基于人体测量数据）；②接触方式（握持/佩戴/贴靠/滑动）；③典型动作轨迹；④最优接触角度/力度（如有公开研究）。**KB 反向链接**: `references/knowledge-base/02-设计方法论/01-核心16法.md` §1-§3(关系命题编写 / 触觉节点 / 人体事实的 16 法具体方法,可作为 STEP-04 字段模板的源头参考)。
+   - **STEP-04.5 [NEW · 2026-06-24 {{skill_version}}] 空间包络硬验证（Spatial Package Validation Matrix）**：在 STEP-04 尾部强制增加体积与包络估算。任何形态生成前的尺寸必须通过 `[净尺寸需求 + 结构厚度容差 + 安全防护边界 = 最终输出数值]` 的显性算式硬校验。载具类公差 ±10%，电子设备 ±0.5mm。未通过校验的尺寸必须标注 `UNVALIDATED` 并回退重新推导。详见 `references/cases/pitfall-055-scale-fact-disconnect.md`。
 5. `STEP-05` 提炼必须解决的核心矛盾。新增反形态预设检查：关系模式必须描述"动作"而非"形态"；若直接对应已知产品形态（如指环=智能戒指、半球=美容仪、轨道=工业设备），退回 STEP-04 重新推导。**KB 反向链接**: `references/knowledge-base/02-设计方法论/01-核心16法.md` §4-§6(核心矛盾提炼 / 材料职责 / 时间检查的具体方法)。
+   - **STEP-05.5 [NEW · 2026-06-24 {{skill_version}}] 语义洗涤器（Semantic Sanitizer）**：禁止以下两类词汇进入形态推导：① 意识形态/艺术流派名词（如：侘寂、赛博朋克、孟菲斯、极简主义）；② 情感暗示词（如：手工感、温暖感、陌生感、充满信任）。所有形态表达必须通过几何曲率（G2/G3 Continuity）、部件交接（Recessed/Flush/Suspended）和材料物理特性（Tensile/Compressive/Translucent）进行高维泛化重写。详见 `references/cases/pitfall-056-semantic-mimicry.md`。
 
 ## 方向筛选
 
@@ -35,7 +37,9 @@ outputs:
    - **STEP-06.3 [NEW · 2026-06-24 {{skill_version}}] 拓扑去同质化断路器**：在候选生成前，**必须列出四个物理叙事坐标（Monolithic Slab / Monocoque Tension Shell / Volumetric Subtraction / Tensegrity）**，并确保每个候选来自**不同的物理叙事坐标**。禁止两个候选共享同一坐标。禁止依赖"环、圈、格栅、阵列"等科幻陈词滥调。形态必须从"人与产品的关系"中自然浮现，而非抓取既有符号。必须考虑"不被看见的部分"（底面接合线、铰链、进气口边缘倒角）。详见 `references/cases/pitfall-034-direction-homogenization.md` {{skill_version}}。
    - 功能验证：每个候选必须回答"该形态能完成核心功能吗？""关键构件的可及性（清洁/更换/维修）如何？""静息状态（存放/充电/维护）合理吗？""功能区视觉上是否被表达（≥ 3 段视觉信号）？"任一答案为否，否决该候选。**KB 反向链接**: `references/knowledge-base/附录V-跨领域迁移指南.md`(跨领域迁移模式 + transfer 协议,可作为 STEP-06 候选生成的扩展灵感)。
 7. `STEP-07` 依次检查物理、法规、制造、成本、寿命和审美约束。
+   - **STEP-07.5 [NEW · 2026-06-24 {{skill_version}}] 断路器自闭环（Circuit Breaker Self-Loop）**：若在 STEP-07/08 中否决候选导致剩余候选不足 3 个，**禁止就地修改死地方案或临时编造新方案**。工作流必须强制回退（Re-entry）至 STEP-06.1，修改基础排布变量，重新生成全新的候选集合，并完整重新跑一遍 STEP-07/08 约束级联。详见 `references/cases/pitfall-057-illegal-reskinning-loop.md`。
 8. `STEP-08` 检查品类俗套、旧失败和无依据形态模仿。**KB 反向链接**: `references/knowledge-base/02-设计方法论/03-误用风险清单.md`(完整误用风险清单)+ `references/knowledge-base/03-产品案例库/02-辅助案例.md`(7 个辅助案例)+ `references/knowledge-base/03-产品案例库/03-背景案例.md`(4 个背景案例)+ `references/knowledge-base/附录X-反例与边界案例库.md`(反例与边界案例库,展示反例识别模式)。
+   - **STEP-08.5 [NEW · 2026-06-24 {{skill_version}}] 品类动态排除词（Category Dynamic Exclusion）**：根据 brief 品类自动绑定动态排除词。例如：飞行器 brief → 自动将 `sci-fi wings, glowing thrusters, aerodynamic decals, transparent dome, cybernetic rings` 写入绝对排除项；消费电子 brief → 自动将 `glossy plastic, LED strips, decorative grooves` 写入排除项。详见 `references/cases/pitfall-058-category-dynamic-exclusion.md`。
 9. `STEP-09` 用六轴差异门筛选三个可继续方向；不足三个时重新生成。**KB 反向链接**: `references/knowledge-base/03-产品案例库/03-深化案例判断逻辑.md`(决策树: 候选 → 通过/退回的判断路径,Step-09 差异门的判断依据)。
 
 ## 方向展开
@@ -65,6 +69,10 @@ outputs:
 - **纯白背景**：neutral gradient 或 pure white
 - **层次描述法**：必须按"大造型→部件关系→CMF→细节特征→画面整体"5层顺序描述
 - **轻重缓急与点睛之笔**：每个方向必须有1-2个显性焦点、2-3个隐性细节、1个惊喜/暖心时刻
+- **视觉等效洗涤（Visual Equivalent Wash）**：STEP-12 材料职责矩阵中的工程账本数据（寿命、制造方式、维护方式）**禁止直接注入提示词**。必须通过视觉等效编译转化为光学物理表征（IOR/Roughness/Anisotropy/Micro-texture）。详见 `references/guides/prompt-engineering.md` 方法17。
+- **尺度缩放滤网（Scale Zoom Filter）**：宏观体量产品（载具/家具）自动抑制微观尺寸（<1mm），泛化为对比级视觉信号（hairline shadow line / high-contrast alignment split）。详见 `references/guides/prompt-engineering.md` 方法18。
+- **语义洗涤器（Semantic Sanitizer）**：提示词编译阶段强制过滤意识形态/艺术流派名词和情感暗示词。详见 `references/cases/pitfall-056-semantic-mimicry.md`。
+- **品类动态排除词（Category Dynamic Exclusion）**：根据 brief 品类自动绑定动态排除词，写入 Layout Block 5。详见 `references/cases/pitfall-058-category-dynamic-exclusion.md`。
 - 参考 `references/guides/prompt-engineering.md` 方法13（简化法）、方法14（品类锚定法）和方法15（功能暗示法）
 - 参考 `references/guides/method15-functional-hint.md` 功能暗示详细指南
 - 参考 `references/cases/failure-patterns.md` 避免13个失败模式（品类锚定法）和方法15（功能暗示法）
@@ -80,20 +88,26 @@ outputs:
 
 ```markdown
 [Layout Block 1: 视角与空间锚定]
-Studio photograph, [视角，如 three-quarter view slightly above / eye-level dead-front view], of a single [产品中性核心词], LoveFrom 2030, post-Apple Jony Ive.
+Studio photograph, [精确视角，如 three-quarter view slightly above / eye-level dead-front view], of a single [产品中性核心词], LoveFrom 2030, shot on 35mm lens, pristine gallery lighting.
 
-[Layout Block 2: 核心拓扑与材质职责 (Material Duty)]
-[主要构件材质] slab/shell [物理动作，如 suspended over / flush integrated into] a [基座材质] base, [次要材质] [物理交接状态，如 flush in / recessed into].
+[Layout Block 2: 核心拓扑与交接关系 (Visualized Intersect)]
+A solid [构件A材质] slab [物理交接动作，强制使用：recessed flush into / hovering exactly 10mm above with visual airgap / piercing through] a [构件B材质] base. Material transition controlled by absolute geometric alignment.
 
-[Layout Block 3: 极致几何与切线控制 (G2 Fillet & Tangent)]
-G2 fillet edges, sweeping tangent into [交接面], [精确微观尺寸描述，如 0.5mm hairline seam / hairline amber LED slit].
+[Layout Block 3: 极致几何与切线控制 (Micro-Geometry)]
+G2 fillet edges, sweeping tangent into surfaces, [微观物理交接线，强制使用：0.3mm crisp hairline split-line / zero-tolerance sealed joint / continuous unbroken perimeter shadow].
 
-[Layout Block 4: 消失设计与行为触点 (Vanishing & Tactile Node)]
-[材质] tactile node [功能，如 for physical override] positioned at [精确位置]. Unseen elements perfectly aligned. Floats. Neutral gradient.
+[Layout Block 4: 消失设计与行为触点 (Vanishing Element)]
+Integrated tactile surface node for human interface, flush with the main body, perfectly vanishing when not in use. Light interaction defines the forms. Shadow reveals the negative spaces. Neutral uniform gradient background.
 
 [Layout Block 5: 绝对排除项 (Negative Filter)]
-No logo, no text, no visible screws, no visible joints, no redundant mechanical decoration, no sci-fi rings.
+No text, no branding, no visible screws, no status icons, no cybernetic patterns, no sci-fi mechanical ribbing, no background props, no ground reflections, no decorative lines.
 ```
+
+**V3.0 升级说明（2026-06-24 {{skill_version}}）**：
+- Block 2 材质职责 → 核心拓扑与交接关系（Visualized Intersect），强制使用物理交接动作词（recessed flush into / hovering exactly 10mm above with visual airgap / piercing through）
+- Block 3 精确微观尺寸 → 微观物理交接线（强制使用 hairline split-line / zero-tolerance sealed joint / continuous unbroken perimeter shadow），避免宏观体量与微观尺寸语义冲突
+- Block 4 Floats → 消失设计与行为触点（Vanishing Element），用"Light interaction defines the forms"替代"Floats"，避免水面漂浮次生幻觉
+- Block 5 新增 `no cybernetic patterns, no sci-fi mechanical ribbing, no background props, no ground reflections, no decorative lines`
 
 **禁止词滤网（绝对禁止进入Prompt）**：
 - ❌ futuristic, sleek, cybernetic, sci-fi, high-tech
@@ -101,12 +115,16 @@ No logo, no text, no visible screws, no visible joints, no redundant mechanical 
 - ❌ sense of safety, feeling of trust, emotional connection
 - ❌ spinning slowly, gently hovering, gracefully flying
 - ❌ white matte plastic shell, transparent glass window（材料贴图化）
+- ❌ 意识形态/艺术流派名词（侘寂、赛博朋克、孟菲斯、极简主义）
+- ❌ 情感暗示词（手工感、温暖感、陌生感、充满信任）
 
 **材料职责强制格式**：材料名称 | 结构职责 | 触感职责 | 制造方式 | 寿命 | 维护方式
 
 **新增"不被看见的部分"强制描述**：底面接合线、铰链、进气口边缘倒角、隐藏接口等必须在Layout Block 2或Block 4中描述。
 
 材料描述必须使用"材料职责"格式：材料名称 | 结构职责 | 触感职责 | 制造方式 | 寿命 | 维护方式。
+
+**视觉等效编译强制要求**：compile_prompt.py 在编译时自动执行视觉等效洗涤（方法17）和尺度缩放滤网（方法18），将材料职责转化为光学物理表征，删除工程噪音词。
 
 ## 执行模式约定
 

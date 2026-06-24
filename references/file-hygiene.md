@@ -290,6 +290,60 @@ ls -d ../{skill-name}-BACKUP* 2>/dev/null
 grep -rE "v[0-9]+\.[0-9]+(\.[0-9]+)?" references/ --include="*.md" | grep -v "references/changelogs/" | wc -l
 ```
 
+### 8.6 动态变量协议(2026-06-24 v3.5.1 修正版)
+
+> **核心原则**:`references/` 字面永远保留 `{{skill_version}}` 占位符,**绝不**在源文件中渲染为版本号字面。`scripts/render-version.sh` 只输出 `--preview` 或 `--export <dir>`,**不修改任何源文件**。
+
+#### v3.4.0 设计 bug(已修正,记录备查)
+
+早期版本设计:
+- 第一版 render-version 把 `{{skill_version}}` 替换为字面并写回 references
+- 下次 bump 时 references 字面已过期,需再次批量替换
+- `SKILL_VERSION` 提取时缺 `v` 前缀,导致 `v3.4.0` 被渲染为无前缀的 `3.4.0`
+
+#### v3.5.1 正确协议(必须遵守)
+
+| 项 | 状态 |
+|---|---|
+| SKILL.md frontmatter `version:` | **唯一真实版本号(SSOT)** |
+| `references/changelogs/v{X.Y.Z}-changelog.md` 文件名 | **历史记录**(0 删除) |
+| `references/` / `scripts/` 字面 | **永远保留 `{{skill_version}}` 占位符** |
+| `render-version.sh` | 只 `--preview`(stdout) / `--export <dir>`,**不修改源** |
+| bump 版本流程 | `sed -i '' 's/version: X.Y.Z/version: A.B.C/' SKILL.md` → 完成 |
+
+#### v 前缀陷阱(必须显式处理)
+
+`SKILL_VERSION=$(grep '^version:' SKILL.md | sed 's/version:\s*//' | tr -d '[:space:]')` 拿到的是裸数字如 `3.5.1`,**无 v 前缀**。脚本必须显式加回:
+
+```bash
+case "$SKILL_VERSION" in
+    v*) FULL_VERSION="$SKILL_VERSION" ;;
+    *)  FULL_VERSION="v$SKILL_VERSION" ;;
+esac
+```
+
+否则下游 `sed s/{{skill_version}}/$SKILL_VERSION/g` 会渲染出无 `v` 字面(如 `本技能 3.4.0`),污染语义。
+
+#### 历史例外文件(必须保留 {{skill_version}} 占位符)
+
+- **changelogs/v{X.Y.Z}-changelog.md** — 文件名锁版本号语义,**绝不**改文件名
+- **knowledge-base/** — 用户原文字节级镜像
+- 元文件(pitfall-049-B / pitfall-052 / file-hygiene / known-gaps)中的**v1.3.1-changelog / v4.1 / 历史 BACKUP 路径示例** — 讲历史案例必须保留字面
+
+#### 永久占位符(脚本自身)
+
+`scripts/render-version.sh` 内部必须保留 `{{skill_version}}` 字面用于自检(防止自指死锁)。该文件加 `ALLOWED_PATHS` 白名单豁免版本号污染检查。
+
+### 8.7 bash 3.2 兼容(2026-06-24)
+
+macOS 默认 bash 是 3.2.57(GPLv2,不升 GPLv3),不支持:
+- `declare -A` 关联数组
+- `mapfile` / `${var,,}` 等 bash 4+ 特性
+
+**禁用模式**:`declare -A RESULTS=(...)` — 在 macOS 上默默失败为索引数组,自检 `code="${RESULTS[foo]}"` 拿到错误值。
+
+**替代方案**:用平行普通数组 + 索引查找(`SCRIPT_NAMES[i]` / `EXIT_CODES[i]`)。
+
 ## 违规处理（保留原段）
 
 发现违反铁律的内容时：

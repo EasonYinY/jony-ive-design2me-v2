@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 # render-version.sh — 预览/导出渲染结果(SKILL.md frontmatter version → {{skill_version}} 占位符)
 #
-# 设计原则(2026-06-24 修正版):
-#   - references/ 字面永远保留 {{skill_version}},**不**在源文件中替换为版本号
-#   - SKILL.md frontmatter version 是单一真实版本号源(SSOT)
-#   - bump 版本 = 改 SKILL.md frontmatter → 完成(零修改其他文件)
-#   - 本脚本的用途:
-#       ① --preview:输出渲染预览(用于 Lovart 出图、文档展示)
-#       ② --export <dir>:把渲染结果写到 export 目录(用于分发出图包)
-#       ③ 无参数:仅显示 SKILL.md 当前版本号 + 渲染计数(不修改任何文件)
+# 铁律(2026-06-24 v3.5.1 修正版,详见 file-hygiene.md 铁律 8.6 + cases/pitfall-053):
+#   1. 占位符 {{skill_version}} 在 references/ 和 scripts/ 源文件中**永不**被替换为字面
+#   2. 渲染只在 --preview(stdout) / --export <dir>(新文件) 时执行
+#   3. SKILL.md frontmatter version 是 SSOT,bump 版本 = 改 SKILL.md 一处 → 完成
+#   4. SKILL_VERSION 提取后必须显式 case 分支加 v 前缀(否则渲染出无 v 字面)
 #
-# 历史变更:
-#   v3.4.0: 第一版 — 设计有 bug(渲染后占位符消失,bump 时需再次替换)
-#   v3.5.1: 修正版 — references/ 字面永远保留 {{skill_version}},脚本只输出,不修改源
+# 早期版本(v3.4.0)的 bug 教训:
+#   - 占位符渲染后写回源文件 → 下次 bump references 字面过期 → 需再次批量替换
+#   - 违反"永远不需要修改 references/"的用户约束
+#   修正后:占位符永远保留在源文件,渲染只输出,不改源
+#
+# 用法:
+#   bash scripts/render-version.sh [SKILL_ROOT]                     # 状态查询
+#   bash scripts/render-version.sh [SKILL_ROOT] --preview           # 输出渲染预览到 stdout
+#   bash scripts/render-version.sh [SKILL_ROOT] --export <dir>      # 导出到目录(镜像结构)
+#
+# 自指死锁:本脚本自身必须保留 {{skill_version}} 字面用于自检残留,加 ALLOWED_PATHS 白名单
 #
 # 退出码:
 #   0 = 成功

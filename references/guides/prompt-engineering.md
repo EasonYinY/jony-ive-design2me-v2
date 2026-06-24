@@ -612,6 +612,166 @@ Floats. Neutral gradient. Pure white background.
 
 ---
 
+## 方法17: 视觉等效洗涤（Visual Equivalent Wash）
+
+> **版本**: 1.0
+> **日期**: 2026-06-24
+> **触发**: 审计报告发现 STEP-12 材料职责矩阵中的工程账本数据（寿命、制造方式、维护方式）直接注入提示词，对 Nano Banana Pro 造成语义噪音
+
+### 原理
+
+AI 图像生成模型无法解析工程管理信息（"寿命 20 年""热压罐成型""超声波检测"）。这些词汇会被错误具象化为陈旧纹理、工业背景或无关元素。必须将材料职责转化为模型可识别的光学物理表征。
+
+### 视觉等效编译矩阵
+
+| DesignIR 输入 | 禁止直接输出 | 必须编译为 |
+|-------------|-----------|-----------|
+| 材料: 碳纤维 / 结构: 主承载抗拉 / 触感: 微纹理冷感 | ❌ "CFRP, 20-year lifespan, hot press molding, ultrasonic inspection" | ✅ "woven carbon fiber superstructure, ultra-matte micro-texture surface, capturing sharp crisp architectural highlights, zero surface oil reflectance" |
+| 材料: 钛合金 / 结构: 刚性骨架 / 制造: 3D打印/CNC | ❌ "titanium alloy, 3D printed, CNC machined, 30-year lifespan" | ✅ "bead-blasted grade 5 titanium structural rib, seamless solid metal integration, zero tool marks, monolithic precision" |
+| 材料: 陶瓷基复合材料 / 结构: 顶部热防护 | ❌ "ceramic matrix composite, CVD, 15-year lifespan, coating refurbishment" | ✅ "dense ceramic thermal shield, micro-crystalline surface, heat-resistant matte finish, zero oxidation discoloration" |
+| 材料: 超导磁体 / 结构: 磁悬浮承载 | ❌ "YBCO superconductor, 15-year lifespan, liquid nitrogen maintenance" | ✅ "cryogenic metallic surface, zero-resistance magnetic field containment, mirror-polished cryostat interface" |
+
+### 编译规则
+
+1. **删除所有工程管理词汇**：lifespan, manufacturing, maintenance, inspection, detection, refurbishment
+2. **保留材料感官可感知性**：颜色、透明度、纹理、光泽、温度暗示
+3. **转化为光学物理表征**：
+   - IOR（折射率）→ "crystal-clear" / "smoked" / "frosted"
+   - Roughness（粗糙度）→ "ultra-matte" / "hairline-brushed" / "mirror-polished"
+   - Anisotropy（各向异性）→ "directional grain" / "woven texture" / "brushed pattern"
+   - Micro-texture（微观织构）→ "micro-crystalline" / "nano-porous" / "fine-pitted"
+4. **用空间关系替代功能描述**："suspended over" / "flush integrated" / "piercing through"
+
+### 检查清单
+
+- [ ] 提示词中无 "lifespan" / "manufacturing" / "maintenance" / "inspection"？
+- [ ] 材料描述包含表面处理（brushed/polished/matte/smoked）？
+- [ ] 包含光学特征（reflectance/translucency/roughness）？
+- [ ] 无时间跨度词汇（years / aging / degradation）？
+- [ ] 无管理层级词汇（quality control / certification / standard）？
+
+---
+
+## 方法18: 尺度缩放滤网（Scale Zoom Filter）
+
+> **版本**: 1.0
+> **日期**: 2026-06-24
+> **触发**: 审计报告发现宏观体量产品（飞行器）与微观尺寸（0.5mm 缝隙）在提示词中语义冲突，导致模型画风崩坏
+
+### 原理
+
+扩散模型在处理宏观体量（2m 级载具）时，无法同时保持微观尺寸（0.5mm 级缝隙）的精确性。宏观产品中的微观尺寸会被忽略或错误放大，导致结构线崩坏。
+
+### 尺度分级规则
+
+| 产品尺度 | 典型尺寸 | 数字精度 | 微观尺寸处理 |
+|---------|---------|---------|-------------|
+| **微观**（穿戴/手持） | < 20cm | 可精确到 0.1mm | 保留精确数字 |
+| **中观**（桌面/家电） | 20cm - 1m | 精确到 1mm | 保留精确数字 |
+| **宏观**（载具/家具） | > 1m | 精确到 1cm | **抑制微观尺寸，泛化为视觉信号** |
+
+### 微观尺寸泛化矩阵
+
+| 原始微观描述 | 泛化后视觉信号 | 适用场景 |
+|-----------|-------------|---------|
+| 0.5mm hairline seam | "hairline shadow line" / "crisp alignment split" | 宏观载具 |
+| 0.3mm intake slit | "fine aerodynamic gap" / "shadow-revealed junction" | 宏观载具 |
+| 0.1mm LED slit | "subtle light line" / "ambient glow edge" | 宏观载具 |
+| 0.5mm fillet radius | "smooth tangent transition" / "continuous curvature" | 宏观载具 |
+| 2mm levitation gap | "visual airgap" / "hovering separation" | 宏观载具 |
+| 0.1mm texture | "micro-texture surface" / "fine-grained finish" | 宏观载具 |
+
+### 应用规则
+
+1. **STEP-10 形态推导时标注产品尺度**（微观/中观/宏观）
+2. **宏观产品自动抑制 < 1mm 数字**，替换为对比级视觉信号
+3. **中观产品可保留 1mm 级数字**，但 ≤ 2 个
+4. **微观产品可保留 0.1mm 级数字**，但 ≤ 2 个
+5. **禁止在宏观产品提示词中出现 "0.xmm" 级数字**
+
+### 检查清单
+
+- [ ] 产品尺度已标注（微观/中观/宏观）？
+- [ ] 宏观产品中无 < 1mm 数字？
+- [ ] 微观尺寸已泛化为视觉信号（hairline shadow / crisp alignment / fine gap）？
+- [ ] 保留的数字 ≤ 2 个？
+- [ ] 数字与产品尺度匹配？
+
+---
+
+## 方法19: 语义洗涤器（Semantic Sanitizer）
+
+> **版本**: 1.0
+> **日期**: 2026-06-24
+> **触发**: 审计报告发现方向C中出现"侘寂美学""日本手工与科技对比""故意保留铸造痕迹"等装饰性修辞，违反 Ive 核心思维模型
+
+### 原理
+
+乔纳森·艾维极度厌恶"为了讲故事而讲故事"的装饰性设计。AI 在形态推导阶段容易滑向伪文青式的风格化套路，堆砌意识形态/艺术流派名词和情感暗示词。这些词汇无法转化为可执行的形态控制，只会污染提示词。
+
+### 禁止词汇类别
+
+| 类别 | 示例 | 替代方式 |
+|------|------|----------|
+| **意识形态/艺术流派** | 侘寂、赛博朋克、孟菲斯、极简主义、未来主义、复古风 | 几何曲率（G2/G3 Continuity） |
+| **情感暗示词** | 手工感、温暖感、陌生感、充满信任、安全感、亲切感 | 部件交接（Recessed/Flush/Suspended） |
+| **装饰性修辞** | 故意保留、刻意营造、精心雕琢、匠心独运 | 材料物理特性（Tensile/Compressive/Translucent） |
+| **风格标签** | 科技感、简洁风、高级感、工业风、北欧风 | 具体形态描述（slab/dome/shell/ring） |
+
+### 洗涤规则
+
+1. **形态推导阶段**：禁止任何意识形态/艺术流派名词进入
+2. **提示词编译阶段**：compile_prompt.py 自动过滤情感暗示词和装饰性修辞
+3. **替代原则**：所有形态表达必须通过几何曲率、部件交接、材料物理特性进行高维泛化重写
+4. **检查点**：STEP-05.5、STEP-08、STEP-15 编译时三次洗涤
+
+### 检查清单
+
+- [ ] 无"侘寂""赛博朋克""孟菲斯""极简主义"等艺术流派名词？
+- [ ] 无"手工感""温暖感""陌生感""充满信任"等情感暗示词？
+- [ ] 无"故意保留""刻意营造""精心雕琢"等装饰性修辞？
+- [ ] 所有形态描述可转化为几何/材料/交接的具体控制？
+- [ ] 提示词编译时通过语义洗涤器过滤？
+
+---
+
+## 方法20: 品类动态排除词（Category Dynamic Exclusion）
+
+> **版本**: 1.0
+> **日期**: 2026-06-24
+> **触发**: 审计报告发现飞行器 brief 未自动排除 sci-fi wings、glowing thrusters 等品类污染词
+
+### 原理
+
+不同品类有各自的"默认原型污染词"。当 brief 为飞行器时，模型容易渲染出科幻翅膀、发光推进器、透明穹顶等陈词滥调。必须在 STEP-08 根据品类自动绑定动态排除词，写入 Layout Block 5。
+
+### 品类排除词映射
+
+| 品类 | 动态排除词 |
+|------|-----------|
+| **飞行器** | sci-fi wings, glowing thrusters, aerodynamic decals, transparent dome, cybernetic rings, exposed engines, landing gear, propeller blades, jet exhaust, cockpit canopy |
+| **消费电子** | glossy plastic, LED strips, decorative grooves, status icons, visible screws, rubber grips, screen bezels, charging ports |
+| **家具** | ornate carvings, decorative legs, cushioned seats, visible joinery, wood grain patterns, fabric textures |
+| **医疗设备** | hospital white, clinical plastic, warning labels, battery compartments, visible tubing, adjustment knobs |
+| **灯具** | visible wiring, mounting brackets, lampshade frames, pull chains, switch plates, cord covers |
+
+### 应用规则
+
+1. **STEP-08 检查品类俗套时**，同时加载对应品类的动态排除词
+2. **排除词自动写入 Layout Block 5**（绝对排除项）
+3. **三个方向共享同一品类排除词**
+4. **排除词数量**：3-7 个，与产品类型强相关
+
+### 检查清单
+
+- [ ] 品类已识别？
+- [ ] 对应排除词已加载？
+- [ ] 排除词写入 Layout Block 5？
+- [ ] 排除词数量 3-7 个？
+- [ ] 排除词与品类强相关？
+
+---
+
 ## 方法7: 固定语法结构法(本版本对齐 Google Cloud 官方公式)
 
 ### 原理
